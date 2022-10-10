@@ -1,0 +1,433 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>A Lagrangian DG hydrodynamic method: node结构体 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">A Lagrangian DG hydrodynamic method<span id="projectnumber">&#160;v1.01</span>
+   </div>
+   <div id="projectbrief">2D shockless Noh</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.4 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li class="current"><a href="annotated.html"><span>类</span></a></li>
+      <li><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>类列表</span></a></li>
+      <li><a href="classes.html"><span>类索引</span></a></li>
+      <li><a href="functions.html"><span>类成员</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="structnode-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">node结构体 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>网格节点类的定义  
+ <a href="structnode.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="config_8h_source.html">config.h</a>&gt;</code></p>
+<div class="dynheader">
+node 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="structnode__coll__graph.png" border="0" usemap="#anode_coll__map" alt="Collaboration graph"/></div>
+<map name="anode_coll__map" id="anode_coll__map">
+<area shape="rect" title="网格节点类的定义" alt="" coords="5,5,117,229"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a32c5dc1bcd141c24ae6f4d9571555c39"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnode.html#a32c5dc1bcd141c24ae6f4d9571555c39">i</a></td></tr>
+<tr class="separator:a32c5dc1bcd141c24ae6f4d9571555c39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89dee32742756ccf06adcee55087ccac"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnode.html#a89dee32742756ccf06adcee55087ccac">j</a></td></tr>
+<tr class="memdesc:a89dee32742756ccf06adcee55087ccac"><td class="mdescLeft">&#160;</td><td class="mdescRight">节点的参考坐标，第i行第j列  <a href="structnode.html#a89dee32742756ccf06adcee55087ccac">更多...</a><br /></td></tr>
+<tr class="separator:a89dee32742756ccf06adcee55087ccac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af32c25f57bdd0a4cfcbdb9d701cde2f1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnode.html#af32c25f57bdd0a4cfcbdb9d701cde2f1">q</a></td></tr>
+<tr class="memdesc:af32c25f57bdd0a4cfcbdb9d701cde2f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">节点的一维编号， q = (m+1)* i + j  <a href="structnode.html#af32c25f57bdd0a4cfcbdb9d701cde2f1">更多...</a><br /></td></tr>
+<tr class="separator:af32c25f57bdd0a4cfcbdb9d701cde2f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3151a7524b57d0738a9c8fd4ef13db22"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnode.html#a3151a7524b57d0738a9c8fd4ef13db22">boundary</a></td></tr>
+<tr class="memdesc:a3151a7524b57d0738a9c8fd4ef13db22"><td class="mdescLeft">&#160;</td><td class="mdescRight">记录是否为边界节点，boundary = 0,不是，=1，是，else,虚拟节点  <a href="structnode.html#a3151a7524b57d0738a9c8fd4ef13db22">更多...</a><br /></td></tr>
+<tr class="separator:a3151a7524b57d0738a9c8fd4ef13db22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabf3ca384568672adc30f70f01c9df10"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnode.html#aabf3ca384568672adc30f70f01c9df10">x</a></td></tr>
+<tr class="separator:aabf3ca384568672adc30f70f01c9df10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6b92a3350329877401b880c80ba7d54"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnode.html#ad6b92a3350329877401b880c80ba7d54">y</a></td></tr>
+<tr class="memdesc:ad6b92a3350329877401b880c80ba7d54"><td class="mdescLeft">&#160;</td><td class="mdescRight">节点的物理坐标  <a href="structnode.html#ad6b92a3350329877401b880c80ba7d54">更多...</a><br /></td></tr>
+<tr class="separator:ad6b92a3350329877401b880c80ba7d54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa32f7bfd2c104c84195f351b189a609b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnode.html#aa32f7bfd2c104c84195f351b189a609b">xtemp</a></td></tr>
+<tr class="separator:aa32f7bfd2c104c84195f351b189a609b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdd49880e73ab229fdaca55f3500612f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnode.html#acdd49880e73ab229fdaca55f3500612f">ytemp</a></td></tr>
+<tr class="memdesc:acdd49880e73ab229fdaca55f3500612f"><td class="mdescLeft">&#160;</td><td class="mdescRight">暂时存储部分数据  <a href="structnode.html#acdd49880e73ab229fdaca55f3500612f">更多...</a><br /></td></tr>
+<tr class="separator:acdd49880e73ab229fdaca55f3500612f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae26431ed55307715301fdcbe58b3ecf6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnode.html#ae26431ed55307715301fdcbe58b3ecf6">x0</a></td></tr>
+<tr class="separator:ae26431ed55307715301fdcbe58b3ecf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48c29196991d57cec0dfe3fc6be5a20a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnode.html#a48c29196991d57cec0dfe3fc6be5a20a">y0</a></td></tr>
+<tr class="memdesc:a48c29196991d57cec0dfe3fc6be5a20a"><td class="mdescLeft">&#160;</td><td class="mdescRight">节点的初始物理坐标，用于计算密度  <a href="structnode.html#a48c29196991d57cec0dfe3fc6be5a20a">更多...</a><br /></td></tr>
+<tr class="separator:a48c29196991d57cec0dfe3fc6be5a20a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcae41a2bb37f4a6eabf83085878c6be"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnode.html#adcae41a2bb37f4a6eabf83085878c6be">upstarx</a></td></tr>
+<tr class="memdesc:adcae41a2bb37f4a6eabf83085878c6be"><td class="mdescLeft">&#160;</td><td class="mdescRight">节点速度x分量  <a href="structnode.html#adcae41a2bb37f4a6eabf83085878c6be">更多...</a><br /></td></tr>
+<tr class="separator:adcae41a2bb37f4a6eabf83085878c6be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad936ccc162f66d808807f4d5345a3f91"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnode.html#ad936ccc162f66d808807f4d5345a3f91">upstary</a></td></tr>
+<tr class="memdesc:ad936ccc162f66d808807f4d5345a3f91"><td class="mdescLeft">&#160;</td><td class="mdescRight">节点速度x分量  <a href="structnode.html#ad936ccc162f66d808807f4d5345a3f91">更多...</a><br /></td></tr>
+<tr class="separator:ad936ccc162f66d808807f4d5345a3f91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f6a8ba1c5af2888272671c4f6e5f888"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnode.html#a3f6a8ba1c5af2888272671c4f6e5f888">neighbor_element</a></td></tr>
+<tr class="memdesc:a3f6a8ba1c5af2888272671c4f6e5f888"><td class="mdescLeft">&#160;</td><td class="mdescRight">节点的相邻网格，从右上角开始逆时针  <a href="structnode.html#a3f6a8ba1c5af2888272671c4f6e5f888">更多...</a><br /></td></tr>
+<tr class="separator:a3f6a8ba1c5af2888272671c4f6e5f888"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac89f5397acdf5d5a34c06aa58117b7de"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnode.html#ac89f5397acdf5d5a34c06aa58117b7de">neighbor_node</a></td></tr>
+<tr class="memdesc:ac89f5397acdf5d5a34c06aa58117b7de"><td class="mdescLeft">&#160;</td><td class="mdescRight">节点的相邻节点  <a href="structnode.html#ac89f5397acdf5d5a34c06aa58117b7de">更多...</a><br /></td></tr>
+<tr class="separator:ac89f5397acdf5d5a34c06aa58117b7de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32bffc8bf18a06613567963519e45ce3"><td class="memItemLeft" align="right" valign="top">vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnode.html#a32bffc8bf18a06613567963519e45ce3">a</a></td></tr>
+<tr class="memdesc:a32bffc8bf18a06613567963519e45ce3"><td class="mdescLeft">&#160;</td><td class="mdescRight">节点到相邻节点的部分边长  <a href="structnode.html#a32bffc8bf18a06613567963519e45ce3">更多...</a><br /></td></tr>
+<tr class="separator:a32bffc8bf18a06613567963519e45ce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07afa7635d94983c805ccf4daffc5633"><td class="memItemLeft" align="right" valign="top">vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnode.html#a07afa7635d94983c805ccf4daffc5633">nx</a></td></tr>
+<tr class="memdesc:a07afa7635d94983c805ccf4daffc5633"><td class="mdescLeft">&#160;</td><td class="mdescRight">节点到相邻节点边上的外法向量x方向分量（注意定向：切向法向为右手坐标系）  <a href="structnode.html#a07afa7635d94983c805ccf4daffc5633">更多...</a><br /></td></tr>
+<tr class="separator:a07afa7635d94983c805ccf4daffc5633"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c0d7ff4cb520daec52a209378d6a9b2"><td class="memItemLeft" align="right" valign="top">vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnode.html#a3c0d7ff4cb520daec52a209378d6a9b2">ny</a></td></tr>
+<tr class="memdesc:a3c0d7ff4cb520daec52a209378d6a9b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">节点到相邻节点边上的外法向量y方向分量（注意定向：切向法向为右手坐标系）  <a href="structnode.html#a3c0d7ff4cb520daec52a209378d6a9b2">更多...</a><br /></td></tr>
+<tr class="separator:a3c0d7ff4cb520daec52a209378d6a9b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p >网格节点类的定义 </p>
+<ul>
+<li>包含网格节点的所有几何量和部分物理量</li>
+<li>一维序号和二维序号的关系：q = (m+1)* i + j </li>
+</ul>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00098">98</a> 行定义.</p>
+</div><h2 class="groupheader">类成员变量说明</h2>
+<a id="a32bffc8bf18a06613567963519e45ce3" name="a32bffc8bf18a06613567963519e45ce3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32bffc8bf18a06613567963519e45ce3">&#9670;&nbsp;</a></span>a</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;double &gt; node::a</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>节点到相邻节点的部分边长 </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00109">109</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a3151a7524b57d0738a9c8fd4ef13db22" name="a3151a7524b57d0738a9c8fd4ef13db22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3151a7524b57d0738a9c8fd4ef13db22">&#9670;&nbsp;</a></span>boundary</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int node::boundary</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>记录是否为边界节点，boundary = 0,不是，=1，是，else,虚拟节点 </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00101">101</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a32c5dc1bcd141c24ae6f4d9571555c39" name="a32c5dc1bcd141c24ae6f4d9571555c39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32c5dc1bcd141c24ae6f4d9571555c39">&#9670;&nbsp;</a></span>i</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int node::i</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00099">99</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a89dee32742756ccf06adcee55087ccac" name="a89dee32742756ccf06adcee55087ccac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89dee32742756ccf06adcee55087ccac">&#9670;&nbsp;</a></span>j</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int node::j</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>节点的参考坐标，第i行第j列 </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00099">99</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a3f6a8ba1c5af2888272671c4f6e5f888" name="a3f6a8ba1c5af2888272671c4f6e5f888"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f6a8ba1c5af2888272671c4f6e5f888">&#9670;&nbsp;</a></span>neighbor_element</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;int &gt; node::neighbor_element</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>节点的相邻网格，从右上角开始逆时针 </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00107">107</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac89f5397acdf5d5a34c06aa58117b7de" name="ac89f5397acdf5d5a34c06aa58117b7de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac89f5397acdf5d5a34c06aa58117b7de">&#9670;&nbsp;</a></span>neighbor_node</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;int &gt; node::neighbor_node</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>节点的相邻节点 </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00108">108</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a07afa7635d94983c805ccf4daffc5633" name="a07afa7635d94983c805ccf4daffc5633"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07afa7635d94983c805ccf4daffc5633">&#9670;&nbsp;</a></span>nx</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;double &gt; node::nx</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>节点到相邻节点边上的外法向量x方向分量（注意定向：切向法向为右手坐标系） </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00110">110</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a3c0d7ff4cb520daec52a209378d6a9b2" name="a3c0d7ff4cb520daec52a209378d6a9b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c0d7ff4cb520daec52a209378d6a9b2">&#9670;&nbsp;</a></span>ny</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;double &gt; node::ny</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>节点到相邻节点边上的外法向量y方向分量（注意定向：切向法向为右手坐标系） </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00111">111</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af32c25f57bdd0a4cfcbdb9d701cde2f1" name="af32c25f57bdd0a4cfcbdb9d701cde2f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af32c25f57bdd0a4cfcbdb9d701cde2f1">&#9670;&nbsp;</a></span>q</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int node::q</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>节点的一维编号， q = (m+1)* i + j </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00100">100</a> 行定义.</p>
+
+</div>
+</div>
+<a id="adcae41a2bb37f4a6eabf83085878c6be" name="adcae41a2bb37f4a6eabf83085878c6be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcae41a2bb37f4a6eabf83085878c6be">&#9670;&nbsp;</a></span>upstarx</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double node::upstarx</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>节点速度x分量 </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00105">105</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ad936ccc162f66d808807f4d5345a3f91" name="ad936ccc162f66d808807f4d5345a3f91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad936ccc162f66d808807f4d5345a3f91">&#9670;&nbsp;</a></span>upstary</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double node::upstary</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>节点速度x分量 </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00106">106</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aabf3ca384568672adc30f70f01c9df10" name="aabf3ca384568672adc30f70f01c9df10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabf3ca384568672adc30f70f01c9df10">&#9670;&nbsp;</a></span>x</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double node::x</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00102">102</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae26431ed55307715301fdcbe58b3ecf6" name="ae26431ed55307715301fdcbe58b3ecf6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae26431ed55307715301fdcbe58b3ecf6">&#9670;&nbsp;</a></span>x0</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double node::x0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00104">104</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aa32f7bfd2c104c84195f351b189a609b" name="aa32f7bfd2c104c84195f351b189a609b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa32f7bfd2c104c84195f351b189a609b">&#9670;&nbsp;</a></span>xtemp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double node::xtemp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00103">103</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ad6b92a3350329877401b880c80ba7d54" name="ad6b92a3350329877401b880c80ba7d54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6b92a3350329877401b880c80ba7d54">&#9670;&nbsp;</a></span>y</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double node::y</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>节点的物理坐标 </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00102">102</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a48c29196991d57cec0dfe3fc6be5a20a" name="a48c29196991d57cec0dfe3fc6be5a20a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48c29196991d57cec0dfe3fc6be5a20a">&#9670;&nbsp;</a></span>y0</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double node::y0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>节点的初始物理坐标，用于计算密度 </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00104">104</a> 行定义.</p>
+
+</div>
+</div>
+<a id="acdd49880e73ab229fdaca55f3500612f" name="acdd49880e73ab229fdaca55f3500612f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdd49880e73ab229fdaca55f3500612f">&#9670;&nbsp;</a></span>ytemp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double node::ytemp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>暂时存储部分数据 </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00103">103</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该结构体的文档由以下文件生成:<ul>
+<li>F:/C++Codes/LagrangeDG/shockless_Noh/files/<a class="el" href="config_8h_source.html">config.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

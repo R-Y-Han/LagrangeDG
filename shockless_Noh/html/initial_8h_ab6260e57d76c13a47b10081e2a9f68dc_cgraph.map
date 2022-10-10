@@ -1,0 +1,27 @@
+<map id="initial" name="initial">
+<area shape="rect" id="node1" title="初始化各个变量，生成网格并记录初始信息" alt="" coords="5,453,57,480"/>
+<area shape="rect" id="node2" href="$config_8cpp.html#a9035555d0f5aae81503f6dd897171576" title="形函数对eta求导" alt="" coords="455,321,516,348"/>
+<area shape="rect" id="node3" href="$config_8cpp.html#ae6f3d29131d803a8e79ebebd60ef13c8" title="形函数对xi求导" alt="" coords="459,669,512,696"/>
+<area shape="rect" id="node4" href="$initial_8cpp.html#a678188ee7d163e6aca74038010c67491" title="对第(i,j)个单元寻找相邻单元， 从(i,j&#45;1)开始逆时针数第一个存在的单元作为第一个项 存储一维序号" alt="" coords="105,124,249,151"/>
+<area shape="rect" id="node5" href="$initial_8cpp.html#ae92a01f80d15618fb1e3e3492039a363" title="生成初始网格划分" alt="" coords="125,175,229,201"/>
+<area shape="rect" id="node6" href="$config_8cpp.html#a292396e71a09db4a03375534795df22a" title="初始内能场" alt="" coords="153,225,202,252"/>
+<area shape="rect" id="node7" href="$config_8cpp.html#ab665c45e7aff5a0fc9fe351c69c2a713" title="初始内能场对x求偏导" alt="" coords="146,276,209,303"/>
+<area shape="rect" id="node8" href="$config_8cpp.html#af07032b76cf1786e487565a796aecb69" title="初始内能场对y求偏导" alt="" coords="146,327,209,353"/>
+<area shape="rect" id="node9" href="$config_8cpp.html#a9ec4c58d521a9670e06629a5e1e57724" title="初始速度场的x方向分量" alt="" coords="149,377,205,404"/>
+<area shape="rect" id="node10" href="$config_8cpp.html#addfcc66f22683130d92e73c339eae3df" title="初始速度场对x求导的x分量" alt="" coords="142,428,213,455"/>
+<area shape="rect" id="node11" href="$config_8cpp.html#ae2cb552c67ea84ac9e20c719bdd99db6" title="初始速度场对x求导的y分量" alt="" coords="142,479,213,505"/>
+<area shape="rect" id="node12" href="$config_8cpp.html#a9040bee0d870c5c102e7118094046c77" title="初始速度场y方向分量" alt="" coords="149,529,205,556"/>
+<area shape="rect" id="node13" href="$config_8cpp.html#a3dcc1ba893101d4b1dad24f5d81bfb94" title="初始速度场对y求导的x分量" alt="" coords="142,580,213,607"/>
+<area shape="rect" id="node14" href="$config_8cpp.html#aefceb416f945345aa8d7a9c303272007" title="初始速度场对y求导的y分量" alt="" coords="142,631,213,657"/>
+<area shape="rect" id="node15" href="$initial_8cpp.html#a2286aa850479a600ff6f6d551d9fb71d" title="计算第(i,j)个网格的质心，同时计算每个网格的质量" alt="" coords="129,732,226,759"/>
+<area shape="rect" id="node18" href="$struct_omega.html#a9fc77705786af278288ec206eef9b28a" title="从参考空间到物理空间的映射，x分量" alt="" coords="301,783,403,809"/>
+<area shape="rect" id="node20" href="$struct_omega.html#aed154e23027c249d71e1d5609629a4b6" title="从参考空间到物理空间的映射，y分量" alt="" coords="301,732,403,759"/>
+<area shape="rect" id="node21" href="$initial_8cpp.html#a37e14b548616bbb2a71d336d72306af7" title="计算第(i,j)个网格的质量矩阵" alt="" coords="129,681,226,708"/>
+<area shape="rect" id="node23" href="$initial_8cpp.html#a275740c71861bd79bf92744ee8bb78e5" title=" " alt="" coords="114,884,241,911"/>
+<area shape="rect" id="node16" href="$config_8cpp.html#a4786347b8a686d3a2db1c11aab594b31" title="初始密度场" alt="" coords="322,631,382,657"/>
+<area shape="rect" id="node17" href="$struct_omega.html#a356cb686fa14146a0eebd34cf0ac0554" title="计算(xi,eta)出的Jacobi矩阵的行列式" alt="" coords="297,681,407,708"/>
+<area shape="rect" id="node19" href="$config_8cpp.html#a9ec66e6f9842d15614ea62f75bd47b24" title="形函数，用于求参考空间到物理空间的同胚映射" alt="" coords="466,745,505,772"/>
+<area shape="rect" id="node22" href="$struct_omega.html#ae9e4670a6573ed62345914db38030152" title="网格的基函数" alt="" coords="307,580,397,607"/>
+<area shape="rect" id="node24" href="$config_8cpp.html#a1cd5bd2195dc0843e4f2a999181011ea" title="计算a，b两点间距离" alt="" coords="457,884,514,911"/>
+<area shape="rect" id="node25" href="$config_8cpp.html#ab63113f03fc8dacc216c6b2da3bb2c0e" title="计算ab边的单位法向量" alt="" coords="321,909,383,936"/>
+</map>

@@ -1,0 +1,520 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>A Lagrangian DG hydrodynamic method: F:/C++Codes/LagrangeDG/shockless_Noh/files/time_evolution.cpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">A Lagrangian DG hydrodynamic method<span id="projectnumber">&#160;v1.01</span>
+   </div>
+   <div id="projectbrief">2D shockless Noh</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.4 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>文件成员</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_eee681074411ed9073826571a8442c61.html">LagrangeDG</a></li><li class="navelem"><a class="el" href="dir_33272b348a70cf8330cd4ef197b6e1d3.html">shockless_Noh</a></li><li class="navelem"><a class="el" href="dir_f2a1b071a4d3d6da503817cf0a84f786.html">files</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">time_evolution.cpp 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>一次时间步长的更新，包括密度、速度、质量总能的更新和时间步长的选取  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="time__evolution_8h_source.html">time_evolution.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="config_8h_source.html">config.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="nodal__solver_8h_source.html">nodal_solver.h</a>&quot;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+time_evolution.cpp 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="time__evolution_8cpp__incl.png" border="0" usemap="#a_f_1_2_c_09_09_codes_2_lagrange_d_g_2shockless___noh_2files_2time__evolution_8cpp" alt=""/></div>
+<map name="a_f_1_2_c_09_09_codes_2_lagrange_d_g_2shockless___noh_2files_2time__evolution_8cpp" id="a_f_1_2_c_09_09_codes_2_lagrange_d_g_2shockless___noh_2files_2time__evolution_8cpp">
+<area shape="rect" title="一次时间步长的更新，包括密度、速度、质量总能的更新和时间步长的选取" alt="" coords="144,5,320,61"/>
+<area shape="rect" href="time__evolution_8h.html" title="一次时间步长的更新，包括密度、速度、质量总能的更新和时间步长的选取" alt="" coords="5,109,120,136"/>
+<area shape="rect" href="config_8h.html" title="Configuration for 2D shockless Noh. Define some parameters and functions shared by all parts of the p..." alt="" coords="144,109,211,136"/>
+<area shape="rect" href="nodal__solver_8h.html" title="定义节点解法器求解节点速度和corner force" alt="" coords="235,109,339,136"/>
+<area shape="rect" title=" " alt="" coords="363,109,421,136"/>
+<area shape="rect" title=" " alt="" coords="149,184,205,211"/>
+</map>
+</div>
+</div>
+<p><a href="time__evolution_8cpp_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a16e3412a9a05a6e701f953d2faa0c9da"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time__evolution_8cpp.html#a16e3412a9a05a6e701f953d2faa0c9da">get_density</a> (double xi, double eta, int r)</td></tr>
+<tr class="memdesc:a16e3412a9a05a6e701f953d2faa0c9da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the density  <a href="time__evolution_8cpp.html#a16e3412a9a05a6e701f953d2faa0c9da">更多...</a><br /></td></tr>
+<tr class="separator:a16e3412a9a05a6e701f953d2faa0c9da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96ce734a6e4ba04983284fc61345bd1f"><td class="memItemLeft" align="right" valign="top">double **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time__evolution_8cpp.html#a96ce734a6e4ba04983284fc61345bd1f">velocity_matrix</a> (int i, int j)</td></tr>
+<tr class="memdesc:a96ce734a6e4ba04983284fc61345bd1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">得到单元速度的右端矩阵  <a href="time__evolution_8cpp.html#a96ce734a6e4ba04983284fc61345bd1f">更多...</a><br /></td></tr>
+<tr class="separator:a96ce734a6e4ba04983284fc61345bd1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e5e76e2a0351a0d12004b608bc070f8"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time__evolution_8cpp.html#a2e5e76e2a0351a0d12004b608bc070f8">energy_matrix</a> (int i, int j)</td></tr>
+<tr class="memdesc:a2e5e76e2a0351a0d12004b608bc070f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">得到单元质量总能的右端矩阵  <a href="time__evolution_8cpp.html#a2e5e76e2a0351a0d12004b608bc070f8">更多...</a><br /></td></tr>
+<tr class="separator:a2e5e76e2a0351a0d12004b608bc070f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a332c3a4fecd46f1bab7d7b5e0c71abc1"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time__evolution_8cpp.html#a332c3a4fecd46f1bab7d7b5e0c71abc1">RK_step1</a> (double *un, double **M, double *Rn, double timeStep, int d)</td></tr>
+<tr class="memdesc:a332c3a4fecd46f1bab7d7b5e0c71abc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">RK第一步计算  <a href="time__evolution_8cpp.html#a332c3a4fecd46f1bab7d7b5e0c71abc1">更多...</a><br /></td></tr>
+<tr class="separator:a332c3a4fecd46f1bab7d7b5e0c71abc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1a8ae6cf531f19b779bfb1c710db9b8"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time__evolution_8cpp.html#ae1a8ae6cf531f19b779bfb1c710db9b8">RK_step2</a> (double *un, double *us1, double **M, double *Rs1, double timeStep, int d)</td></tr>
+<tr class="memdesc:ae1a8ae6cf531f19b779bfb1c710db9b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">RK第二步计算  <a href="time__evolution_8cpp.html#ae1a8ae6cf531f19b779bfb1c710db9b8">更多...</a><br /></td></tr>
+<tr class="separator:ae1a8ae6cf531f19b779bfb1c710db9b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af636d5644f9d0d96f70e1f3941bed9f7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time__evolution_8cpp.html#af636d5644f9d0d96f70e1f3941bed9f7">choose_dt</a> (double dtn)</td></tr>
+<tr class="memdesc:af636d5644f9d0d96f70e1f3941bed9f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">选择时间步长dt， 使得每个单元内声速运动距离都不超过单元的某种长度度量  <a href="time__evolution_8cpp.html#af636d5644f9d0d96f70e1f3941bed9f7">更多...</a><br /></td></tr>
+<tr class="separator:af636d5644f9d0d96f70e1f3941bed9f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p >一次时间步长的更新，包括密度、速度、质量总能的更新和时间步长的选取 </p>
+<dl class="section author"><dt>作者</dt><dd>R.Y. Han (<a href="#" onclick="location.href='mai'+'lto:'+'han'+'ru'+'oyu'+'21'+'@gs'+'ca'+'ep.'+'ac'+'.cn'; return false;">hanru<span class="obfuscator">.nosp@m.</span>oyu2<span class="obfuscator">.nosp@m.</span>1@gsc<span class="obfuscator">.nosp@m.</span>aep.<span class="obfuscator">.nosp@m.</span>ac.cn</a>) </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>v1.01 </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022-10-07</dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2022 R.Y. Han. All Rights Reserved. </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="time__evolution_8cpp_source.html">time_evolution.cpp</a> 中定义.</p>
+</div><h2 class="groupheader">函数说明</h2>
+<a id="af636d5644f9d0d96f70e1f3941bed9f7" name="af636d5644f9d0d96f70e1f3941bed9f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af636d5644f9d0d96f70e1f3941bed9f7">&#9670;&nbsp;</a></span>choose_dt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double choose_dt </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>dtn</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>选择时间步长dt， 使得每个单元内声速运动距离都不超过单元的某种长度度量 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dtn</td><td>之前的时间步长 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>double </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="time__evolution_8cpp_source.html">time_evolution.cpp</a> 第 <a class="el" href="time__evolution_8cpp_source.html#l00482">482</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a2e5e76e2a0351a0d12004b608bc070f8" name="a2e5e76e2a0351a0d12004b608bc070f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e5e76e2a0351a0d12004b608bc070f8">&#9670;&nbsp;</a></span>energy_matrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double * energy_matrix </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>得到单元质量总能的右端矩阵 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>单元的行编号 </td></tr>
+    <tr><td class="paramname">j</td><td>单元的列编号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>double* </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="time__evolution_8cpp_source.html">time_evolution.cpp</a> 第 <a class="el" href="time__evolution_8cpp_source.html#l00192">192</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="time__evolution_8cpp_a2e5e76e2a0351a0d12004b608bc070f8_cgraph.png" border="0" usemap="#atime__evolution_8cpp_a2e5e76e2a0351a0d12004b608bc070f8_cgraph" alt=""/></div>
+<map name="atime__evolution_8cpp_a2e5e76e2a0351a0d12004b608bc070f8_cgraph" id="atime__evolution_8cpp_a2e5e76e2a0351a0d12004b608bc070f8_cgraph">
+<area shape="rect" title="得到单元质量总能的右端矩阵" alt="" coords="5,246,109,273"/>
+<area shape="rect" href="config_8cpp.html#a9035555d0f5aae81503f6dd897171576" title="形函数对eta求导" alt="" coords="507,30,568,57"/>
+<area shape="rect" href="config_8cpp.html#ae6f3d29131d803a8e79ebebd60ef13c8" title="形函数对xi求导" alt="" coords="511,81,564,108"/>
+<area shape="rect" href="nodal__solver_8cpp.html#ab55250d1f498595fd052c2c6006aaddd" title="计算第(i,j)个节点在第k个相邻单元中的两个corner force" alt="" coords="169,246,262,273"/>
+<area shape="rect" href="config_8cpp.html#a120a84d5fe0c85a5f12b22178cf1cf00" title="理想气体状态方程" alt="" coords="357,410,408,437"/>
+<area shape="rect" href="struct_omega.html#a356cb686fa14146a0eebd34cf0ac0554" title="计算(xi,eta)出的Jacobi矩阵的行列式" alt="" coords="328,56,437,82"/>
+<area shape="rect" href="struct_omega.html#ae9e4670a6573ed62345914db38030152" title="网格的基函数" alt="" coords="492,360,583,386"/>
+<area shape="rect" href="time__evolution_8cpp.html#a16e3412a9a05a6e701f953d2faa0c9da" title="Get the density" alt="" coords="171,170,260,197"/>
+<area shape="rect" href="struct_omega.html#a49e0b3620d7f434bf977a528e69c85a7" title="基函数对eta求导" alt="" coords="157,512,273,538"/>
+<area shape="rect" href="struct_omega.html#a534ab7dc70b10437f4c811d6294a2c8b" title="基函数对xi求导" alt="" coords="161,562,269,589"/>
+<area shape="rect" href="config_8cpp.html#a4786347b8a686d3a2db1c11aab594b31" title="初始密度场" alt="" coords="353,106,413,133"/>
+<area shape="rect" href="struct_omega.html#a292b2960170c6981845aad8aa324ff8b" title="计算初始时刻(xi,eta)出的Jacobi矩阵的行列式" alt="" coords="321,157,444,184"/>
+<area shape="rect" href="struct_omega.html#a9fc77705786af278288ec206eef9b28a" title="从参考空间到物理空间的映射，x分量" alt="" coords="331,258,434,285"/>
+<area shape="rect" href="struct_omega.html#aed154e23027c249d71e1d5609629a4b6" title="从参考空间到物理空间的映射，y分量" alt="" coords="331,208,434,234"/>
+<area shape="rect" href="nodal__solver_8cpp.html#a2c22281007ccfde5c86ff8449178d9a9" title="计算第(i,j)个节点处每个相邻单元在该点的速度重构值的平均" alt="" coords="343,360,423,386"/>
+<area shape="rect" href="config_8cpp.html#a9ec66e6f9842d15614ea62f75bd47b24" title="形函数，用于求参考空间到物理空间的同胚映射" alt="" coords="518,233,557,260"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="time__evolution_8cpp_a2e5e76e2a0351a0d12004b608bc070f8_icgraph.png" border="0" usemap="#atime__evolution_8cpp_a2e5e76e2a0351a0d12004b608bc070f8_icgraph" alt=""/></div>
+<map name="atime__evolution_8cpp_a2e5e76e2a0351a0d12004b608bc070f8_icgraph" id="atime__evolution_8cpp_a2e5e76e2a0351a0d12004b608bc070f8_icgraph">
+<area shape="rect" title="得到单元质量总能的右端矩阵" alt="" coords="147,5,251,32"/>
+<area shape="rect" href="shockless_noh_8cpp.html#a59e3e2ed6428ef3c6cdb5fa2ee77eb04" title="进行一步时间推进" alt="" coords="5,5,99,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a16e3412a9a05a6e701f953d2faa0c9da" name="a16e3412a9a05a6e701f953d2faa0c9da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16e3412a9a05a6e701f953d2faa0c9da">&#9670;&nbsp;</a></span>get_density()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double get_density </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>xi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>eta</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>r</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the density </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xi</td><td>节点的参考坐标横坐标 </td></tr>
+    <tr><td class="paramname">eta</td><td>节点的参考坐标纵坐标 </td></tr>
+    <tr><td class="paramname">r</td><td>节点所在单元的编号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>double </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="time__evolution_8cpp_source.html">time_evolution.cpp</a> 第 <a class="el" href="time__evolution_8cpp_source.html#l00026">26</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="time__evolution_8cpp_a16e3412a9a05a6e701f953d2faa0c9da_cgraph.png" border="0" usemap="#atime__evolution_8cpp_a16e3412a9a05a6e701f953d2faa0c9da_cgraph" alt=""/></div>
+<map name="atime__evolution_8cpp_a16e3412a9a05a6e701f953d2faa0c9da_cgraph" id="atime__evolution_8cpp_a16e3412a9a05a6e701f953d2faa0c9da_cgraph">
+<area shape="rect" title="Get the density" alt="" coords="5,107,95,133"/>
+<area shape="rect" href="config_8cpp.html#a4786347b8a686d3a2db1c11aab594b31" title="初始密度场" alt="" coords="174,5,234,32"/>
+<area shape="rect" href="struct_omega.html#a356cb686fa14146a0eebd34cf0ac0554" title="计算(xi,eta)出的Jacobi矩阵的行列式" alt="" coords="149,107,259,133"/>
+<area shape="rect" href="struct_omega.html#a292b2960170c6981845aad8aa324ff8b" title="计算初始时刻(xi,eta)出的Jacobi矩阵的行列式" alt="" coords="143,56,265,83"/>
+<area shape="rect" href="struct_omega.html#a9fc77705786af278288ec206eef9b28a" title="从参考空间到物理空间的映射，x分量" alt="" coords="153,208,255,235"/>
+<area shape="rect" href="struct_omega.html#aed154e23027c249d71e1d5609629a4b6" title="从参考空间到物理空间的映射，y分量" alt="" coords="153,157,255,184"/>
+<area shape="rect" href="config_8cpp.html#a9035555d0f5aae81503f6dd897171576" title="形函数对eta求导" alt="" coords="313,107,375,133"/>
+<area shape="rect" href="config_8cpp.html#ae6f3d29131d803a8e79ebebd60ef13c8" title="形函数对xi求导" alt="" coords="317,56,371,83"/>
+<area shape="rect" href="config_8cpp.html#a9ec66e6f9842d15614ea62f75bd47b24" title="形函数，用于求参考空间到物理空间的同胚映射" alt="" coords="325,183,363,209"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="time__evolution_8cpp_a16e3412a9a05a6e701f953d2faa0c9da_icgraph.png" border="0" usemap="#atime__evolution_8cpp_a16e3412a9a05a6e701f953d2faa0c9da_icgraph" alt=""/></div>
+<map name="atime__evolution_8cpp_a16e3412a9a05a6e701f953d2faa0c9da_icgraph" id="atime__evolution_8cpp_a16e3412a9a05a6e701f953d2faa0c9da_icgraph">
+<area shape="rect" title="Get the density" alt="" coords="303,31,392,57"/>
+<area shape="rect" href="time__evolution_8cpp.html#a2e5e76e2a0351a0d12004b608bc070f8" title="得到单元质量总能的右端矩阵" alt="" coords="149,5,253,32"/>
+<area shape="rect" href="time__evolution_8cpp.html#a96ce734a6e4ba04983284fc61345bd1f" title="得到单元速度的右端矩阵" alt="" coords="147,56,255,83"/>
+<area shape="rect" href="shockless_noh_8cpp.html#a59e3e2ed6428ef3c6cdb5fa2ee77eb04" title="进行一步时间推进" alt="" coords="5,31,99,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a332c3a4fecd46f1bab7d7b5e0c71abc1" name="a332c3a4fecd46f1bab7d7b5e0c71abc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a332c3a4fecd46f1bab7d7b5e0c71abc1">&#9670;&nbsp;</a></span>RK_step1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double * RK_step1 </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>un</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>M</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>Rn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>timeStep</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>RK第一步计算 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">un</td><td>n时刻原始向量 </td></tr>
+    <tr><td class="paramname">M</td><td>系数矩阵 </td></tr>
+    <tr><td class="paramname">Rn</td><td>右端矩阵 </td></tr>
+    <tr><td class="paramname">timeStep</td><td>时间步长 </td></tr>
+    <tr><td class="paramname">d</td><td>向量维数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>double*</dd></dl>
+<dl class="section note"><dt>注解</dt><dd><ul>
+<li>输入的方程为M du/dt = R</li>
+<li>输入的M在计算逆矩阵时会变成单位矩阵，若要避免此问题需另设一个指针 </li>
+</ul>
+</dd></dl>
+
+<p class="definition">在文件 <a class="el" href="time__evolution_8cpp_source.html">time_evolution.cpp</a> 第 <a class="el" href="time__evolution_8cpp_source.html#l00311">311</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="time__evolution_8cpp_a332c3a4fecd46f1bab7d7b5e0c71abc1_icgraph.png" border="0" usemap="#atime__evolution_8cpp_a332c3a4fecd46f1bab7d7b5e0c71abc1_icgraph" alt=""/></div>
+<map name="atime__evolution_8cpp_a332c3a4fecd46f1bab7d7b5e0c71abc1_icgraph" id="atime__evolution_8cpp_a332c3a4fecd46f1bab7d7b5e0c71abc1_icgraph">
+<area shape="rect" title="RK第一步计算" alt="" coords="147,5,225,32"/>
+<area shape="rect" href="shockless_noh_8cpp.html#a59e3e2ed6428ef3c6cdb5fa2ee77eb04" title="进行一步时间推进" alt="" coords="5,5,99,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae1a8ae6cf531f19b779bfb1c710db9b8" name="ae1a8ae6cf531f19b779bfb1c710db9b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1a8ae6cf531f19b779bfb1c710db9b8">&#9670;&nbsp;</a></span>RK_step2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double * RK_step2 </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>un</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>us1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>M</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>Rs1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>timeStep</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>RK第二步计算 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">un</td><td>n时刻原始向量 </td></tr>
+    <tr><td class="paramname">us1</td><td>第一次RK结果 </td></tr>
+    <tr><td class="paramname">M</td><td>系数矩阵 </td></tr>
+    <tr><td class="paramname">Rs1</td><td>第一次RK后重新计算的右端矩阵 </td></tr>
+    <tr><td class="paramname">timeStep</td><td>时间步长 </td></tr>
+    <tr><td class="paramname">d</td><td>向量维数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>double*</dd></dl>
+<ul>
+<li><dl class="section note"><dt>注解</dt><dd></dd></dl>
+</li>
+</ul>
+<p >输入的方程为M du/dt = R</p><ul>
+<li>输入的M在计算逆矩阵时会变成单位矩阵，若要避免此问题需另设一个指针 </li>
+</ul>
+
+<p class="definition">在文件 <a class="el" href="time__evolution_8cpp_source.html">time_evolution.cpp</a> 第 <a class="el" href="time__evolution_8cpp_source.html#l00400">400</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="time__evolution_8cpp_ae1a8ae6cf531f19b779bfb1c710db9b8_icgraph.png" border="0" usemap="#atime__evolution_8cpp_ae1a8ae6cf531f19b779bfb1c710db9b8_icgraph" alt=""/></div>
+<map name="atime__evolution_8cpp_ae1a8ae6cf531f19b779bfb1c710db9b8_icgraph" id="atime__evolution_8cpp_ae1a8ae6cf531f19b779bfb1c710db9b8_icgraph">
+<area shape="rect" title="RK第二步计算" alt="" coords="147,5,225,32"/>
+<area shape="rect" href="shockless_noh_8cpp.html#a59e3e2ed6428ef3c6cdb5fa2ee77eb04" title="进行一步时间推进" alt="" coords="5,5,99,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a96ce734a6e4ba04983284fc61345bd1f" name="a96ce734a6e4ba04983284fc61345bd1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96ce734a6e4ba04983284fc61345bd1f">&#9670;&nbsp;</a></span>velocity_matrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ** velocity_matrix </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>得到单元速度的右端矩阵 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>单元的行编号 </td></tr>
+    <tr><td class="paramname">j</td><td>单元的列编号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>double** </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="time__evolution_8cpp_source.html">time_evolution.cpp</a> 第 <a class="el" href="time__evolution_8cpp_source.html#l00055">55</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="time__evolution_8cpp_a96ce734a6e4ba04983284fc61345bd1f_cgraph.png" border="0" usemap="#atime__evolution_8cpp_a96ce734a6e4ba04983284fc61345bd1f_cgraph" alt=""/></div>
+<map name="atime__evolution_8cpp_a96ce734a6e4ba04983284fc61345bd1f_cgraph" id="atime__evolution_8cpp_a96ce734a6e4ba04983284fc61345bd1f_cgraph">
+<area shape="rect" title="得到单元速度的右端矩阵" alt="" coords="5,246,113,273"/>
+<area shape="rect" href="config_8cpp.html#a9035555d0f5aae81503f6dd897171576" title="形函数对eta求导" alt="" coords="511,30,572,57"/>
+<area shape="rect" href="config_8cpp.html#ae6f3d29131d803a8e79ebebd60ef13c8" title="形函数对xi求导" alt="" coords="515,81,568,108"/>
+<area shape="rect" href="nodal__solver_8cpp.html#ab55250d1f498595fd052c2c6006aaddd" title="计算第(i,j)个节点在第k个相邻单元中的两个corner force" alt="" coords="173,246,266,273"/>
+<area shape="rect" href="config_8cpp.html#a120a84d5fe0c85a5f12b22178cf1cf00" title="理想气体状态方程" alt="" coords="361,410,412,437"/>
+<area shape="rect" href="struct_omega.html#a356cb686fa14146a0eebd34cf0ac0554" title="计算(xi,eta)出的Jacobi矩阵的行列式" alt="" coords="332,56,441,82"/>
+<area shape="rect" href="struct_omega.html#ae9e4670a6573ed62345914db38030152" title="网格的基函数" alt="" coords="496,360,587,386"/>
+<area shape="rect" href="time__evolution_8cpp.html#a16e3412a9a05a6e701f953d2faa0c9da" title="Get the density" alt="" coords="175,170,264,197"/>
+<area shape="rect" href="struct_omega.html#a49e0b3620d7f434bf977a528e69c85a7" title="基函数对eta求导" alt="" coords="161,512,277,538"/>
+<area shape="rect" href="struct_omega.html#a534ab7dc70b10437f4c811d6294a2c8b" title="基函数对xi求导" alt="" coords="165,562,273,589"/>
+<area shape="rect" href="config_8cpp.html#a4786347b8a686d3a2db1c11aab594b31" title="初始密度场" alt="" coords="357,106,417,133"/>
+<area shape="rect" href="struct_omega.html#a292b2960170c6981845aad8aa324ff8b" title="计算初始时刻(xi,eta)出的Jacobi矩阵的行列式" alt="" coords="325,157,448,184"/>
+<area shape="rect" href="struct_omega.html#a9fc77705786af278288ec206eef9b28a" title="从参考空间到物理空间的映射，x分量" alt="" coords="335,258,438,285"/>
+<area shape="rect" href="struct_omega.html#aed154e23027c249d71e1d5609629a4b6" title="从参考空间到物理空间的映射，y分量" alt="" coords="335,208,438,234"/>
+<area shape="rect" href="nodal__solver_8cpp.html#a2c22281007ccfde5c86ff8449178d9a9" title="计算第(i,j)个节点处每个相邻单元在该点的速度重构值的平均" alt="" coords="347,360,427,386"/>
+<area shape="rect" href="config_8cpp.html#a9ec66e6f9842d15614ea62f75bd47b24" title="形函数，用于求参考空间到物理空间的同胚映射" alt="" coords="522,233,561,260"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="time__evolution_8cpp_a96ce734a6e4ba04983284fc61345bd1f_icgraph.png" border="0" usemap="#atime__evolution_8cpp_a96ce734a6e4ba04983284fc61345bd1f_icgraph" alt=""/></div>
+<map name="atime__evolution_8cpp_a96ce734a6e4ba04983284fc61345bd1f_icgraph" id="atime__evolution_8cpp_a96ce734a6e4ba04983284fc61345bd1f_icgraph">
+<area shape="rect" title="得到单元速度的右端矩阵" alt="" coords="147,5,255,32"/>
+<area shape="rect" href="shockless_noh_8cpp.html#a59e3e2ed6428ef3c6cdb5fa2ee77eb04" title="进行一步时间推进" alt="" coords="5,5,99,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

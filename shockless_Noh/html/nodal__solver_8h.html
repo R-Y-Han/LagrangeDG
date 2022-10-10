@@ -1,0 +1,311 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>A Lagrangian DG hydrodynamic method: F:/C++Codes/LagrangeDG/shockless_Noh/files/nodal_solver.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">A Lagrangian DG hydrodynamic method<span id="projectnumber">&#160;v1.01</span>
+   </div>
+   <div id="projectbrief">2D shockless Noh</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.4 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>文件成员</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_eee681074411ed9073826571a8442c61.html">LagrangeDG</a></li><li class="navelem"><a class="el" href="dir_33272b348a70cf8330cd4ef197b6e1d3.html">shockless_Noh</a></li><li class="navelem"><a class="el" href="dir_f2a1b071a4d3d6da503817cf0a84f786.html">files</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">nodal_solver.h 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>定义节点解法器求解节点速度和corner force  
+<a href="#details">更多...</a></p>
+<div class="textblock"><div class="dynheader">
+此图展示该文件直接或间接的被哪些文件引用了:</div>
+<div class="dyncontent">
+<div class="center"><img src="nodal__solver_8h__dep__incl.png" border="0" usemap="#a_f_1_2_c_09_09_codes_2_lagrange_d_g_2shockless___noh_2files_2nodal__solver_8hdep" alt=""/></div>
+<map name="a_f_1_2_c_09_09_codes_2_lagrange_d_g_2shockless___noh_2files_2nodal__solver_8hdep" id="a_f_1_2_c_09_09_codes_2_lagrange_d_g_2shockless___noh_2files_2nodal__solver_8hdep">
+<area shape="rect" title="定义节点解法器求解节点速度和corner force" alt="" coords="221,5,399,61"/>
+<area shape="rect" href="nodal__solver_8cpp.html" title="定义节点解法器求解节点速度和corner force" alt="" coords="5,109,183,165"/>
+<area shape="rect" href="shockless_noh_8cpp.html" title="]" alt="" coords="207,109,413,165"/>
+<area shape="rect" href="time__evolution_8cpp.html" title="一次时间步长的更新，包括密度、速度、质量总能的更新和时间步长的选取" alt="" coords="437,109,613,165"/>
+</map>
+</div>
+</div>
+<p><a href="nodal__solver_8h_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a2c22281007ccfde5c86ff8449178d9a9"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nodal__solver_8h.html#a2c22281007ccfde5c86ff8449178d9a9">u_average</a> (int i, int j)</td></tr>
+<tr class="memdesc:a2c22281007ccfde5c86ff8449178d9a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">计算第(i,j)个节点处每个相邻单元在该点的速度重构值的平均  <a href="nodal__solver_8h.html#a2c22281007ccfde5c86ff8449178d9a9">更多...</a><br /></td></tr>
+<tr class="separator:a2c22281007ccfde5c86ff8449178d9a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a659ddf0d62e1f66efada5f86bfdd9d4f"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nodal__solver_8h.html#a659ddf0d62e1f66efada5f86bfdd9d4f">nodal_velocity</a> (int i, int j)</td></tr>
+<tr class="memdesc:a659ddf0d62e1f66efada5f86bfdd9d4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">计算节点速度  <a href="nodal__solver_8h.html#a659ddf0d62e1f66efada5f86bfdd9d4f">更多...</a><br /></td></tr>
+<tr class="separator:a659ddf0d62e1f66efada5f86bfdd9d4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab55250d1f498595fd052c2c6006aaddd"><td class="memItemLeft" align="right" valign="top">double **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nodal__solver_8h.html#ab55250d1f498595fd052c2c6006aaddd">corner_force</a> (int i, int j, int r)</td></tr>
+<tr class="memdesc:ab55250d1f498595fd052c2c6006aaddd"><td class="mdescLeft">&#160;</td><td class="mdescRight">计算第(i,j)个节点在第k个相邻单元中的两个corner force  <a href="nodal__solver_8h.html#ab55250d1f498595fd052c2c6006aaddd">更多...</a><br /></td></tr>
+<tr class="separator:ab55250d1f498595fd052c2c6006aaddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p >定义节点解法器求解节点速度和corner force </p>
+<dl class="section author"><dt>作者</dt><dd>R.Y. Han (<a href="#" onclick="location.href='mai'+'lto:'+'han'+'ru'+'oyu'+'21'+'@gs'+'ca'+'ep.'+'ac'+'.cn'; return false;">hanru<span class="obfuscator">.nosp@m.</span>oyu2<span class="obfuscator">.nosp@m.</span>1@gsc<span class="obfuscator">.nosp@m.</span>aep.<span class="obfuscator">.nosp@m.</span>ac.cn</a>) </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>v1.01 </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022-10-05</dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2022 R.Y. Han. All Rights Reserved. </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="nodal__solver_8h_source.html">nodal_solver.h</a> 中定义.</p>
+</div><h2 class="groupheader">函数说明</h2>
+<a id="ab55250d1f498595fd052c2c6006aaddd" name="ab55250d1f498595fd052c2c6006aaddd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab55250d1f498595fd052c2c6006aaddd">&#9670;&nbsp;</a></span>corner_force()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ** corner_force </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>r</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>计算第(i,j)个节点在第k个相邻单元中的两个corner force </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>节点的行编号 </td></tr>
+    <tr><td class="paramname">j</td><td>节点的列编号 </td></tr>
+    <tr><td class="paramname">r</td><td>所考虑的单元编号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>double**</dd></dl>
+<dl class="section note"><dt>注解</dt><dd><ul>
+<li>注意在第k个单元内有两个corner force</li>
+<li>注意法向量的方向是否指向单元外部 </li>
+</ul>
+</dd></dl>
+
+<p class="definition">在文件 <a class="el" href="nodal__solver_8cpp_source.html">nodal_solver.cpp</a> 第 <a class="el" href="nodal__solver_8cpp_source.html#l00264">264</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="nodal__solver_8h_ab55250d1f498595fd052c2c6006aaddd_cgraph.png" border="0" usemap="#anodal__solver_8h_ab55250d1f498595fd052c2c6006aaddd_cgraph" alt=""/></div>
+<map name="anodal__solver_8h_ab55250d1f498595fd052c2c6006aaddd_cgraph" id="anodal__solver_8h_ab55250d1f498595fd052c2c6006aaddd_cgraph">
+<area shape="rect" title="计算第(i,j)个节点在第k个相邻单元中的两个corner force" alt="" coords="5,183,99,209"/>
+<area shape="rect" href="config_8cpp.html#a120a84d5fe0c85a5f12b22178cf1cf00" title="理想气体状态方程" alt="" coords="183,5,233,32"/>
+<area shape="rect" href="config_8cpp.html#a4786347b8a686d3a2db1c11aab594b31" title="初始密度场" alt="" coords="178,56,238,83"/>
+<area shape="rect" href="struct_omega.html#a356cb686fa14146a0eebd34cf0ac0554" title="计算(xi,eta)出的Jacobi矩阵的行列式" alt="" coords="153,107,263,133"/>
+<area shape="rect" href="struct_omega.html#a292b2960170c6981845aad8aa324ff8b" title="计算初始时刻(xi,eta)出的Jacobi矩阵的行列式" alt="" coords="147,157,269,184"/>
+<area shape="rect" href="struct_omega.html#a9fc77705786af278288ec206eef9b28a" title="从参考空间到物理空间的映射，x分量" alt="" coords="157,208,259,235"/>
+<area shape="rect" href="struct_omega.html#aed154e23027c249d71e1d5609629a4b6" title="从参考空间到物理空间的映射，y分量" alt="" coords="157,259,259,285"/>
+<area shape="rect" href="struct_omega.html#ae9e4670a6573ed62345914db38030152" title="网格的基函数" alt="" coords="317,335,408,361"/>
+<area shape="rect" href="nodal__solver_8cpp.html#a2c22281007ccfde5c86ff8449178d9a9" title="计算第(i,j)个节点处每个相邻单元在该点的速度重构值的平均" alt="" coords="168,360,248,387"/>
+<area shape="rect" href="config_8cpp.html#a9035555d0f5aae81503f6dd897171576" title="形函数对eta求导" alt="" coords="332,107,393,133"/>
+<area shape="rect" href="config_8cpp.html#ae6f3d29131d803a8e79ebebd60ef13c8" title="形函数对xi求导" alt="" coords="336,157,389,184"/>
+<area shape="rect" href="config_8cpp.html#a9ec66e6f9842d15614ea62f75bd47b24" title="形函数，用于求参考空间到物理空间的同胚映射" alt="" coords="343,233,382,260"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="nodal__solver_8h_ab55250d1f498595fd052c2c6006aaddd_icgraph.png" border="0" usemap="#anodal__solver_8h_ab55250d1f498595fd052c2c6006aaddd_icgraph" alt=""/></div>
+<map name="anodal__solver_8h_ab55250d1f498595fd052c2c6006aaddd_icgraph" id="anodal__solver_8h_ab55250d1f498595fd052c2c6006aaddd_icgraph">
+<area shape="rect" title="计算第(i,j)个节点在第k个相邻单元中的两个corner force" alt="" coords="303,31,396,57"/>
+<area shape="rect" href="time__evolution_8cpp.html#a2e5e76e2a0351a0d12004b608bc070f8" title="得到单元质量总能的右端矩阵" alt="" coords="149,5,253,32"/>
+<area shape="rect" href="time__evolution_8cpp.html#a96ce734a6e4ba04983284fc61345bd1f" title="得到单元速度的右端矩阵" alt="" coords="147,56,255,83"/>
+<area shape="rect" href="shockless_noh_8cpp.html#a59e3e2ed6428ef3c6cdb5fa2ee77eb04" title="进行一步时间推进" alt="" coords="5,31,99,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a659ddf0d62e1f66efada5f86bfdd9d4f" name="a659ddf0d62e1f66efada5f86bfdd9d4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a659ddf0d62e1f66efada5f86bfdd9d4f">&#9670;&nbsp;</a></span>nodal_velocity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double * nodal_velocity </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>计算节点速度 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>节点的行编号 </td></tr>
+    <tr><td class="paramname">j</td><td>节点的列编号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>double * </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="nodal__solver_8cpp_source.html">nodal_solver.cpp</a> 第 <a class="el" href="nodal__solver_8cpp_source.html#l00075">75</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="nodal__solver_8h_a659ddf0d62e1f66efada5f86bfdd9d4f_cgraph.png" border="0" usemap="#anodal__solver_8h_a659ddf0d62e1f66efada5f86bfdd9d4f_cgraph" alt=""/></div>
+<map name="anodal__solver_8h_a659ddf0d62e1f66efada5f86bfdd9d4f_cgraph" id="anodal__solver_8h_a659ddf0d62e1f66efada5f86bfdd9d4f_cgraph">
+<area shape="rect" title="计算节点速度" alt="" coords="5,183,108,209"/>
+<area shape="rect" href="config_8cpp.html#a120a84d5fe0c85a5f12b22178cf1cf00" title="理想气体状态方程" alt="" coords="192,5,243,32"/>
+<area shape="rect" href="config_8cpp.html#a4786347b8a686d3a2db1c11aab594b31" title="初始密度场" alt="" coords="187,56,247,83"/>
+<area shape="rect" href="struct_omega.html#a356cb686fa14146a0eebd34cf0ac0554" title="计算(xi,eta)出的Jacobi矩阵的行列式" alt="" coords="163,107,272,133"/>
+<area shape="rect" href="struct_omega.html#a292b2960170c6981845aad8aa324ff8b" title="计算初始时刻(xi,eta)出的Jacobi矩阵的行列式" alt="" coords="156,157,279,184"/>
+<area shape="rect" href="struct_omega.html#a9fc77705786af278288ec206eef9b28a" title="从参考空间到物理空间的映射，x分量" alt="" coords="166,208,269,235"/>
+<area shape="rect" href="struct_omega.html#aed154e23027c249d71e1d5609629a4b6" title="从参考空间到物理空间的映射，y分量" alt="" coords="166,259,269,285"/>
+<area shape="rect" href="struct_omega.html#ae9e4670a6573ed62345914db38030152" title="网格的基函数" alt="" coords="327,335,417,361"/>
+<area shape="rect" href="nodal__solver_8cpp.html#a2c22281007ccfde5c86ff8449178d9a9" title="计算第(i,j)个节点处每个相邻单元在该点的速度重构值的平均" alt="" coords="177,360,257,387"/>
+<area shape="rect" href="config_8cpp.html#a9035555d0f5aae81503f6dd897171576" title="形函数对eta求导" alt="" coords="341,107,403,133"/>
+<area shape="rect" href="config_8cpp.html#ae6f3d29131d803a8e79ebebd60ef13c8" title="形函数对xi求导" alt="" coords="345,157,399,184"/>
+<area shape="rect" href="config_8cpp.html#a9ec66e6f9842d15614ea62f75bd47b24" title="形函数，用于求参考空间到物理空间的同胚映射" alt="" coords="353,233,391,260"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="nodal__solver_8h_a659ddf0d62e1f66efada5f86bfdd9d4f_icgraph.png" border="0" usemap="#anodal__solver_8h_a659ddf0d62e1f66efada5f86bfdd9d4f_icgraph" alt=""/></div>
+<map name="anodal__solver_8h_a659ddf0d62e1f66efada5f86bfdd9d4f_icgraph" id="anodal__solver_8h_a659ddf0d62e1f66efada5f86bfdd9d4f_icgraph">
+<area shape="rect" title="计算节点速度" alt="" coords="147,5,249,32"/>
+<area shape="rect" href="shockless_noh_8cpp.html#a59e3e2ed6428ef3c6cdb5fa2ee77eb04" title="进行一步时间推进" alt="" coords="5,5,99,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2c22281007ccfde5c86ff8449178d9a9" name="a2c22281007ccfde5c86ff8449178d9a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c22281007ccfde5c86ff8449178d9a9">&#9670;&nbsp;</a></span>u_average()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double * u_average </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>计算第(i,j)个节点处每个相邻单元在该点的速度重构值的平均 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>节点的行编号 </td></tr>
+    <tr><td class="paramname">j</td><td>节点的列编号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>double* </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="nodal__solver_8cpp_source.html">nodal_solver.cpp</a> 第 <a class="el" href="nodal__solver_8cpp_source.html#l00026">26</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="nodal__solver_8h_a2c22281007ccfde5c86ff8449178d9a9_cgraph.png" border="0" usemap="#anodal__solver_8h_a2c22281007ccfde5c86ff8449178d9a9_cgraph" alt=""/></div>
+<map name="anodal__solver_8h_a2c22281007ccfde5c86ff8449178d9a9_cgraph" id="anodal__solver_8h_a2c22281007ccfde5c86ff8449178d9a9_cgraph">
+<area shape="rect" title="计算第(i,j)个节点处每个相邻单元在该点的速度重构值的平均" alt="" coords="5,5,85,32"/>
+<area shape="rect" href="struct_omega.html#ae9e4670a6573ed62345914db38030152" title="网格的基函数" alt="" coords="133,5,224,32"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="nodal__solver_8h_a2c22281007ccfde5c86ff8449178d9a9_icgraph.png" border="0" usemap="#anodal__solver_8h_a2c22281007ccfde5c86ff8449178d9a9_icgraph" alt=""/></div>
+<map name="anodal__solver_8h_a2c22281007ccfde5c86ff8449178d9a9_icgraph" id="anodal__solver_8h_a2c22281007ccfde5c86ff8449178d9a9_icgraph">
+<area shape="rect" title="计算第(i,j)个节点处每个相邻单元在该点的速度重构值的平均" alt="" coords="453,81,533,108"/>
+<area shape="rect" href="nodal__solver_8cpp.html#ab55250d1f498595fd052c2c6006aaddd" title="计算第(i,j)个节点在第k个相邻单元中的两个corner force" alt="" coords="307,56,401,83"/>
+<area shape="rect" href="nodal__solver_8cpp.html#a659ddf0d62e1f66efada5f86bfdd9d4f" title="计算节点速度" alt="" coords="303,107,405,133"/>
+<area shape="rect" href="time__evolution_8cpp.html#a2e5e76e2a0351a0d12004b608bc070f8" title="得到单元质量总能的右端矩阵" alt="" coords="149,5,253,32"/>
+<area shape="rect" href="time__evolution_8cpp.html#a96ce734a6e4ba04983284fc61345bd1f" title="得到单元速度的右端矩阵" alt="" coords="147,56,255,83"/>
+<area shape="rect" href="shockless_noh_8cpp.html#a59e3e2ed6428ef3c6cdb5fa2ee77eb04" title="进行一步时间推进" alt="" coords="5,56,99,83"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

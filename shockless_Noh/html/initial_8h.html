@@ -1,0 +1,473 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>A Lagrangian DG hydrodynamic method: F:/C++Codes/LagrangeDG/shockless_Noh/files/initial.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">A Lagrangian DG hydrodynamic method<span id="projectnumber">&#160;v1.01</span>
+   </div>
+   <div id="projectbrief">2D shockless Noh</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.4 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>文件成员</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_eee681074411ed9073826571a8442c61.html">LagrangeDG</a></li><li class="navelem"><a class="el" href="dir_33272b348a70cf8330cd4ef197b6e1d3.html">shockless_Noh</a></li><li class="navelem"><a class="el" href="dir_f2a1b071a4d3d6da503817cf0a84f786.html">files</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">initial.h 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>生成网格并记录所有初始信息  
+<a href="#details">更多...</a></p>
+<div class="textblock"><div class="dynheader">
+此图展示该文件直接或间接的被哪些文件引用了:</div>
+<div class="dyncontent">
+<div class="center"><img src="initial_8h__dep__incl.png" border="0" usemap="#a_f_1_2_c_09_09_codes_2_lagrange_d_g_2shockless___noh_2files_2initial_8hdep" alt=""/></div>
+<map name="a_f_1_2_c_09_09_codes_2_lagrange_d_g_2shockless___noh_2files_2initial_8hdep" id="a_f_1_2_c_09_09_codes_2_lagrange_d_g_2shockless___noh_2files_2initial_8hdep">
+<area shape="rect" title="生成网格并记录所有初始信息" alt="" coords="126,5,313,47"/>
+<area shape="rect" href="initial_8cpp.html" title="生成网格并记录所有初始信息" alt="" coords="5,102,207,143"/>
+<area shape="rect" href="shockless_noh_8cpp.html" title="]" alt="" coords="231,95,437,151"/>
+</map>
+</div>
+</div>
+<p><a href="initial_8h_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ae92a01f80d15618fb1e3e3492039a363"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="initial_8h.html#ae92a01f80d15618fb1e3e3492039a363">generatemesh</a> ()</td></tr>
+<tr class="memdesc:ae92a01f80d15618fb1e3e3492039a363"><td class="mdescLeft">&#160;</td><td class="mdescRight">生成初始网格划分：  <a href="initial_8h.html#ae92a01f80d15618fb1e3e3492039a363">更多...</a><br /></td></tr>
+<tr class="separator:ae92a01f80d15618fb1e3e3492039a363"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a678188ee7d163e6aca74038010c67491"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="initial_8h.html#a678188ee7d163e6aca74038010c67491">element_findneighbor</a> (int i, int j)</td></tr>
+<tr class="memdesc:a678188ee7d163e6aca74038010c67491"><td class="mdescLeft">&#160;</td><td class="mdescRight">对第(i,j)个单元寻找相邻单元， 从(i,j-1)开始逆时针数第一个存在的单元作为第一个项。 存储一维序号。  <a href="initial_8h.html#a678188ee7d163e6aca74038010c67491">更多...</a><br /></td></tr>
+<tr class="separator:a678188ee7d163e6aca74038010c67491"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a275740c71861bd79bf92744ee8bb78e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="initial_8h.html#a275740c71861bd79bf92744ee8bb78e5">node_findneighbor</a> (int i, int j)</td></tr>
+<tr class="separator:a275740c71861bd79bf92744ee8bb78e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2286aa850479a600ff6f6d551d9fb71d"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="initial_8h.html#a2286aa850479a600ff6f6d551d9fb71d">mass_center</a> (int i, int j)</td></tr>
+<tr class="memdesc:a2286aa850479a600ff6f6d551d9fb71d"><td class="mdescLeft">&#160;</td><td class="mdescRight">计算第(i,j)个网格的质心  <a href="initial_8h.html#a2286aa850479a600ff6f6d551d9fb71d">更多...</a><br /></td></tr>
+<tr class="separator:a2286aa850479a600ff6f6d551d9fb71d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37e14b548616bbb2a71d336d72306af7"><td class="memItemLeft" align="right" valign="top">double **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="initial_8h.html#a37e14b548616bbb2a71d336d72306af7">mass_matrix</a> (int i, int j)</td></tr>
+<tr class="memdesc:a37e14b548616bbb2a71d336d72306af7"><td class="mdescLeft">&#160;</td><td class="mdescRight">计算第(i,j)个网格的质量矩阵  <a href="initial_8h.html#a37e14b548616bbb2a71d336d72306af7">更多...</a><br /></td></tr>
+<tr class="separator:a37e14b548616bbb2a71d336d72306af7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6260e57d76c13a47b10081e2a9f68dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="initial_8h.html#ab6260e57d76c13a47b10081e2a9f68dc">initial</a> ()</td></tr>
+<tr class="memdesc:ab6260e57d76c13a47b10081e2a9f68dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化各个变量，生成网格并记录初始信息  <a href="initial_8h.html#ab6260e57d76c13a47b10081e2a9f68dc">更多...</a><br /></td></tr>
+<tr class="separator:ab6260e57d76c13a47b10081e2a9f68dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p >生成网格并记录所有初始信息 </p>
+<dl class="section author"><dt>作者</dt><dd>R.Y. Han (<a href="#" onclick="location.href='mai'+'lto:'+'han'+'ru'+'oyu'+'21'+'@gs'+'ca'+'ep.'+'ac'+'.cn'; return false;">hanru<span class="obfuscator">.nosp@m.</span>oyu2<span class="obfuscator">.nosp@m.</span>1@gsc<span class="obfuscator">.nosp@m.</span>aep.<span class="obfuscator">.nosp@m.</span>ac.cn</a>) </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>v1.01 </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022-10-04</dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2022 R.Y. Han. All Rights Reserved. </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="initial_8h_source.html">initial.h</a> 中定义.</p>
+</div><h2 class="groupheader">函数说明</h2>
+<a id="a678188ee7d163e6aca74038010c67491" name="a678188ee7d163e6aca74038010c67491"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a678188ee7d163e6aca74038010c67491">&#9670;&nbsp;</a></span>element_findneighbor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void element_findneighbor </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>对第(i,j)个单元寻找相邻单元， 从(i,j-1)开始逆时针数第一个存在的单元作为第一个项。 存储一维序号。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>网格的二维行编号 </td></tr>
+    <tr><td class="paramname">j</td><td>网格的二维列编号</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>对第(i,j)个单元寻找相邻单元， 从(i,j-1)开始逆时针数第一个存在的单元作为第一个项。 存储一维序号。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>网格的二维行编号 </td></tr>
+    <tr><td class="paramname">j</td><td>网格的二维列编号 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="initial_8cpp_source.html">initial.cpp</a> 第 <a class="el" href="initial_8cpp_source.html#l00119">119</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="initial_8h_a678188ee7d163e6aca74038010c67491_icgraph.png" border="0" usemap="#ainitial_8h_a678188ee7d163e6aca74038010c67491_icgraph" alt=""/></div>
+<map name="ainitial_8h_a678188ee7d163e6aca74038010c67491_icgraph" id="ainitial_8h_a678188ee7d163e6aca74038010c67491_icgraph">
+<area shape="rect" title="对第(i,j)个单元寻找相邻单元， 从(i,j&#45;1)开始逆时针数第一个存在的单元作为第一个项。 存储一维序号。" alt="" coords="105,5,249,32"/>
+<area shape="rect" href="initial_8cpp.html#ab6260e57d76c13a47b10081e2a9f68dc" title="初始化各个变量，生成网格并记录初始信息" alt="" coords="5,5,57,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae92a01f80d15618fb1e3e3492039a363" name="ae92a01f80d15618fb1e3e3492039a363"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae92a01f80d15618fb1e3e3492039a363">&#9670;&nbsp;</a></span>generatemesh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void generatemesh </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>生成初始网格划分： </p>
+<ul>
+<li>分配内存</li>
+<li>记录网格的编号</li>
+<li>记录节点的编号</li>
+<li>记录节点物理坐标</li>
+<li>记录网格顶点编号、顶点物理坐标</li>
+</ul>
+<p >生成初始网格划分：</p>
+<ul>
+<li>分配内存</li>
+<li>记录网格的编号</li>
+<li>记录节点的编号</li>
+<li>记录节点物理坐标</li>
+<li>记录网格顶点编号、顶点物理坐标 </li>
+</ul>
+
+<p class="definition">在文件 <a class="el" href="initial_8cpp_source.html">initial.cpp</a> 第 <a class="el" href="initial_8cpp_source.html#l00024">24</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="initial_8h_ae92a01f80d15618fb1e3e3492039a363_icgraph.png" border="0" usemap="#ainitial_8h_ae92a01f80d15618fb1e3e3492039a363_icgraph" alt=""/></div>
+<map name="ainitial_8h_ae92a01f80d15618fb1e3e3492039a363_icgraph" id="ainitial_8h_ae92a01f80d15618fb1e3e3492039a363_icgraph">
+<area shape="rect" title="生成初始网格划分：" alt="" coords="105,5,209,32"/>
+<area shape="rect" href="initial_8cpp.html#ab6260e57d76c13a47b10081e2a9f68dc" title="初始化各个变量，生成网格并记录初始信息" alt="" coords="5,5,57,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab6260e57d76c13a47b10081e2a9f68dc" name="ab6260e57d76c13a47b10081e2a9f68dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6260e57d76c13a47b10081e2a9f68dc">&#9670;&nbsp;</a></span>initial()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initial </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化各个变量，生成网格并记录初始信息 </p>
+
+<p class="definition">在文件 <a class="el" href="initial_8cpp_source.html">initial.cpp</a> 第 <a class="el" href="initial_8cpp_source.html#l00474">474</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="initial_8h_ab6260e57d76c13a47b10081e2a9f68dc_cgraph.png" border="0" usemap="#ainitial_8h_ab6260e57d76c13a47b10081e2a9f68dc_cgraph" alt=""/></div>
+<map name="ainitial_8h_ab6260e57d76c13a47b10081e2a9f68dc_cgraph" id="ainitial_8h_ab6260e57d76c13a47b10081e2a9f68dc_cgraph">
+<area shape="rect" title="初始化各个变量，生成网格并记录初始信息" alt="" coords="5,453,57,480"/>
+<area shape="rect" href="config_8cpp.html#a9035555d0f5aae81503f6dd897171576" title="形函数对eta求导" alt="" coords="455,321,516,348"/>
+<area shape="rect" href="config_8cpp.html#ae6f3d29131d803a8e79ebebd60ef13c8" title="形函数对xi求导" alt="" coords="459,669,512,696"/>
+<area shape="rect" href="initial_8cpp.html#a678188ee7d163e6aca74038010c67491" title="对第(i,j)个单元寻找相邻单元， 从(i,j&#45;1)开始逆时针数第一个存在的单元作为第一个项 存储一维序号" alt="" coords="105,124,249,151"/>
+<area shape="rect" href="initial_8cpp.html#ae92a01f80d15618fb1e3e3492039a363" title="生成初始网格划分" alt="" coords="125,175,229,201"/>
+<area shape="rect" href="config_8cpp.html#a292396e71a09db4a03375534795df22a" title="初始内能场" alt="" coords="153,225,202,252"/>
+<area shape="rect" href="config_8cpp.html#ab665c45e7aff5a0fc9fe351c69c2a713" title="初始内能场对x求偏导" alt="" coords="146,276,209,303"/>
+<area shape="rect" href="config_8cpp.html#af07032b76cf1786e487565a796aecb69" title="初始内能场对y求偏导" alt="" coords="146,327,209,353"/>
+<area shape="rect" href="config_8cpp.html#a9ec4c58d521a9670e06629a5e1e57724" title="初始速度场的x方向分量" alt="" coords="149,377,205,404"/>
+<area shape="rect" href="config_8cpp.html#addfcc66f22683130d92e73c339eae3df" title="初始速度场对x求导的x分量" alt="" coords="142,428,213,455"/>
+<area shape="rect" href="config_8cpp.html#ae2cb552c67ea84ac9e20c719bdd99db6" title="初始速度场对x求导的y分量" alt="" coords="142,479,213,505"/>
+<area shape="rect" href="config_8cpp.html#a9040bee0d870c5c102e7118094046c77" title="初始速度场y方向分量" alt="" coords="149,529,205,556"/>
+<area shape="rect" href="config_8cpp.html#a3dcc1ba893101d4b1dad24f5d81bfb94" title="初始速度场对y求导的x分量" alt="" coords="142,580,213,607"/>
+<area shape="rect" href="config_8cpp.html#aefceb416f945345aa8d7a9c303272007" title="初始速度场对y求导的y分量" alt="" coords="142,631,213,657"/>
+<area shape="rect" href="initial_8cpp.html#a2286aa850479a600ff6f6d551d9fb71d" title="计算第(i,j)个网格的质心，同时计算每个网格的质量" alt="" coords="129,732,226,759"/>
+<area shape="rect" href="struct_omega.html#a9fc77705786af278288ec206eef9b28a" title="从参考空间到物理空间的映射，x分量" alt="" coords="301,783,403,809"/>
+<area shape="rect" href="struct_omega.html#aed154e23027c249d71e1d5609629a4b6" title="从参考空间到物理空间的映射，y分量" alt="" coords="301,732,403,759"/>
+<area shape="rect" href="initial_8cpp.html#a37e14b548616bbb2a71d336d72306af7" title="计算第(i,j)个网格的质量矩阵" alt="" coords="129,681,226,708"/>
+<area shape="rect" href="initial_8cpp.html#a275740c71861bd79bf92744ee8bb78e5" title=" " alt="" coords="114,884,241,911"/>
+<area shape="rect" href="config_8cpp.html#a4786347b8a686d3a2db1c11aab594b31" title="初始密度场" alt="" coords="322,631,382,657"/>
+<area shape="rect" href="struct_omega.html#a356cb686fa14146a0eebd34cf0ac0554" title="计算(xi,eta)出的Jacobi矩阵的行列式" alt="" coords="297,681,407,708"/>
+<area shape="rect" href="config_8cpp.html#a9ec66e6f9842d15614ea62f75bd47b24" title="形函数，用于求参考空间到物理空间的同胚映射" alt="" coords="466,745,505,772"/>
+<area shape="rect" href="struct_omega.html#ae9e4670a6573ed62345914db38030152" title="网格的基函数" alt="" coords="307,580,397,607"/>
+<area shape="rect" href="config_8cpp.html#a1cd5bd2195dc0843e4f2a999181011ea" title="计算a，b两点间距离" alt="" coords="457,884,514,911"/>
+<area shape="rect" href="config_8cpp.html#ab63113f03fc8dacc216c6b2da3bb2c0e" title="计算ab边的单位法向量" alt="" coords="321,909,383,936"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2286aa850479a600ff6f6d551d9fb71d" name="a2286aa850479a600ff6f6d551d9fb71d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2286aa850479a600ff6f6d551d9fb71d">&#9670;&nbsp;</a></span>mass_center()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double * mass_center </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>计算第(i,j)个网格的质心 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>网格行编号 </td></tr>
+    <tr><td class="paramname">j</td><td>网格列编号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>double* 质心的参考单元坐标 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>返回的是指针，存储时是变量，记得删除指针清空内存</dd></dl>
+<p>计算第(i,j)个网格的质心</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>网格行编号 </td></tr>
+    <tr><td class="paramname">j</td><td>网格列编号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>double* 质心的参考单元坐标 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>返回的是指针，存储时是变量，记得删除指针清空内存 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="initial_8cpp_source.html">initial.cpp</a> 第 <a class="el" href="initial_8cpp_source.html#l00391">391</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="initial_8h_a2286aa850479a600ff6f6d551d9fb71d_cgraph.png" border="0" usemap="#ainitial_8h_a2286aa850479a600ff6f6d551d9fb71d_cgraph" alt=""/></div>
+<map name="ainitial_8h_a2286aa850479a600ff6f6d551d9fb71d_cgraph" id="ainitial_8h_a2286aa850479a600ff6f6d551d9fb71d_cgraph">
+<area shape="rect" title="计算第(i,j)个网格的质心" alt="" coords="5,81,103,108"/>
+<area shape="rect" href="config_8cpp.html#a4786347b8a686d3a2db1c11aab594b31" title="初始密度场" alt="" coords="175,5,235,32"/>
+<area shape="rect" href="struct_omega.html#a356cb686fa14146a0eebd34cf0ac0554" title="计算(xi,eta)出的Jacobi矩阵的行列式" alt="" coords="151,56,260,83"/>
+<area shape="rect" href="struct_omega.html#a9fc77705786af278288ec206eef9b28a" title="从参考空间到物理空间的映射，x分量" alt="" coords="154,107,257,133"/>
+<area shape="rect" href="struct_omega.html#aed154e23027c249d71e1d5609629a4b6" title="从参考空间到物理空间的映射，y分量" alt="" coords="154,157,257,184"/>
+<area shape="rect" href="config_8cpp.html#a9035555d0f5aae81503f6dd897171576" title="形函数对eta求导" alt="" coords="308,31,369,57"/>
+<area shape="rect" href="config_8cpp.html#ae6f3d29131d803a8e79ebebd60ef13c8" title="形函数对xi求导" alt="" coords="312,81,365,108"/>
+<area shape="rect" href="config_8cpp.html#a9ec66e6f9842d15614ea62f75bd47b24" title="形函数，用于求参考空间到物理空间的同胚映射" alt="" coords="319,144,358,171"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="initial_8h_a2286aa850479a600ff6f6d551d9fb71d_icgraph.png" border="0" usemap="#ainitial_8h_a2286aa850479a600ff6f6d551d9fb71d_icgraph" alt=""/></div>
+<map name="ainitial_8h_a2286aa850479a600ff6f6d551d9fb71d_icgraph" id="ainitial_8h_a2286aa850479a600ff6f6d551d9fb71d_icgraph">
+<area shape="rect" title="计算第(i,j)个网格的质心" alt="" coords="105,5,203,32"/>
+<area shape="rect" href="initial_8cpp.html#ab6260e57d76c13a47b10081e2a9f68dc" title="初始化各个变量，生成网格并记录初始信息" alt="" coords="5,5,57,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a37e14b548616bbb2a71d336d72306af7" name="a37e14b548616bbb2a71d336d72306af7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37e14b548616bbb2a71d336d72306af7">&#9670;&nbsp;</a></span>mass_matrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ** mass_matrix </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>计算第(i,j)个网格的质量矩阵 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>网格行编号 </td></tr>
+    <tr><td class="paramname">j</td><td>网格列编号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>double** 质量矩阵 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="initial_8cpp_source.html">initial.cpp</a> 第 <a class="el" href="initial_8cpp_source.html#l00435">435</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="initial_8h_a37e14b548616bbb2a71d336d72306af7_cgraph.png" border="0" usemap="#ainitial_8h_a37e14b548616bbb2a71d336d72306af7_cgraph" alt=""/></div>
+<map name="ainitial_8h_a37e14b548616bbb2a71d336d72306af7_cgraph" id="ainitial_8h_a37e14b548616bbb2a71d336d72306af7_cgraph">
+<area shape="rect" title="计算第(i,j)个网格的质量矩阵" alt="" coords="5,107,103,133"/>
+<area shape="rect" href="config_8cpp.html#a4786347b8a686d3a2db1c11aab594b31" title="初始密度场" alt="" coords="175,5,235,32"/>
+<area shape="rect" href="struct_omega.html#a356cb686fa14146a0eebd34cf0ac0554" title="计算(xi,eta)出的Jacobi矩阵的行列式" alt="" coords="151,56,260,83"/>
+<area shape="rect" href="struct_omega.html#a9fc77705786af278288ec206eef9b28a" title="从参考空间到物理空间的映射，x分量" alt="" coords="154,107,257,133"/>
+<area shape="rect" href="struct_omega.html#aed154e23027c249d71e1d5609629a4b6" title="从参考空间到物理空间的映射，y分量" alt="" coords="154,157,257,184"/>
+<area shape="rect" href="struct_omega.html#ae9e4670a6573ed62345914db38030152" title="网格的基函数" alt="" coords="160,208,251,235"/>
+<area shape="rect" href="config_8cpp.html#a9035555d0f5aae81503f6dd897171576" title="形函数对eta求导" alt="" coords="308,31,369,57"/>
+<area shape="rect" href="config_8cpp.html#ae6f3d29131d803a8e79ebebd60ef13c8" title="形函数对xi求导" alt="" coords="312,81,365,108"/>
+<area shape="rect" href="config_8cpp.html#a9ec66e6f9842d15614ea62f75bd47b24" title="形函数，用于求参考空间到物理空间的同胚映射" alt="" coords="319,132,358,159"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="initial_8h_a37e14b548616bbb2a71d336d72306af7_icgraph.png" border="0" usemap="#ainitial_8h_a37e14b548616bbb2a71d336d72306af7_icgraph" alt=""/></div>
+<map name="ainitial_8h_a37e14b548616bbb2a71d336d72306af7_icgraph" id="ainitial_8h_a37e14b548616bbb2a71d336d72306af7_icgraph">
+<area shape="rect" title="计算第(i,j)个网格的质量矩阵" alt="" coords="105,5,203,32"/>
+<area shape="rect" href="initial_8cpp.html#ab6260e57d76c13a47b10081e2a9f68dc" title="初始化各个变量，生成网格并记录初始信息" alt="" coords="5,5,57,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a275740c71861bd79bf92744ee8bb78e5" name="a275740c71861bd79bf92744ee8bb78e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a275740c71861bd79bf92744ee8bb78e5">&#9670;&nbsp;</a></span>node_findneighbor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void node_findneighbor </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<ul>
+<li>对第(i,j)个节点寻找相邻的网格， 从(i,j)个网格逆时针数第一个存在的网格开始记录，逆时针顺序。</li>
+<li>对第(i,j)个节点寻找相邻的节点， 从(i-1,j)开始逆时针算起第一个存在的节点开始记录，逆时针顺序。</li>
+<li>计算各边的（部分）边长和外法向量</li>
+</ul>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>节点的行编号 </td></tr>
+    <tr><td class="paramname">j</td><td>节点的列编号</td></tr>
+  </table>
+  </dd>
+</dl>
+<ul>
+<li>对第(i,j)个节点寻找相邻的网格 从(i,j)个网格逆时针数第一个存在的网格开始记录，逆时针顺序</li>
+<li>对第(i,j)个节点寻找相邻的节点 从(i-1,j)开始逆时针算起第一个存在的节点开始记录，逆时针顺序</li>
+<li>计算各边的（部分）边长和外法向量</li>
+</ul>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>节点的行编号 </td></tr>
+    <tr><td class="paramname">j</td><td>节点的列编号 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="initial_8cpp_source.html">initial.cpp</a> 第 <a class="el" href="initial_8cpp_source.html#l00197">197</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="initial_8h_a275740c71861bd79bf92744ee8bb78e5_cgraph.png" border="0" usemap="#ainitial_8h_a275740c71861bd79bf92744ee8bb78e5_cgraph" alt=""/></div>
+<map name="ainitial_8h_a275740c71861bd79bf92744ee8bb78e5_cgraph" id="ainitial_8h_a275740c71861bd79bf92744ee8bb78e5_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,132,32"/>
+<area shape="rect" href="config_8cpp.html#a1cd5bd2195dc0843e4f2a999181011ea" title="计算a，b两点间距离" alt="" coords="289,5,347,32"/>
+<area shape="rect" href="config_8cpp.html#ab63113f03fc8dacc216c6b2da3bb2c0e" title="计算ab边的单位法向量" alt="" coords="180,31,241,57"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="initial_8h_a275740c71861bd79bf92744ee8bb78e5_icgraph.png" border="0" usemap="#ainitial_8h_a275740c71861bd79bf92744ee8bb78e5_icgraph" alt=""/></div>
+<map name="ainitial_8h_a275740c71861bd79bf92744ee8bb78e5_icgraph" id="ainitial_8h_a275740c71861bd79bf92744ee8bb78e5_icgraph">
+<area shape="rect" title=" " alt="" coords="105,5,232,32"/>
+<area shape="rect" href="initial_8cpp.html#ab6260e57d76c13a47b10081e2a9f68dc" title="初始化各个变量，生成网格并记录初始信息" alt="" coords="5,5,57,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

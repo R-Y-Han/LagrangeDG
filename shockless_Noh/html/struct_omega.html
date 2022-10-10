@@ -1,0 +1,981 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>A Lagrangian DG hydrodynamic method: Omega结构体 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">A Lagrangian DG hydrodynamic method<span id="projectnumber">&#160;v1.01</span>
+   </div>
+   <div id="projectbrief">2D shockless Noh</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.4 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li class="current"><a href="annotated.html"><span>类</span></a></li>
+      <li><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>类列表</span></a></li>
+      <li><a href="classes.html"><span>类索引</span></a></li>
+      <li><a href="functions.html"><span>类成员</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="struct_omega-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">Omega结构体 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>网格单元类的定义  
+ <a href="struct_omega.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="config_8h_source.html">config.h</a>&gt;</code></p>
+<div class="dynheader">
+Omega 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="struct_omega__coll__graph.png" border="0" usemap="#a_omega_coll__map" alt="Collaboration graph"/></div>
+<map name="a_omega_coll__map" id="a_omega_coll__map">
+<area shape="rect" title="网格单元类的定义" alt="" coords="5,5,141,317"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a9fc77705786af278288ec206eef9b28a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#a9fc77705786af278288ec206eef9b28a">phi_x</a> (double xi, double eta)</td></tr>
+<tr class="memdesc:a9fc77705786af278288ec206eef9b28a"><td class="mdescLeft">&#160;</td><td class="mdescRight">从参考空间到物理空间的映射，x分量  <a href="struct_omega.html#a9fc77705786af278288ec206eef9b28a">更多...</a><br /></td></tr>
+<tr class="separator:a9fc77705786af278288ec206eef9b28a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed154e23027c249d71e1d5609629a4b6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#aed154e23027c249d71e1d5609629a4b6">phi_y</a> (double xi, double eta)</td></tr>
+<tr class="memdesc:aed154e23027c249d71e1d5609629a4b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">从参考空间到物理空间的映射，y分量  <a href="struct_omega.html#aed154e23027c249d71e1d5609629a4b6">更多...</a><br /></td></tr>
+<tr class="separator:aed154e23027c249d71e1d5609629a4b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9e4670a6573ed62345914db38030152"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#ae9e4670a6573ed62345914db38030152">Psi</a> (int i, double xi, double eta)</td></tr>
+<tr class="memdesc:ae9e4670a6573ed62345914db38030152"><td class="mdescLeft">&#160;</td><td class="mdescRight">网格的基函数  <a href="struct_omega.html#ae9e4670a6573ed62345914db38030152">更多...</a><br /></td></tr>
+<tr class="separator:ae9e4670a6573ed62345914db38030152"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a534ab7dc70b10437f4c811d6294a2c8b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#a534ab7dc70b10437f4c811d6294a2c8b">Psi_xi</a> (int i, double xi, double eta)</td></tr>
+<tr class="memdesc:a534ab7dc70b10437f4c811d6294a2c8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">基函数对xi求导  <a href="struct_omega.html#a534ab7dc70b10437f4c811d6294a2c8b">更多...</a><br /></td></tr>
+<tr class="separator:a534ab7dc70b10437f4c811d6294a2c8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49e0b3620d7f434bf977a528e69c85a7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#a49e0b3620d7f434bf977a528e69c85a7">Psi_eta</a> (int i, double xi, double eta)</td></tr>
+<tr class="memdesc:a49e0b3620d7f434bf977a528e69c85a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">基函数对eta求导  <a href="struct_omega.html#a49e0b3620d7f434bf977a528e69c85a7">更多...</a><br /></td></tr>
+<tr class="separator:a49e0b3620d7f434bf977a528e69c85a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a356cb686fa14146a0eebd34cf0ac0554"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#a356cb686fa14146a0eebd34cf0ac0554">Jacobi</a> (double xi, double eta)</td></tr>
+<tr class="memdesc:a356cb686fa14146a0eebd34cf0ac0554"><td class="mdescLeft">&#160;</td><td class="mdescRight">计算(xi,eta)出的Jacobi矩阵的行列式  <a href="struct_omega.html#a356cb686fa14146a0eebd34cf0ac0554">更多...</a><br /></td></tr>
+<tr class="separator:a356cb686fa14146a0eebd34cf0ac0554"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a292b2960170c6981845aad8aa324ff8b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#a292b2960170c6981845aad8aa324ff8b">Jacobi_0</a> (double xi, double eta)</td></tr>
+<tr class="memdesc:a292b2960170c6981845aad8aa324ff8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">计算初始时刻(xi,eta)出的Jacobi矩阵的行列式  <a href="struct_omega.html#a292b2960170c6981845aad8aa324ff8b">更多...</a><br /></td></tr>
+<tr class="separator:a292b2960170c6981845aad8aa324ff8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:ab6a8beb9e056d3bedcbb4c37f831a855"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#ab6a8beb9e056d3bedcbb4c37f831a855">i</a></td></tr>
+<tr class="separator:ab6a8beb9e056d3bedcbb4c37f831a855"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb4a8a579925a1889f64aaf9ca6050fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#aeb4a8a579925a1889f64aaf9ca6050fe">j</a></td></tr>
+<tr class="memdesc:aeb4a8a579925a1889f64aaf9ca6050fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">网格的坐标，第i列，第j行  <a href="struct_omega.html#aeb4a8a579925a1889f64aaf9ca6050fe">更多...</a><br /></td></tr>
+<tr class="separator:aeb4a8a579925a1889f64aaf9ca6050fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0ca4604050f85f2882a4c7f61209319"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#af0ca4604050f85f2882a4c7f61209319">q</a></td></tr>
+<tr class="memdesc:af0ca4604050f85f2882a4c7f61209319"><td class="mdescLeft">&#160;</td><td class="mdescRight">网格的编号，从下往上，从左往右数，q = m*i + j  <a href="struct_omega.html#af0ca4604050f85f2882a4c7f61209319">更多...</a><br /></td></tr>
+<tr class="separator:af0ca4604050f85f2882a4c7f61209319"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e373b96e55128e350a4e59666d27710"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#a0e373b96e55128e350a4e59666d27710">vertex</a> [4]</td></tr>
+<tr class="memdesc:a0e373b96e55128e350a4e59666d27710"><td class="mdescLeft">&#160;</td><td class="mdescRight">网格的四个顶点，以左下角为第一个，逆时针顺序  <a href="struct_omega.html#a0e373b96e55128e350a4e59666d27710">更多...</a><br /></td></tr>
+<tr class="separator:a0e373b96e55128e350a4e59666d27710"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefbfcb0bb9c7b588cab11bb60dd411f4"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#aefbfcb0bb9c7b588cab11bb60dd411f4">vx</a> [4]</td></tr>
+<tr class="memdesc:aefbfcb0bb9c7b588cab11bb60dd411f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">网格四个顶点的物理坐标横坐标  <a href="struct_omega.html#aefbfcb0bb9c7b588cab11bb60dd411f4">更多...</a><br /></td></tr>
+<tr class="separator:aefbfcb0bb9c7b588cab11bb60dd411f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59822c6bc65bc5e0737562fbefbc721c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#a59822c6bc65bc5e0737562fbefbc721c">vy</a> [4]</td></tr>
+<tr class="memdesc:a59822c6bc65bc5e0737562fbefbc721c"><td class="mdescLeft">&#160;</td><td class="mdescRight">网格四个顶点的物理坐标纵坐标  <a href="struct_omega.html#a59822c6bc65bc5e0737562fbefbc721c">更多...</a><br /></td></tr>
+<tr class="separator:a59822c6bc65bc5e0737562fbefbc721c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a544e44b3e9e83e2f2a9e2258760a24e4"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#a544e44b3e9e83e2f2a9e2258760a24e4">vx0</a> [4]</td></tr>
+<tr class="memdesc:a544e44b3e9e83e2f2a9e2258760a24e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">网格四个顶点的初始物理坐标横坐标，用于计算密度  <a href="struct_omega.html#a544e44b3e9e83e2f2a9e2258760a24e4">更多...</a><br /></td></tr>
+<tr class="separator:a544e44b3e9e83e2f2a9e2258760a24e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9aebdb778bb25f04662008865c51346"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#ab9aebdb778bb25f04662008865c51346">vy0</a> [4]</td></tr>
+<tr class="memdesc:ab9aebdb778bb25f04662008865c51346"><td class="mdescLeft">&#160;</td><td class="mdescRight">网格四个顶点的初始物理坐标纵坐标，用于计算密度  <a href="struct_omega.html#ab9aebdb778bb25f04662008865c51346">更多...</a><br /></td></tr>
+<tr class="separator:ab9aebdb778bb25f04662008865c51346"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c9b9ec678290350a085c03aa7ecc628"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#a7c9b9ec678290350a085c03aa7ecc628">neighbor_element</a></td></tr>
+<tr class="memdesc:a7c9b9ec678290350a085c03aa7ecc628"><td class="mdescLeft">&#160;</td><td class="mdescRight">网格的相邻单元  <a href="struct_omega.html#a7c9b9ec678290350a085c03aa7ecc628">更多...</a><br /></td></tr>
+<tr class="separator:a7c9b9ec678290350a085c03aa7ecc628"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4652cbe4ede1a3828677912314d37f9d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#a4652cbe4ede1a3828677912314d37f9d">xi_c</a></td></tr>
+<tr class="memdesc:a4652cbe4ede1a3828677912314d37f9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">网格质心的横坐标，参考空间  <a href="struct_omega.html#a4652cbe4ede1a3828677912314d37f9d">更多...</a><br /></td></tr>
+<tr class="separator:a4652cbe4ede1a3828677912314d37f9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9fcc25c127b8eca3fb1a3e53830e4bf"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#ae9fcc25c127b8eca3fb1a3e53830e4bf">eta_c</a></td></tr>
+<tr class="memdesc:ae9fcc25c127b8eca3fb1a3e53830e4bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">网格质心的纵坐标，参考空间  <a href="struct_omega.html#ae9fcc25c127b8eca3fb1a3e53830e4bf">更多...</a><br /></td></tr>
+<tr class="separator:ae9fcc25c127b8eca3fb1a3e53830e4bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a573ed9c660f37cbef256be41bd58326b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#a573ed9c660f37cbef256be41bd58326b">mass</a></td></tr>
+<tr class="memdesc:a573ed9c660f37cbef256be41bd58326b"><td class="mdescLeft">&#160;</td><td class="mdescRight">网格的质量  <a href="struct_omega.html#a573ed9c660f37cbef256be41bd58326b">更多...</a><br /></td></tr>
+<tr class="separator:a573ed9c660f37cbef256be41bd58326b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45ea56d065bb80189004823415b3729b"><td class="memItemLeft" align="right" valign="top">double **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#a45ea56d065bb80189004823415b3729b">M</a></td></tr>
+<tr class="memdesc:a45ea56d065bb80189004823415b3729b"><td class="mdescLeft">&#160;</td><td class="mdescRight">网格的质量矩阵  <a href="struct_omega.html#a45ea56d065bb80189004823415b3729b">更多...</a><br /></td></tr>
+<tr class="separator:a45ea56d065bb80189004823415b3729b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad66f816a6106576f97658cf34238fd27"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#ad66f816a6106576f97658cf34238fd27">uxlast</a></td></tr>
+<tr class="memdesc:ad66f816a6106576f97658cf34238fd27"><td class="mdescLeft">&#160;</td><td class="mdescRight">element velocity vector x component for t_n  <a href="struct_omega.html#ad66f816a6106576f97658cf34238fd27">更多...</a><br /></td></tr>
+<tr class="separator:ad66f816a6106576f97658cf34238fd27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6da374272a85b66bc2be655cb204b888"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#a6da374272a85b66bc2be655cb204b888">uxnext</a></td></tr>
+<tr class="memdesc:a6da374272a85b66bc2be655cb204b888"><td class="mdescLeft">&#160;</td><td class="mdescRight">element velocity vector x component for t_{n+1}  <a href="struct_omega.html#a6da374272a85b66bc2be655cb204b888">更多...</a><br /></td></tr>
+<tr class="separator:a6da374272a85b66bc2be655cb204b888"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae68177576510febabf934bf39a3f1923"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#ae68177576510febabf934bf39a3f1923">uylast</a></td></tr>
+<tr class="memdesc:ae68177576510febabf934bf39a3f1923"><td class="mdescLeft">&#160;</td><td class="mdescRight">element velocity vector y component for t_n  <a href="struct_omega.html#ae68177576510febabf934bf39a3f1923">更多...</a><br /></td></tr>
+<tr class="separator:ae68177576510febabf934bf39a3f1923"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44e8055663e3be74eefd4999cb903677"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#a44e8055663e3be74eefd4999cb903677">uynext</a></td></tr>
+<tr class="memdesc:a44e8055663e3be74eefd4999cb903677"><td class="mdescLeft">&#160;</td><td class="mdescRight">element velocity vector y component for t_{n+1}  <a href="struct_omega.html#a44e8055663e3be74eefd4999cb903677">更多...</a><br /></td></tr>
+<tr class="separator:a44e8055663e3be74eefd4999cb903677"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d51196d002934eb01fc49f27c85c849"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#a9d51196d002934eb01fc49f27c85c849">taulast</a></td></tr>
+<tr class="memdesc:a9d51196d002934eb01fc49f27c85c849"><td class="mdescLeft">&#160;</td><td class="mdescRight">specific energy for t_n  <a href="struct_omega.html#a9d51196d002934eb01fc49f27c85c849">更多...</a><br /></td></tr>
+<tr class="separator:a9d51196d002934eb01fc49f27c85c849"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca2bbc9d69386445165263b0e1babd0e"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_omega.html#aca2bbc9d69386445165263b0e1babd0e">taunext</a></td></tr>
+<tr class="memdesc:aca2bbc9d69386445165263b0e1babd0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">specific energy for t_{n+1}  <a href="struct_omega.html#aca2bbc9d69386445165263b0e1babd0e">更多...</a><br /></td></tr>
+<tr class="separator:aca2bbc9d69386445165263b0e1babd0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p >网格单元类的定义 </p>
+<ul>
+<li>包含网格的所有几何量和部分物理量</li>
+<li>物理单元和参考单元视为同一个单元，保存在同一个结构体中</li>
+<li>网格一维编号和二维编号的关系：q = m*i + j </li>
+</ul>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00061">61</a> 行定义.</p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="a356cb686fa14146a0eebd34cf0ac0554" name="a356cb686fa14146a0eebd34cf0ac0554"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a356cb686fa14146a0eebd34cf0ac0554">&#9670;&nbsp;</a></span>Jacobi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Omega::Jacobi </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>xi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>eta</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>计算(xi,eta)出的Jacobi矩阵的行列式 </p>
+<p >求(xi,eta)处的Jacobi行列式</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xi</td><td>变量参考空间横坐标 </td></tr>
+    <tr><td class="paramname">eta</td><td>变量参考空间纵坐标 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>double |J| </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="config_8cpp_source.html">config.cpp</a> 第 <a class="el" href="config_8cpp_source.html#l00177">177</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="struct_omega_a356cb686fa14146a0eebd34cf0ac0554_cgraph.png" border="0" usemap="#astruct_omega_a356cb686fa14146a0eebd34cf0ac0554_cgraph" alt=""/></div>
+<map name="astruct_omega_a356cb686fa14146a0eebd34cf0ac0554_cgraph" id="astruct_omega_a356cb686fa14146a0eebd34cf0ac0554_cgraph">
+<area shape="rect" title="计算(xi,eta)出的Jacobi矩阵的行列式" alt="" coords="5,31,115,57"/>
+<area shape="rect" href="config_8cpp.html#a9035555d0f5aae81503f6dd897171576" title="形函数对eta求导" alt="" coords="163,5,224,32"/>
+<area shape="rect" href="config_8cpp.html#ae6f3d29131d803a8e79ebebd60ef13c8" title="形函数对xi求导" alt="" coords="167,56,220,83"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="struct_omega_a356cb686fa14146a0eebd34cf0ac0554_icgraph.png" border="0" usemap="#astruct_omega_a356cb686fa14146a0eebd34cf0ac0554_icgraph" alt=""/></div>
+<map name="astruct_omega_a356cb686fa14146a0eebd34cf0ac0554_icgraph" id="astruct_omega_a356cb686fa14146a0eebd34cf0ac0554_icgraph">
+<area shape="rect" title="计算(xi,eta)出的Jacobi矩阵的行列式" alt="" coords="448,157,557,184"/>
+<area shape="rect" href="nodal__solver_8cpp.html#ab55250d1f498595fd052c2c6006aaddd" title="计算第(i,j)个节点在第k个相邻单元中的两个corner force" alt="" coords="305,132,398,159"/>
+<area shape="rect" href="time__evolution_8cpp.html#a2e5e76e2a0351a0d12004b608bc070f8" title="得到单元质量总能的右端矩阵" alt="" coords="149,132,253,159"/>
+<area shape="rect" href="time__evolution_8cpp.html#a96ce734a6e4ba04983284fc61345bd1f" title="得到单元速度的右端矩阵" alt="" coords="147,81,255,108"/>
+<area shape="rect" href="time__evolution_8cpp.html#a16e3412a9a05a6e701f953d2faa0c9da" title="Get the density" alt="" coords="307,81,396,108"/>
+<area shape="rect" href="initial_8cpp.html#a2286aa850479a600ff6f6d551d9fb71d" title="计算第(i,j)个网格的质心，同时计算每个网格的质量" alt="" coords="303,233,400,260"/>
+<area shape="rect" href="initial_8cpp.html#a37e14b548616bbb2a71d336d72306af7" title="计算第(i,j)个网格的质量矩阵" alt="" coords="303,284,400,311"/>
+<area shape="rect" href="nodal__solver_8cpp.html#a659ddf0d62e1f66efada5f86bfdd9d4f" title="计算节点速度" alt="" coords="149,5,252,32"/>
+<area shape="rect" href="plot_8cpp.html#a7a96a7e42972cfd82a9915a43f8afeae" title="绘制网格压力" alt="" coords="305,335,398,361"/>
+<area shape="rect" href="shockless_noh_8cpp.html#a59e3e2ed6428ef3c6cdb5fa2ee77eb04" title="进行一步时间推进" alt="" coords="5,81,99,108"/>
+<area shape="rect" href="initial_8cpp.html#ab6260e57d76c13a47b10081e2a9f68dc" title="初始化各个变量，生成网格并记录初始信息" alt="" coords="175,259,227,285"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a292b2960170c6981845aad8aa324ff8b" name="a292b2960170c6981845aad8aa324ff8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a292b2960170c6981845aad8aa324ff8b">&#9670;&nbsp;</a></span>Jacobi_0()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Omega::Jacobi_0 </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>xi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>eta</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>计算初始时刻(xi,eta)出的Jacobi矩阵的行列式 </p>
+<p >求初始时刻(xi,eta)处的Jacobi行列式</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xi</td><td>变量参考空间横坐标 </td></tr>
+    <tr><td class="paramname">eta</td><td>变量参考空间纵坐标 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>double |J| </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="config_8cpp_source.html">config.cpp</a> 第 <a class="el" href="config_8cpp_source.html#l00204">204</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="struct_omega_a292b2960170c6981845aad8aa324ff8b_cgraph.png" border="0" usemap="#astruct_omega_a292b2960170c6981845aad8aa324ff8b_cgraph" alt=""/></div>
+<map name="astruct_omega_a292b2960170c6981845aad8aa324ff8b_cgraph" id="astruct_omega_a292b2960170c6981845aad8aa324ff8b_cgraph">
+<area shape="rect" title="计算初始时刻(xi,eta)出的Jacobi矩阵的行列式" alt="" coords="5,31,128,57"/>
+<area shape="rect" href="config_8cpp.html#a9035555d0f5aae81503f6dd897171576" title="形函数对eta求导" alt="" coords="176,5,237,32"/>
+<area shape="rect" href="config_8cpp.html#ae6f3d29131d803a8e79ebebd60ef13c8" title="形函数对xi求导" alt="" coords="180,56,233,83"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="struct_omega_a292b2960170c6981845aad8aa324ff8b_icgraph.png" border="0" usemap="#astruct_omega_a292b2960170c6981845aad8aa324ff8b_icgraph" alt=""/></div>
+<map name="astruct_omega_a292b2960170c6981845aad8aa324ff8b_icgraph" id="astruct_omega_a292b2960170c6981845aad8aa324ff8b_icgraph">
+<area shape="rect" title="计算初始时刻(xi,eta)出的Jacobi矩阵的行列式" alt="" coords="444,81,567,108"/>
+<area shape="rect" href="nodal__solver_8cpp.html#ab55250d1f498595fd052c2c6006aaddd" title="计算第(i,j)个节点在第k个相邻单元中的两个corner force" alt="" coords="303,5,396,32"/>
+<area shape="rect" href="time__evolution_8cpp.html#a16e3412a9a05a6e701f953d2faa0c9da" title="Get the density" alt="" coords="305,56,394,83"/>
+<area shape="rect" href="nodal__solver_8cpp.html#a659ddf0d62e1f66efada5f86bfdd9d4f" title="计算节点速度" alt="" coords="149,107,252,133"/>
+<area shape="rect" href="plot_8cpp.html#a7a96a7e42972cfd82a9915a43f8afeae" title="绘制网格压力" alt="" coords="303,157,396,184"/>
+<area shape="rect" href="time__evolution_8cpp.html#a2e5e76e2a0351a0d12004b608bc070f8" title="得到单元质量总能的右端矩阵" alt="" coords="149,56,253,83"/>
+<area shape="rect" href="time__evolution_8cpp.html#a96ce734a6e4ba04983284fc61345bd1f" title="得到单元速度的右端矩阵" alt="" coords="147,5,255,32"/>
+<area shape="rect" href="shockless_noh_8cpp.html#a59e3e2ed6428ef3c6cdb5fa2ee77eb04" title="进行一步时间推进" alt="" coords="5,56,99,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9fc77705786af278288ec206eef9b28a" name="a9fc77705786af278288ec206eef9b28a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fc77705786af278288ec206eef9b28a">&#9670;&nbsp;</a></span>phi_x()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Omega::phi_x </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>xi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>eta</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>从参考空间到物理空间的映射，x分量 </p>
+<p >从参考空间到物理空间的映射x分量</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xi</td><td>参考空间横坐标 </td></tr>
+    <tr><td class="paramname">eta</td><td>参考空间纵坐标 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>double 物理空间横坐标 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="config_8cpp_source.html">config.cpp</a> 第 <a class="el" href="config_8cpp_source.html#l00042">42</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="struct_omega_a9fc77705786af278288ec206eef9b28a_cgraph.png" border="0" usemap="#astruct_omega_a9fc77705786af278288ec206eef9b28a_cgraph" alt=""/></div>
+<map name="astruct_omega_a9fc77705786af278288ec206eef9b28a_cgraph" id="astruct_omega_a9fc77705786af278288ec206eef9b28a_cgraph">
+<area shape="rect" title="从参考空间到物理空间的映射，x分量" alt="" coords="5,5,108,32"/>
+<area shape="rect" href="config_8cpp.html#a9ec66e6f9842d15614ea62f75bd47b24" title="形函数，用于求参考空间到物理空间的同胚映射" alt="" coords="156,5,195,32"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="struct_omega_a9fc77705786af278288ec206eef9b28a_icgraph.png" border="0" usemap="#astruct_omega_a9fc77705786af278288ec206eef9b28a_icgraph" alt=""/></div>
+<map name="astruct_omega_a9fc77705786af278288ec206eef9b28a_icgraph" id="astruct_omega_a9fc77705786af278288ec206eef9b28a_icgraph">
+<area shape="rect" title="从参考空间到物理空间的映射，x分量" alt="" coords="448,157,551,184"/>
+<area shape="rect" href="nodal__solver_8cpp.html#ab55250d1f498595fd052c2c6006aaddd" title="计算第(i,j)个节点在第k个相邻单元中的两个corner force" alt="" coords="305,56,398,83"/>
+<area shape="rect" href="time__evolution_8cpp.html#a16e3412a9a05a6e701f953d2faa0c9da" title="Get the density" alt="" coords="307,107,396,133"/>
+<area shape="rect" href="initial_8cpp.html#ab6260e57d76c13a47b10081e2a9f68dc" title="初始化各个变量，生成网格并记录初始信息" alt="" coords="175,208,227,235"/>
+<area shape="rect" href="initial_8cpp.html#a2286aa850479a600ff6f6d551d9fb71d" title="计算第(i,j)个网格的质心，同时计算每个网格的质量" alt="" coords="303,208,400,235"/>
+<area shape="rect" href="initial_8cpp.html#a37e14b548616bbb2a71d336d72306af7" title="计算第(i,j)个网格的质量矩阵" alt="" coords="303,259,400,285"/>
+<area shape="rect" href="nodal__solver_8cpp.html#a659ddf0d62e1f66efada5f86bfdd9d4f" title="计算节点速度" alt="" coords="149,5,252,32"/>
+<area shape="rect" href="plot_8cpp.html#a7a96a7e42972cfd82a9915a43f8afeae" title="绘制网格压力" alt="" coords="305,309,398,336"/>
+<area shape="rect" href="time__evolution_8cpp.html#a2e5e76e2a0351a0d12004b608bc070f8" title="得到单元质量总能的右端矩阵" alt="" coords="149,56,253,83"/>
+<area shape="rect" href="time__evolution_8cpp.html#a96ce734a6e4ba04983284fc61345bd1f" title="得到单元速度的右端矩阵" alt="" coords="147,107,255,133"/>
+<area shape="rect" href="shockless_noh_8cpp.html#a59e3e2ed6428ef3c6cdb5fa2ee77eb04" title="进行一步时间推进" alt="" coords="5,56,99,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aed154e23027c249d71e1d5609629a4b6" name="aed154e23027c249d71e1d5609629a4b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed154e23027c249d71e1d5609629a4b6">&#9670;&nbsp;</a></span>phi_y()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Omega::phi_y </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>xi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>eta</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>从参考空间到物理空间的映射，y分量 </p>
+<p >从参考空间到物理空间的映射y分量</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xi</td><td>参考空间横坐标 </td></tr>
+    <tr><td class="paramname">eta</td><td>参考空间纵坐标 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>double 物理空间纵坐标 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="config_8cpp_source.html">config.cpp</a> 第 <a class="el" href="config_8cpp_source.html#l00060">60</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="struct_omega_aed154e23027c249d71e1d5609629a4b6_cgraph.png" border="0" usemap="#astruct_omega_aed154e23027c249d71e1d5609629a4b6_cgraph" alt=""/></div>
+<map name="astruct_omega_aed154e23027c249d71e1d5609629a4b6_cgraph" id="astruct_omega_aed154e23027c249d71e1d5609629a4b6_cgraph">
+<area shape="rect" title="从参考空间到物理空间的映射，y分量" alt="" coords="5,5,108,32"/>
+<area shape="rect" href="config_8cpp.html#a9ec66e6f9842d15614ea62f75bd47b24" title="形函数，用于求参考空间到物理空间的同胚映射" alt="" coords="156,5,195,32"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="struct_omega_aed154e23027c249d71e1d5609629a4b6_icgraph.png" border="0" usemap="#astruct_omega_aed154e23027c249d71e1d5609629a4b6_icgraph" alt=""/></div>
+<map name="astruct_omega_aed154e23027c249d71e1d5609629a4b6_icgraph" id="astruct_omega_aed154e23027c249d71e1d5609629a4b6_icgraph">
+<area shape="rect" title="从参考空间到物理空间的映射，y分量" alt="" coords="448,157,551,184"/>
+<area shape="rect" href="nodal__solver_8cpp.html#ab55250d1f498595fd052c2c6006aaddd" title="计算第(i,j)个节点在第k个相邻单元中的两个corner force" alt="" coords="305,56,398,83"/>
+<area shape="rect" href="time__evolution_8cpp.html#a16e3412a9a05a6e701f953d2faa0c9da" title="Get the density" alt="" coords="307,107,396,133"/>
+<area shape="rect" href="initial_8cpp.html#ab6260e57d76c13a47b10081e2a9f68dc" title="初始化各个变量，生成网格并记录初始信息" alt="" coords="175,208,227,235"/>
+<area shape="rect" href="initial_8cpp.html#a2286aa850479a600ff6f6d551d9fb71d" title="计算第(i,j)个网格的质心，同时计算每个网格的质量" alt="" coords="303,208,400,235"/>
+<area shape="rect" href="initial_8cpp.html#a37e14b548616bbb2a71d336d72306af7" title="计算第(i,j)个网格的质量矩阵" alt="" coords="303,259,400,285"/>
+<area shape="rect" href="nodal__solver_8cpp.html#a659ddf0d62e1f66efada5f86bfdd9d4f" title="计算节点速度" alt="" coords="149,5,252,32"/>
+<area shape="rect" href="plot_8cpp.html#a7a96a7e42972cfd82a9915a43f8afeae" title="绘制网格压力" alt="" coords="305,309,398,336"/>
+<area shape="rect" href="time__evolution_8cpp.html#a2e5e76e2a0351a0d12004b608bc070f8" title="得到单元质量总能的右端矩阵" alt="" coords="149,56,253,83"/>
+<area shape="rect" href="time__evolution_8cpp.html#a96ce734a6e4ba04983284fc61345bd1f" title="得到单元速度的右端矩阵" alt="" coords="147,107,255,133"/>
+<area shape="rect" href="shockless_noh_8cpp.html#a59e3e2ed6428ef3c6cdb5fa2ee77eb04" title="进行一步时间推进" alt="" coords="5,56,99,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae9e4670a6573ed62345914db38030152" name="ae9e4670a6573ed62345914db38030152"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9e4670a6573ed62345914db38030152">&#9670;&nbsp;</a></span>Psi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Omega::Psi </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>xi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>eta</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>网格的基函数 </p>
+<p >每个单元的基函数，由在质心的Taylor展开得到</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>基函数选择 </td></tr>
+    <tr><td class="paramname">xi</td><td>变量参考空间横坐标 </td></tr>
+    <tr><td class="paramname">eta</td><td>变量参考空间纵坐标 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>double 返回结果：<ul>
+<li>i = 0, Psi = 1</li>
+<li>i = 1, Psi = xi - xi_c</li>
+<li>i = 2, Psi = eta - eta_c</li>
+<li>otherwise, no return (only 2nd-order). </li>
+</ul>
+</dd></dl>
+
+<p class="definition">在文件 <a class="el" href="config_8cpp_source.html">config.cpp</a> 第 <a class="el" href="config_8cpp_source.html#l00083">83</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="struct_omega_ae9e4670a6573ed62345914db38030152_icgraph.png" border="0" usemap="#astruct_omega_ae9e4670a6573ed62345914db38030152_icgraph" alt=""/></div>
+<map name="astruct_omega_ae9e4670a6573ed62345914db38030152_icgraph" id="astruct_omega_ae9e4670a6573ed62345914db38030152_icgraph">
+<area shape="rect" title="网格的基函数" alt="" coords="599,105,689,132"/>
+<area shape="rect" href="nodal__solver_8cpp.html#ab55250d1f498595fd052c2c6006aaddd" title="计算第(i,j)个节点在第k个相邻单元中的两个corner force" alt="" coords="307,130,401,157"/>
+<area shape="rect" href="time__evolution_8cpp.html#a2e5e76e2a0351a0d12004b608bc070f8" title="得到单元质量总能的右端矩阵" alt="" coords="149,80,253,106"/>
+<area shape="rect" href="time__evolution_8cpp.html#a96ce734a6e4ba04983284fc61345bd1f" title="得到单元速度的右端矩阵" alt="" coords="147,130,255,157"/>
+<area shape="rect" href="initial_8cpp.html#a37e14b548616bbb2a71d336d72306af7" title="计算第(i,j)个网格的质量矩阵" alt="" coords="453,232,551,258"/>
+<area shape="rect" href="nodal__solver_8cpp.html#a659ddf0d62e1f66efada5f86bfdd9d4f" title="计算节点速度" alt="" coords="303,29,405,56"/>
+<area shape="rect" href="nodal__solver_8cpp.html#a2c22281007ccfde5c86ff8449178d9a9" title="计算第(i,j)个节点处每个相邻单元在该点的速度重构值的平均" alt="" coords="462,29,542,56"/>
+<area shape="rect" href="shockless_noh_8cpp.html#a59e3e2ed6428ef3c6cdb5fa2ee77eb04" title="进行一步时间推进" alt="" coords="5,80,99,106"/>
+<area shape="rect" href="initial_8cpp.html#ab6260e57d76c13a47b10081e2a9f68dc" title="初始化各个变量，生成网格并记录初始信息" alt="" coords="328,232,380,258"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a49e0b3620d7f434bf977a528e69c85a7" name="a49e0b3620d7f434bf977a528e69c85a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49e0b3620d7f434bf977a528e69c85a7">&#9670;&nbsp;</a></span>Psi_eta()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Omega::Psi_eta </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>xi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>eta</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>基函数对eta求导 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>基函数选择 </td></tr>
+    <tr><td class="paramname">xi</td><td>变量参考空间横坐标 </td></tr>
+    <tr><td class="paramname">eta</td><td>变量参考空间纵坐标 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>double 返回结果：<ul>
+<li>i = 0, Psi = 0</li>
+<li>i = 1, Psi = 0</li>
+<li>i = 2, Psi = 1</li>
+<li>otherwise, no return (only 2nd-order). </li>
+</ul>
+</dd></dl>
+
+<p class="definition">在文件 <a class="el" href="config_8cpp_source.html">config.cpp</a> 第 <a class="el" href="config_8cpp_source.html#l00149">149</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="struct_omega_a49e0b3620d7f434bf977a528e69c85a7_icgraph.png" border="0" usemap="#astruct_omega_a49e0b3620d7f434bf977a528e69c85a7_icgraph" alt=""/></div>
+<map name="astruct_omega_a49e0b3620d7f434bf977a528e69c85a7_icgraph" id="astruct_omega_a49e0b3620d7f434bf977a528e69c85a7_icgraph">
+<area shape="rect" title="基函数对eta求导" alt="" coords="303,31,419,57"/>
+<area shape="rect" href="time__evolution_8cpp.html#a2e5e76e2a0351a0d12004b608bc070f8" title="得到单元质量总能的右端矩阵" alt="" coords="149,5,253,32"/>
+<area shape="rect" href="time__evolution_8cpp.html#a96ce734a6e4ba04983284fc61345bd1f" title="得到单元速度的右端矩阵" alt="" coords="147,56,255,83"/>
+<area shape="rect" href="shockless_noh_8cpp.html#a59e3e2ed6428ef3c6cdb5fa2ee77eb04" title="进行一步时间推进" alt="" coords="5,31,99,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a534ab7dc70b10437f4c811d6294a2c8b" name="a534ab7dc70b10437f4c811d6294a2c8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a534ab7dc70b10437f4c811d6294a2c8b">&#9670;&nbsp;</a></span>Psi_xi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Omega::Psi_xi </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>xi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>eta</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>基函数对xi求导 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>基函数选择 </td></tr>
+    <tr><td class="paramname">xi</td><td>变量参考空间横坐标 </td></tr>
+    <tr><td class="paramname">eta</td><td>变量参考空间纵坐标 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>double 返回结果：<ul>
+<li>i = 0, Psi = 0</li>
+<li>i = 1, Psi = 1</li>
+<li>i = 2, Psi = 0</li>
+<li>otherwise, no return (only 2nd-order). </li>
+</ul>
+</dd></dl>
+
+<p class="definition">在文件 <a class="el" href="config_8cpp_source.html">config.cpp</a> 第 <a class="el" href="config_8cpp_source.html#l00116">116</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="struct_omega_a534ab7dc70b10437f4c811d6294a2c8b_icgraph.png" border="0" usemap="#astruct_omega_a534ab7dc70b10437f4c811d6294a2c8b_icgraph" alt=""/></div>
+<map name="astruct_omega_a534ab7dc70b10437f4c811d6294a2c8b_icgraph" id="astruct_omega_a534ab7dc70b10437f4c811d6294a2c8b_icgraph">
+<area shape="rect" title="基函数对xi求导" alt="" coords="303,31,411,57"/>
+<area shape="rect" href="time__evolution_8cpp.html#a2e5e76e2a0351a0d12004b608bc070f8" title="得到单元质量总能的右端矩阵" alt="" coords="149,5,253,32"/>
+<area shape="rect" href="time__evolution_8cpp.html#a96ce734a6e4ba04983284fc61345bd1f" title="得到单元速度的右端矩阵" alt="" coords="147,56,255,83"/>
+<area shape="rect" href="shockless_noh_8cpp.html#a59e3e2ed6428ef3c6cdb5fa2ee77eb04" title="进行一步时间推进" alt="" coords="5,31,99,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="ae9fcc25c127b8eca3fb1a3e53830e4bf" name="ae9fcc25c127b8eca3fb1a3e53830e4bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9fcc25c127b8eca3fb1a3e53830e4bf">&#9670;&nbsp;</a></span>eta_c</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Omega::eta_c</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>网格质心的纵坐标，参考空间 </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00071">71</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab6a8beb9e056d3bedcbb4c37f831a855" name="ab6a8beb9e056d3bedcbb4c37f831a855"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6a8beb9e056d3bedcbb4c37f831a855">&#9670;&nbsp;</a></span>i</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Omega::i</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00062">62</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aeb4a8a579925a1889f64aaf9ca6050fe" name="aeb4a8a579925a1889f64aaf9ca6050fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb4a8a579925a1889f64aaf9ca6050fe">&#9670;&nbsp;</a></span>j</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Omega::j</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>网格的坐标，第i列，第j行 </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00062">62</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a45ea56d065bb80189004823415b3729b" name="a45ea56d065bb80189004823415b3729b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45ea56d065bb80189004823415b3729b">&#9670;&nbsp;</a></span>M</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double** Omega::M</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>网格的质量矩阵 </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00079">79</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a573ed9c660f37cbef256be41bd58326b" name="a573ed9c660f37cbef256be41bd58326b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a573ed9c660f37cbef256be41bd58326b">&#9670;&nbsp;</a></span>mass</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Omega::mass</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>网格的质量 </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00072">72</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7c9b9ec678290350a085c03aa7ecc628" name="a7c9b9ec678290350a085c03aa7ecc628"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c9b9ec678290350a085c03aa7ecc628">&#9670;&nbsp;</a></span>neighbor_element</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;int&gt; Omega::neighbor_element</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>网格的相邻单元 </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00069">69</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af0ca4604050f85f2882a4c7f61209319" name="af0ca4604050f85f2882a4c7f61209319"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0ca4604050f85f2882a4c7f61209319">&#9670;&nbsp;</a></span>q</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Omega::q</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>网格的编号，从下往上，从左往右数，q = m*i + j </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00063">63</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9d51196d002934eb01fc49f27c85c849" name="a9d51196d002934eb01fc49f27c85c849"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d51196d002934eb01fc49f27c85c849">&#9670;&nbsp;</a></span>taulast</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double* Omega::taulast</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>specific energy for t_n </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00088">88</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aca2bbc9d69386445165263b0e1babd0e" name="aca2bbc9d69386445165263b0e1babd0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca2bbc9d69386445165263b0e1babd0e">&#9670;&nbsp;</a></span>taunext</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double* Omega::taunext</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>specific energy for t_{n+1} </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00089">89</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ad66f816a6106576f97658cf34238fd27" name="ad66f816a6106576f97658cf34238fd27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad66f816a6106576f97658cf34238fd27">&#9670;&nbsp;</a></span>uxlast</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double* Omega::uxlast</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>element velocity vector x component for t_n </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00083">83</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a6da374272a85b66bc2be655cb204b888" name="a6da374272a85b66bc2be655cb204b888"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6da374272a85b66bc2be655cb204b888">&#9670;&nbsp;</a></span>uxnext</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double* Omega::uxnext</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>element velocity vector x component for t_{n+1} </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00084">84</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae68177576510febabf934bf39a3f1923" name="ae68177576510febabf934bf39a3f1923"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae68177576510febabf934bf39a3f1923">&#9670;&nbsp;</a></span>uylast</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double* Omega::uylast</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>element velocity vector y component for t_n </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00085">85</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a44e8055663e3be74eefd4999cb903677" name="a44e8055663e3be74eefd4999cb903677"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44e8055663e3be74eefd4999cb903677">&#9670;&nbsp;</a></span>uynext</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double* Omega::uynext</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>element velocity vector y component for t_{n+1} </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00086">86</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a0e373b96e55128e350a4e59666d27710" name="a0e373b96e55128e350a4e59666d27710"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e373b96e55128e350a4e59666d27710">&#9670;&nbsp;</a></span>vertex</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Omega::vertex[4]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>网格的四个顶点，以左下角为第一个，逆时针顺序 </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00064">64</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aefbfcb0bb9c7b588cab11bb60dd411f4" name="aefbfcb0bb9c7b588cab11bb60dd411f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefbfcb0bb9c7b588cab11bb60dd411f4">&#9670;&nbsp;</a></span>vx</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Omega::vx[4]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>网格四个顶点的物理坐标横坐标 </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00065">65</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a544e44b3e9e83e2f2a9e2258760a24e4" name="a544e44b3e9e83e2f2a9e2258760a24e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a544e44b3e9e83e2f2a9e2258760a24e4">&#9670;&nbsp;</a></span>vx0</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Omega::vx0[4]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>网格四个顶点的初始物理坐标横坐标，用于计算密度 </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00067">67</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a59822c6bc65bc5e0737562fbefbc721c" name="a59822c6bc65bc5e0737562fbefbc721c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59822c6bc65bc5e0737562fbefbc721c">&#9670;&nbsp;</a></span>vy</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Omega::vy[4]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>网格四个顶点的物理坐标纵坐标 </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00066">66</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab9aebdb778bb25f04662008865c51346" name="ab9aebdb778bb25f04662008865c51346"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9aebdb778bb25f04662008865c51346">&#9670;&nbsp;</a></span>vy0</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Omega::vy0[4]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>网格四个顶点的初始物理坐标纵坐标，用于计算密度 </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00068">68</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a4652cbe4ede1a3828677912314d37f9d" name="a4652cbe4ede1a3828677912314d37f9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4652cbe4ede1a3828677912314d37f9d">&#9670;&nbsp;</a></span>xi_c</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Omega::xi_c</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>网格质心的横坐标，参考空间 </p>
+
+<p class="definition">在文件 <a class="el" href="config_8h_source.html">config.h</a> 第 <a class="el" href="config_8h_source.html#l00070">70</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该结构体的文档由以下文件生成:<ul>
+<li>F:/C++Codes/LagrangeDG/shockless_Noh/files/<a class="el" href="config_8h_source.html">config.h</a></li>
+<li>F:/C++Codes/LagrangeDG/shockless_Noh/files/<a class="el" href="config_8cpp_source.html">config.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

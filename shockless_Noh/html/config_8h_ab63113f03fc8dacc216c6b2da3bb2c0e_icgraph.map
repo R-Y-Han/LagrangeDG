@@ -1,0 +1,5 @@
+<map id="normal" name="normal">
+<area shape="rect" id="node1" title="计算ab边的单位法向量" alt="" coords="280,5,341,32"/>
+<area shape="rect" id="node2" href="$initial_8cpp.html#a275740c71861bd79bf92744ee8bb78e5" title=" " alt="" coords="105,5,232,32"/>
+<area shape="rect" id="node3" href="$initial_8cpp.html#ab6260e57d76c13a47b10081e2a9f68dc" title="初始化各个变量，生成网格并记录初始信息" alt="" coords="5,5,57,32"/>
+</map>

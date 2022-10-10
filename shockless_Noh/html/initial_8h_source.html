@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>A Lagrangian DG hydrodynamic method: F:/C++Codes/LagrangeDG/shockless_Noh/files/initial.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">A Lagrangian DG hydrodynamic method<span id="projectnumber">&#160;v1.01</span>
+   </div>
+   <div id="projectbrief">2D shockless Noh</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.4 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>文件成员</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_eee681074411ed9073826571a8442c61.html">LagrangeDG</a></li><li class="navelem"><a class="el" href="dir_33272b348a70cf8330cd4ef197b6e1d3.html">shockless_Noh</a></li><li class="navelem"><a class="el" href="dir_f2a1b071a4d3d6da503817cf0a84f786.html">files</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">initial.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="initial_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef INITIAL_H</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define INITIAL_H</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keywordtype">void</span> <a class="code hl_function" href="initial_8h.html#ae92a01f80d15618fb1e3e3492039a363">generatemesh</a>();</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keywordtype">void</span> <a class="code hl_function" href="initial_8h.html#a678188ee7d163e6aca74038010c67491">element_findneighbor</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keywordtype">void</span> <a class="code hl_function" href="initial_8h.html#a275740c71861bd79bf92744ee8bb78e5">node_findneighbor</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keywordtype">double</span> * <a class="code hl_function" href="initial_8h.html#a2286aa850479a600ff6f6d551d9fb71d">mass_center</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keywordtype">double</span> ** <a class="code hl_function" href="initial_8h.html#a37e14b548616bbb2a71d336d72306af7">mass_matrix</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keywordtype">void</span> <a class="code hl_function" href="initial_8h.html#ab6260e57d76c13a47b10081e2a9f68dc">initial</a>();</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="ainitial_8h_html_a2286aa850479a600ff6f6d551d9fb71d"><div class="ttname"><a href="initial_8h.html#a2286aa850479a600ff6f6d551d9fb71d">mass_center</a></div><div class="ttdeci">double * mass_center(int i, int j)</div><div class="ttdoc">计算第(i,j)个网格的质心</div><div class="ttdef"><b>Definition:</b> <a href="initial_8cpp_source.html#l00391">initial.cpp:391</a></div></div>
+<div class="ttc" id="ainitial_8h_html_a275740c71861bd79bf92744ee8bb78e5"><div class="ttname"><a href="initial_8h.html#a275740c71861bd79bf92744ee8bb78e5">node_findneighbor</a></div><div class="ttdeci">void node_findneighbor(int i, int j)</div><div class="ttdef"><b>Definition:</b> <a href="initial_8cpp_source.html#l00197">initial.cpp:197</a></div></div>
+<div class="ttc" id="ainitial_8h_html_a37e14b548616bbb2a71d336d72306af7"><div class="ttname"><a href="initial_8h.html#a37e14b548616bbb2a71d336d72306af7">mass_matrix</a></div><div class="ttdeci">double ** mass_matrix(int i, int j)</div><div class="ttdoc">计算第(i,j)个网格的质量矩阵</div><div class="ttdef"><b>Definition:</b> <a href="initial_8cpp_source.html#l00435">initial.cpp:435</a></div></div>
+<div class="ttc" id="ainitial_8h_html_a678188ee7d163e6aca74038010c67491"><div class="ttname"><a href="initial_8h.html#a678188ee7d163e6aca74038010c67491">element_findneighbor</a></div><div class="ttdeci">void element_findneighbor(int i, int j)</div><div class="ttdoc">对第(i,j)个单元寻找相邻单元， 从(i,j-1)开始逆时针数第一个存在的单元作为第一个项。 存储一维序号。</div><div class="ttdef"><b>Definition:</b> <a href="initial_8cpp_source.html#l00119">initial.cpp:119</a></div></div>
+<div class="ttc" id="ainitial_8h_html_ab6260e57d76c13a47b10081e2a9f68dc"><div class="ttname"><a href="initial_8h.html#ab6260e57d76c13a47b10081e2a9f68dc">initial</a></div><div class="ttdeci">void initial()</div><div class="ttdoc">初始化各个变量，生成网格并记录初始信息</div><div class="ttdef"><b>Definition:</b> <a href="initial_8cpp_source.html#l00474">initial.cpp:474</a></div></div>
+<div class="ttc" id="ainitial_8h_html_ae92a01f80d15618fb1e3e3492039a363"><div class="ttname"><a href="initial_8h.html#ae92a01f80d15618fb1e3e3492039a363">generatemesh</a></div><div class="ttdeci">void generatemesh()</div><div class="ttdoc">生成初始网格划分：</div><div class="ttdef"><b>Definition:</b> <a href="initial_8cpp_source.html#l00024">initial.cpp:24</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

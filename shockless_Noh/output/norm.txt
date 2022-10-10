@@ -1,0 +1,41 @@
+n=5	m=5	CFL number=0.0005
+norm=0.00688697
+
+n=10	m=10	CFL number=0.0005
+norm=0.00184356
+
+n=20	m=20	CFL number=0.0005
+norm=0.000770159
+
+n=20	m=20	CFL number=0.005
+norm=0.000861709
+
+n=10	m=10	CFL number=0.005
+norm=0.00208711
+
+n=5	m=5	CFL number=0.005
+norm=0.00740983
+
+n=5	m=5	CFL number=5e-05
+norm=0.00683587
+
+n=5	m=5	CFL number=0.001
+norm=0.00694381
+
+n=10	m=10	CFL number=0.001
+norm=0.00186899
+
+n=20	m=20	CFL number=0.001
+norm=0.000779117
+
+//下面是每一步更新都改了坐标
+
+n=5	m=5	CFL number=0.001
+norm=0.00683473
+
+n=10	m=10	CFL number=0.001
+norm=0.00181858
+
+n=20	m=20	CFL number=0.001
+norm=0.000762204
+

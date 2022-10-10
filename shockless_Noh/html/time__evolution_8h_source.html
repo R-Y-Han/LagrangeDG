@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>A Lagrangian DG hydrodynamic method: F:/C++Codes/LagrangeDG/shockless_Noh/files/time_evolution.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">A Lagrangian DG hydrodynamic method<span id="projectnumber">&#160;v1.01</span>
+   </div>
+   <div id="projectbrief">2D shockless Noh</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.4 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>文件成员</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_eee681074411ed9073826571a8442c61.html">LagrangeDG</a></li><li class="navelem"><a class="el" href="dir_33272b348a70cf8330cd4ef197b6e1d3.html">shockless_Noh</a></li><li class="navelem"><a class="el" href="dir_f2a1b071a4d3d6da503817cf0a84f786.html">files</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">time_evolution.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="time__evolution_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef TIME_EVOLUTION_H</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define TIME_EVOLUTION_H</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keywordtype">double</span> <a class="code hl_function" href="time__evolution_8h.html#a16e3412a9a05a6e701f953d2faa0c9da">get_density</a>(<span class="keywordtype">double</span> xi, <span class="keywordtype">double</span> eta, <span class="keywordtype">int</span> r);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keywordtype">double</span> ** <a class="code hl_function" href="time__evolution_8h.html#a96ce734a6e4ba04983284fc61345bd1f">velocity_matrix</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keywordtype">double</span> * <a class="code hl_function" href="time__evolution_8h.html#a2e5e76e2a0351a0d12004b608bc070f8">energy_matrix</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keywordtype">double</span> * <a class="code hl_function" href="time__evolution_8h.html#a332c3a4fecd46f1bab7d7b5e0c71abc1">RK_step1</a>(<span class="keywordtype">double</span> * un, <span class="keywordtype">double</span> ** M, <span class="keywordtype">double</span> * Rn, <span class="keywordtype">double</span> timeStep, <span class="keywordtype">int</span> d);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keywordtype">double</span> * <a class="code hl_function" href="time__evolution_8h.html#ae1a8ae6cf531f19b779bfb1c710db9b8">RK_step2</a>(<span class="keywordtype">double</span> * un, <span class="keywordtype">double</span> * us1, <span class="keywordtype">double</span> ** M, <span class="keywordtype">double</span> * Rs1, <span class="keywordtype">double</span> timeStep, <span class="keywordtype">int</span> d);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keywordtype">double</span> <a class="code hl_function" href="time__evolution_8h.html#af636d5644f9d0d96f70e1f3941bed9f7">choose_dt</a>(<span class="keywordtype">double</span> dtn);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="atime__evolution_8h_html_a16e3412a9a05a6e701f953d2faa0c9da"><div class="ttname"><a href="time__evolution_8h.html#a16e3412a9a05a6e701f953d2faa0c9da">get_density</a></div><div class="ttdeci">double get_density(double xi, double eta, int r)</div><div class="ttdoc">Get the density</div><div class="ttdef"><b>Definition:</b> <a href="time__evolution_8cpp_source.html#l00026">time_evolution.cpp:26</a></div></div>
+<div class="ttc" id="atime__evolution_8h_html_a2e5e76e2a0351a0d12004b608bc070f8"><div class="ttname"><a href="time__evolution_8h.html#a2e5e76e2a0351a0d12004b608bc070f8">energy_matrix</a></div><div class="ttdeci">double * energy_matrix(int i, int j)</div><div class="ttdoc">得到单元质量总能的右端矩阵</div><div class="ttdef"><b>Definition:</b> <a href="time__evolution_8cpp_source.html#l00192">time_evolution.cpp:192</a></div></div>
+<div class="ttc" id="atime__evolution_8h_html_a332c3a4fecd46f1bab7d7b5e0c71abc1"><div class="ttname"><a href="time__evolution_8h.html#a332c3a4fecd46f1bab7d7b5e0c71abc1">RK_step1</a></div><div class="ttdeci">double * RK_step1(double *un, double **M, double *Rn, double timeStep, int d)</div><div class="ttdoc">RK第一步计算</div><div class="ttdef"><b>Definition:</b> <a href="time__evolution_8cpp_source.html#l00311">time_evolution.cpp:311</a></div></div>
+<div class="ttc" id="atime__evolution_8h_html_a96ce734a6e4ba04983284fc61345bd1f"><div class="ttname"><a href="time__evolution_8h.html#a96ce734a6e4ba04983284fc61345bd1f">velocity_matrix</a></div><div class="ttdeci">double ** velocity_matrix(int i, int j)</div><div class="ttdoc">得到单元速度的右端矩阵</div><div class="ttdef"><b>Definition:</b> <a href="time__evolution_8cpp_source.html#l00055">time_evolution.cpp:55</a></div></div>
+<div class="ttc" id="atime__evolution_8h_html_ae1a8ae6cf531f19b779bfb1c710db9b8"><div class="ttname"><a href="time__evolution_8h.html#ae1a8ae6cf531f19b779bfb1c710db9b8">RK_step2</a></div><div class="ttdeci">double * RK_step2(double *un, double *us1, double **M, double *Rs1, double timeStep, int d)</div><div class="ttdoc">RK第二步计算</div><div class="ttdef"><b>Definition:</b> <a href="time__evolution_8cpp_source.html#l00400">time_evolution.cpp:400</a></div></div>
+<div class="ttc" id="atime__evolution_8h_html_af636d5644f9d0d96f70e1f3941bed9f7"><div class="ttname"><a href="time__evolution_8h.html#af636d5644f9d0d96f70e1f3941bed9f7">choose_dt</a></div><div class="ttdeci">double choose_dt(double dtn)</div><div class="ttdoc">选择时间步长dt， 使得每个单元内声速运动距离都不超过单元的某种长度度量</div><div class="ttdef"><b>Definition:</b> <a href="time__evolution_8cpp_source.html#l00482">time_evolution.cpp:482</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

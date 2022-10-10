@@ -1,0 +1,4 @@
+<map id="u_average" name="u_average">
+<area shape="rect" id="node1" title="计算第(i,j)个节点处每个相邻单元在该点的速度重构值的平均" alt="" coords="5,5,85,32"/>
+<area shape="rect" id="node2" href="$struct_omega.html#ae9e4670a6573ed62345914db38030152" title="网格的基函数" alt="" coords="133,5,224,32"/>
+</map>
