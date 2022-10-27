@@ -1,10 +1,10 @@
 /**
  * @file config.h
  * @author R.Y. Han (hanruoyu21@gscaep.ac.cn)
- * @brief Configuration for 2D shockless Noh.
+ * @brief Configuration for 2D Taylor Green vortex.
  * Define some parameters and functions shared by all parts of the program.
  * @version 1.01
- * @date 2022-09-29
+ * @date 2022-10-12
  * 
  * @copyright Copyright (c) 2022 R.Y. Han. All Rights Reserved.
  * 
@@ -22,16 +22,16 @@ using namespace std;
 
 const int dim = 3;  /**< »ùº¯Êý¸öÊý*/
 
-const int n = 20;    /**< Íø¸ñºáÏòÆÊ·Ö´óÐ¡£¬0-n*/
-const int m = 20;    /**< Íø¸ñ×ÝÏòÆÊ·Ö´óÐ¡£¬0-m*/
+const int n = 100;    /**< Íø¸ñºáÏòÆÊ·Ö´óÐ¡£¬0-n*/
+const int m = 8;    /**< Íø¸ñ×ÝÏòÆÊ·Ö´óÐ¡£¬0-m*/
 
 const double X = 1; /**< ¼ÆËãÇøÓòºá×ø±ê*/
-const double Y = 1; /**< ¼ÆËãÇøÓò×Ý×ø±ê*/
+const double Y = 0.2; /**< ¼ÆËãÇøÓò×Ý×ø±ê*/
 
 const double hx = X / (double) n;   /**< spatial step in x*/
 const double hy = Y / (double) m;   /**< spatial step in y*/
 
-const double T = 0.6;   /**< end time*/
+const double T = 0.2;   /**< end time*/
 
 extern double dt;  /**< time step*/
 
@@ -45,7 +45,7 @@ const double ref_xi[4][2] = {{-1,-1}, {1,-1}, {1,1}, {-1,1}};   /**< ²Î¿¼µ¥ÔªµÄË
  * @{
  */
 
-const double gamma = 5 /(double) 3; /**< specific heat*/
+const double gamma = 7 /(double) 5; /**< specific heat*/
 
 double EOS(double rho, double e);   /**< EOS*/
 
@@ -119,10 +119,12 @@ extern node point[n+1][m+1];   /**< Éú³É(n+1)*(m+1)¸ö½Úµã*/
 /** @name ÊýÑ§Çó½â¹¤¾ß
  * @{
  */
+const double pi = 3.1415927;    /**< Ô²ÖÜÂÊ*/
 
-extern double Gausspoint_xi[4];  /**< GaussÇó»ý½Úµãºá×ø±ê£¬[-1,1]x[1,1]*/
-extern double Gausspoint_eta[4];  /**< GaussÇó»ý½Úµã×Ý×ø±ê*/
-extern double Gaussweight[4];   /**< GaussÇó»ýÈ¨ÖØ*/
+const int gd = 9;
+extern double Gausspoint_xi[gd];  /**< GaussÇó»ý½Úµãºá×ø±ê£¬[-1,1]x[1,1]*/
+extern double Gausspoint_eta[gd];  /**< GaussÇó»ý½Úµã×Ý×ø±ê*/
+extern double Gaussweight[gd];   /**< GaussÇó»ýÈ¨ÖØ*/
 
 /**
  * @brief ÐÎº¯Êý£¬ÓÃÓÚÇó²Î¿¼¿Õ¼äµ½ÎïÀí¿Õ¼äµÄÍ¬ÅßÓ³Éä
@@ -254,33 +256,6 @@ double ini_uy_x(double x, double y);
 double ini_uy_y(double x, double y);
 
 /**
- * @brief ³õÊ¼ÄÚÄÜ³¡
- * 
- * @param x ÎïÀíºá×ø±ê
- * @param y ÎïÀí×Ý×ø±ê
- * @return double 
- */
-double ini_e(double x, double y);
-
-/**
- * @brief ³õÊ¼ÄÚÄÜ³¡¶ÔxÇóÆ«µ¼
- * 
- * @param x ÎïÀíºá×ø±ê
- * @param y ÎïÀí×Ý×ø±ê
- * @return double 
- */
-double ini_e_x(double x, double y);
-
-/**
- * @brief ³õÊ¼ÄÚÄÜ³¡¶ÔyÇóÆ«µ¼
- * 
- * @param x ÎïÀíºá×ø±ê
- * @param y ÎïÀí×Ý×ø±ê
- * @return double 
- */
-double ini_e_y(double x, double y);
-
-/**
  * @brief ³õÊ¼Ñ¹Á¦³¡
  * 
  * @param x ÎïÀíºá×ø±ê
@@ -289,62 +264,26 @@ double ini_e_y(double x, double y);
  */
 double ini_p(double x, double y);
 
+/**
+ * @brief ³õÊ¼Ñ¹Á¦³¡¶ÔxÇóÆ«µ¼
+ * 
+ * @param x ÎïÀíºá×ø±ê
+ * @param y ÎïÀí×Ý×ø±ê
+ * @return double 
+ */
+double ini_p_x(double x, double y);
+
+/**
+ * @brief ³õÊ¼Ñ¹Á¦³¡¶ÔyÇóÆ«µ¼
+ * 
+ * @param x ÎïÀíºá×ø±ê
+ * @param y ÎïÀí×Ý×ø±ê
+ * @return double 
+ */
+double ini_p_y(double x, double y);
+
+
 /** @} */
 
-
-/**
- * @name ½âÎö½â
- * @brief ¶¨ÒåÎÊÌâµÄ½âÎö½â£¬ÓÃÓÚÇóÊÕÁ²½×
- *@{ 
- */
-
-/**
- * @brief Íø¸ñ(i,j)tÊ±¿ÌÃÜ¶È½âÎö½â
- * 
- * @param i Íø¸ñÐÐ±àºÅ
- * @param j Íø¸ñÁÐ±àºÅ
- * @param xit ²Î¿¼½Úµãºá×ø±ê
- * @param etat ²Î¿¼½Úµã×Ý×ø±ê
- * @param t Ê±¼ä
- * @return double 
- */
-double ana_rho(int i, int j, double xit, double etat, double t);
-
-/**
- * @brief ËÙ¶Èx·½Ïò·ÖÁ¿½âÎö½â
- * 
- * @param i Íø¸ñÐÐ±àºÅ
- * @param j Íø¸ñÁÐ±àºÅ
- * @param xit ²Î¿¼½Úµãºá×ø±ê
- * @param etat ²Î¿¼½Úµã×Ý×ø±ê
- * @param t Ê±¼ä
- * @return double 
- */
-double ana_ux(int i, int j, double xit, double etat, double t);
-
-/**
- * @brief ËÙ¶Èy·½Ïò·ÖÁ¿½âÎö½â
- * 
- * @param i Íø¸ñÐÐ±àºÅ
- * @param j Íø¸ñÁÐ±àºÅ
- * @param xit ²Î¿¼½Úµãºá×ø±ê
- * @param etat ²Î¿¼½Úµã×Ý×ø±ê
- * @param t Ê±¼ä
- * @return double 
- */
-double ana_uy(int i, int j, double xit, double etat, double t);
-
-/**
- * @brief ÄÚÄÜ½âÎö½â
- * 
- * @param i Íø¸ñÐÐ±àºÅ
- * @param j Íø¸ñÁÐ±àºÅ
- * @param xit ²Î¿¼½Úµãºá×ø±ê
- * @param etat ²Î¿¼½Úµã×Ý×ø±ê
- * @param t Ê±¼ä
- * @return double 
- */
-double ana_e(int i, int j, double xit, double etat, double t);
-/** @} */
 
 #endif

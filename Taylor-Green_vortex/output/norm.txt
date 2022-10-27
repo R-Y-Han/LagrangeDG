@@ -1,0 +1,31 @@
+n=10	m=10		T = 0.2	CFL number=0.1
+norm=0.0342106
+
+n=20	m=20		T = 0.2	CFL number=0.1
+norm=0.0122182
+
+n=40	m=40		T = 0.2	CFL number=0.1
+norm=0.00501672
+
+n=80	m=80		T = 0.2	CFL number=0.1
+norm=0.00239669
+
+
+n=40	m=40		T = 0.75	CFL number=0.1
+norm=0.0816224
+//下面用的Dirichlet边界条件
+n=20	m=20		T = 0.2	CFL number=0.1
+norm=0.0118864
+
+n=10	m=10		T = 0.2	CFL number=0.1
+norm=0.0357015
+
+n=40	m=40		T = 0.2	CFL number=0.1
+norm=0.00485482
+
+n=40	m=40		T = 0.75	CFL number=0.1
+norm=0.0767196
+
+n=20	m=20		T = 0.75	CFL number=0.1
+norm=0.147153
+

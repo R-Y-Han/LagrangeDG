@@ -16,6 +16,7 @@
 #include <iostream>
 using namespace std;
 
+
 /**
  * @brief 生成初始网格划分
  * - 分配内存
@@ -406,7 +407,7 @@ double * mass_center(int i, int j)
     masst = 0;
     mf_xi = 0;
     mf_eta = 0;
-    for (k = 0; k < 4; k++)
+    for (k = 0; k < gd; k++)
     {
         xt = o[i][j].phi_x(Gausspoint_xi[k],Gausspoint_eta[k]);
         yt = o[i][j].phi_y(Gausspoint_xi[k],Gausspoint_eta[k]);
@@ -450,7 +451,7 @@ double ** mass_matrix(int i, int j)
         for (l=0; l<dim; l++)
         {
             mma[k][l] = 0;
-            for (int r = 0; r < 4; r++)
+            for (int r = 0; r <gd; r++)
             {
                 xt = o[i][j].phi_x(Gausspoint_xi[r], Gausspoint_eta[r]);
                 yt = o[i][j].phi_y(Gausspoint_xi[r], Gausspoint_eta[r]);
@@ -498,23 +499,6 @@ void initial()
         }
     }
 
-    //***********下面对边界节点确定速度**************//
-    for (i=0; i<=n; i++)
-    {
-        for (j=0; j<=m; j++)
-        {
-            if (point[i][j].boundary == 1)
-            {
-                //边界节点
-                point[i][j].upstarx = ini_ux(point[i][j].x,point[i][j].y);
-                point[i][j].upstary = ini_uy(point[i][j].x,point[i][j].y);
-            }
-            else{
-                point[i][j].upstarx = 0;
-                point[i][j].upstary = 0;
-            }
-        }
-    }
 
     //************下面计算每个网格的质量和质心，并计算质量矩阵*********//
     for (i=0; i<n; i++)
@@ -573,12 +557,12 @@ void initial()
 
             o[i][j].uxlast[2] = ini_ux_x(xt,yt) * x_eta + ini_ux_y(xt,yt) * y_eta;  //质心处ux对eta求偏导
             o[i][j].uylast[2] = ini_uy_x(xt,yt) * x_eta + ini_uy_y(xt,yt) * y_eta;  //质心处uy对eta求偏导
-            
+
             //*********下面初始化总能量场*********//
-            o[i][j].taulast[0] = ini_e(xt,yt) + 0.5 * (ini_ux(xt,yt) * ini_ux(xt,yt) + ini_uy(xt,yt) * ini_uy(xt,yt));
+            o[i][j].taulast[0] = ini_p(xt,yt) / (gamma - 1) + 0.5 * (ini_ux(xt,yt) * ini_ux(xt,yt) + ini_uy(xt,yt) * ini_uy(xt,yt));
             
-            taux = ini_e_x(xt,yt) + ini_ux(xt,yt) * ini_ux_x(xt,yt) + ini_uy(xt,yt) * ini_uy_x(xt,yt);
-            tauy = ini_e_y(xt,yt) + ini_ux(xt,yt) * ini_ux_y(xt,yt) + ini_uy(xt,yt) * ini_uy_y(xt,yt);
+            taux = ini_p_x(xt,yt) / (gamma - 1) + ini_ux(xt,yt) * ini_ux_x(xt,yt) + ini_uy(xt,yt) * ini_uy_x(xt,yt);
+            tauy = ini_p_y(xt,yt) / (gamma - 1) + ini_ux(xt,yt) * ini_ux_y(xt,yt) + ini_uy(xt,yt) * ini_uy_y(xt,yt);
             
             o[i][j].taulast[1] = taux * x_xi + tauy * y_xi;
             o[i][j].taulast[2] = taux * x_eta + tauy * y_eta;

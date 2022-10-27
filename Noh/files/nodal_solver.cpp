@@ -11,6 +11,7 @@
 
 #include "config.h"
 #include "nodal_solver.h"
+#include "limiter.h"
 #include <cmath>
 
 #include <iostream>
@@ -48,7 +49,6 @@ double * u_average(int i, int j)
         }
         xit = ref_xi[temp][0];
         etat = ref_xi[temp][1];
-
         //**********下面计算该单元内节点处速度重构值*******//
         for (temp = 0; temp < dim; temp++)
         {
@@ -56,42 +56,163 @@ double * u_average(int i, int j)
             uavg[1] = uavg[1] + o[k][l].uylast[temp] * o[k][l].Psi(temp,xit,etat);
         }
     }
-
     //********此时uavg记录了所有单元在该点处速度重构值的总和********//
     uavg[0] = uavg[0] / (double) point[i][j].neighbor_element.size();
     uavg[1] = uavg[1] / (double) point[i][j].neighbor_element.size();
     //********uavg为节点处速度重构值的平均****************//
 
-
     return uavg;
 }
 
 /**
- * @brief 计算节点速度
+ * @brief 计算边界节点的速度
  * 
  * @param i 节点的行编号
  * @param j 节点的列编号
- * @return double *
+ * @return double* 
  */
-double * nodal_velocity(int i, int j)
+double * nodal_velocity_boundary(int i, int j)
 {
-    double* ustar = new double [2];
+    double *ustar = new double [2];
 
-    //**************先判断是否为边界点*********//
-    if (point[i][j].boundary == 1)
+    //********先求解四个顶点*******//
+    if (i == 0 && j == 0)
     {
-        //******是边界点*******//
-        ustar[0] = - point[i][j].x0;
-        ustar[1] = - point[i][j].y0;
-        //边界速度不变
+        ustar[0] = 0;
+        ustar[1] = 0;
+        return ustar;
+    }
+    if (i == 0 && j == m)
+    {
+        ustar[0] = 0;
+        ustar[1] = 0;
+        return ustar;
+    }
+    if (i == n && j == 0)
+    {
+        ustar[0] = 0;
+        ustar[1] = 0;
+        return ustar;
+    }
+    if (i == n && j == m)
+    {
+        ustar[0] = 0;
+        ustar[1] = 0;
         return ustar;
     }
 
-    //*************不是边界节点***************//
-
-    int r, temp, k, l, node1, node2, p1, p2;
+    //********边上的点*********//
+    int k, l, r, temp;
+    int node1, node2, bnode1, bnode2, p1, p2;
+    double nstarx, nstary;
     double xit, etat, nx1, ny1, nx2, ny2, a1, a2;
     double mu, topx, topy, bottom;
+    //********下面先找出边界的外法向*******//
+    for (r=0; r<point[i][j].neighbor_node.size(); r++)
+    {
+        k = point[i][j].neighbor_node[r] / (m+1);
+        l = point[i][j].neighbor_node[r] % (m+1);
+        if (point[k][l].boundary == 1)
+        {
+            bnode1 = point[k][l].q;
+            break;
+        }
+    }
+    for (r=0; r<point[i][j].neighbor_node.size(); r++)
+    {
+        k = point[i][j].neighbor_node[r] / (m+1);
+        l = point[i][j].neighbor_node[r] % (m+1);
+        if (point[k][l].boundary == 1)
+        {
+            if (point[k][l].q != bnode1)
+            {
+                bnode2 = point[k][l].q;
+                break;
+            }
+        }
+    }
+
+    nstarx = 0;
+    nstary = 0;
+    for (r=0; r<point[i][j].neighbor_element.size(); r++)
+    {
+        //***********确定corner所在单元编号*********//
+        k = point[i][j].neighbor_element[r] / m;
+        l = point[i][j].neighbor_element[r] % m;
+
+        //************确定节点在单元内的位置和参考空间坐标***********//
+        for (temp=0; temp < 4; temp++)
+        {
+            if (o[k][l].vertex[temp] == point[i][j].q)
+            {
+                break;
+            }
+        }
+        xit = ref_xi[temp][0];
+        etat = ref_xi[temp][1];
+
+        //***********确定相邻节点的编号***********//
+        if (temp == 3)
+        {
+            node1 = o[k][l].vertex[0];
+        }
+        else{
+            node1 = o[k][l].vertex[temp + 1];
+        }
+
+        if (temp == 0)
+        {
+            node2 = o[k][l].vertex[3];
+        }
+        else{
+            node2 = o[k][l].vertex[temp - 1];
+        }
+        //node1, node2为相邻顶点的编号
+
+        //*********确定相邻节点和该节点的关系*********//
+        for (p1 = 0; p1 < point[i][j].neighbor_node.size(); p1++)
+        {
+            if (point[i][j].neighbor_node[p1] == node1)
+            {
+                break;
+            }
+        }
+
+        for (p2 = 0; p2 < point[i][j].neighbor_node.size(); p2++)
+        {
+            if (point[i][j].neighbor_node[p2] == node2)
+            {
+                break;
+            }
+        }
+        //p1, p2为(i,j)指向相邻顶点的指针
+
+        nx1 = - point[i][j].nx[p1];
+        ny1 = - point[i][j].ny[p1]; //注意此处加了负号，为使指向外向
+
+        nx2 = point[i][j].nx[p2];
+        ny2 = point[i][j].ny[p2];
+
+        int kt, lt;
+        kt = node1 / (m+1);
+        lt = node1 % (m+1);
+        if (point[kt][lt].boundary == 1)
+        {
+            nstarx = nstarx + nx1;
+            nstary = nstary + ny1;
+        }
+        kt = node2 / (m+1);
+        lt = node2 % (m+1);
+        if (point[kt][lt].boundary == 1)
+        {
+            nstarx = nstarx + nx2;
+            nstary = nstary + ny2;
+        }
+    }
+    nstarx = nstarx / 2.0;
+    nstary = nstary / 2.0;
+
+    double b_pre =0;
     topx = 0;
     topy = 0;
     bottom = 0;
@@ -101,7 +222,7 @@ double * nodal_velocity(int i, int j)
         //***********确定corner所在单元编号*********//
         k = point[i][j].neighbor_element[r] / m;
         l = point[i][j].neighbor_element[r] % m;
-        
+
         //************确定节点在单元内的位置和参考空间坐标***********//
         for (temp=0; temp < 4; temp++)
         {
@@ -168,42 +289,44 @@ double * nodal_velocity(int i, int j)
         rho = ini_rho(xt,yt) * o[k][l].Jacobi_0(xit,etat);
         rho = rho / o[k][l].Jacobi(xit,etat);
 
-        //********下面计算节点处速度重构值********//
+        //********下面计算节点处速度和总能重构值********//
         double * uc = new double [2];
+        double ve;
+        ve=0;
         uc[0] = 0;
         uc[1] = 0;
         for (temp = 0; temp < dim; temp++)
         {
             uc[0] = uc[0] + o[k][l].uxlast[temp] * o[k][l].Psi(temp,xit,etat);
             uc[1] = uc[1] + o[k][l].uylast[temp] * o[k][l].Psi(temp,xit,etat);
+            ve = ve + o[k][l].taulast[temp] * o[k][l].Psi(temp,xit,etat);
         }
 
         //********下面计算内能**********//
-        
-        double ve;
-        ve = 0;
-        for (temp = 0; temp < dim; temp++)
-        {
-            ve = ve + o[k][l].taulast[temp] * o[k][l].Psi(temp,xit,etat);
-        }
-        
-
-
         ve = ve - 0.5 * (uc[0] * uc[0] + uc[1] * uc[1]);
+        p = EOS (rho, ve);
         
+        //ve = tau_limiter(k,l,ve,0.6);
+        //uc[0] = ux_limiter(k,l,uc[0],0.6);
+        //uc[1] = uy_limiter(k,l,uc[1],0.6);
+//******
+if (ve < 0)
+{
+    //cout<<"error "<<ve<<endl;
+    ve = 1e-6;
+}
         //**************下面计算阻抗*************//
         mu = (gamma - 1) * ve;
         mu = sqrt(mu);  //此时mu为声速
         mu = rho * mu;
-        
+
         //*************下面计算激波单位方向*********//
         double * e;
         e = u_average(i,j);
 
-
         e[0] = e[0] - uc[0];
         e[1] = e[1] - uc[1];
-     
+
         double norm;
         norm = e[0] * e[0] + e[1] * e[1];
         norm = sqrt(norm);
@@ -217,7 +340,207 @@ double * nodal_velocity(int i, int j)
             e[1] = e[1] / norm;
         }
         //*********下面计算分子分母各分量********//
+        
+
+        double mid;
+        //*********下面计算第一条边的量***********//
+        mid = nx1 * e[0] + ny1 * e[1];
+        mid = mu * abs(mid) * a1;
+
+        b_pre = b_pre - a1 * p * (nx1 * nstarx + ny1 * nstary);
+        b_pre = b_pre - mid * (uc[0] * nstarx + uc[1] * nstary);
+        topx = topx + mid * uc[0] + a1 * nx1 * p;
+        topy = topy + mid * uc[1] + a1 * ny1 * p;
+        bottom = bottom + mid;
+
+        //************下面计算第二条边的量*******//
+        mid = nx2 * e[0] + ny2 * e[1];
+        mid = mu * abs(mid) * a2;
+
+        b_pre = b_pre - a2 * p * (nx2 * nstarx + ny2 * nstary);
+        b_pre = b_pre - mid * (uc[0] * nstarx + uc[1] * nstary);
+        topx = topx + mid * uc[0] + a2 * nx2 * p;
+        topy = topy + mid * uc[1] + a2 * ny2 * p;
+        bottom = bottom + mid;
+
+        delete[] uc;
+        delete[] e;
+    }
+    b_pre = 1e-6;
+    if (bottom == 0)
+    {
+        double * utemp = u_average(i,j);
+        ustar[0] = utemp[0];
+        ustar[1] = utemp[1];
+        delete[] utemp;
+    }
+    else{
+        //b_pre = topx * nstarx + topy * nstary;
+        ustar[0] = (topx + b_pre * nstarx) / bottom;
+        ustar[1] = (topy + b_pre * nstary) / bottom;
+    }
+    return ustar;
+}
+
+
+/**
+ * @brief 计算节点速度
+ * 
+ * @param i 节点的行编号
+ * @param j 节点的列编号
+ * @return double *
+ */
+double * nodal_velocity(int i, int j)
+{
+    double* ustar;
+
+    //**************先判断是否为边界点*********//
+    if (point[i][j].boundary == 1)
+    {
+        //******是边界点*******//
+        ustar = nodal_velocity_boundary(i,j);
+        /*
+        ustar = new double [2];
+        double xt = point[i][j].x;
+        double yt = point[i][j].y;
+        ustar[0] = ini_ux(xt,yt);
+        ustar[1] = ini_uy(xt,yt);*/
+        return ustar;
+    }
+
+    //*************不是边界节点***************//
+    ustar = new double [2];
+    int r, temp, k, l, node1, node2, p1, p2;
+    double xit, etat, nx1, ny1, nx2, ny2, a1, a2;
+    double mu, topx, topy, bottom;
+    topx = 0;
+    topy = 0;
+    bottom = 0;
+    //***************对每个corner进行计算***********//
+    for (r=0; r<point[i][j].neighbor_element.size(); r++)
+    {
+        //***********确定corner所在单元编号*********//
+        k = point[i][j].neighbor_element[r] / m;
+        l = point[i][j].neighbor_element[r] % m;
+
+        //************确定节点在单元内的位置和参考空间坐标***********//
+        for (temp=0; temp < 4; temp++)
+        {
+            if (o[k][l].vertex[temp] == point[i][j].q)
+            {
+                break;
+            }
+        }
+        xit = ref_xi[temp][0];
+        etat = ref_xi[temp][1];
+
+        //***********确定相邻节点的编号***********//
+        if (temp == 3)
+        {
+            node1 = o[k][l].vertex[0];
+        }
+        else{
+            node1 = o[k][l].vertex[temp + 1];
+        }
+        
+        if (temp == 0)
+        {
+            node2 = o[k][l].vertex[3];
+        }
+        else{
+            node2 = o[k][l].vertex[temp - 1];
+        }
+        //node1, node2为相邻顶点的编号
+
+        //*********确定相邻节点和该节点的关系*********//
+        for (p1 = 0; p1 < point[i][j].neighbor_node.size(); p1++)
+        {
+            if (point[i][j].neighbor_node[p1] == node1)
+            {
+                break;
+            }
+        }
+
+        for (p2 = 0; p2 < point[i][j].neighbor_node.size(); p2++)
+        {
+            if (point[i][j].neighbor_node[p2] == node2)
+            {
+                break;
+            }
+        }
+        //p1, p2为(i,j)指向相邻顶点的指针
+
+        //***********记录单位外法向和相应长度********//
+        a1 = point[i][j].a[p1];
+        a2 = point[i][j].a[p2];
+
+        nx1 = - point[i][j].nx[p1];
+        ny1 = - point[i][j].ny[p1]; //注意此处加了负号，为使指向外向
+
+        nx2 = point[i][j].nx[p2];
+        ny2 = point[i][j].ny[p2];
+
+        //*******下面计算第r个corner中的相应分量********//
+        double xt, yt;
+        xt = o[k][l].phi_x(xit,etat);
+        yt = o[k][l].phi_y(xit,etat);
+
+        //********下面计算密度**********//
+        rho = ini_rho(xt,yt) * o[k][l].Jacobi_0(xit,etat);
+        rho = rho / o[k][l].Jacobi(xit,etat);
+
+        //********下面计算节点处速度和总能重构值********//
+        double * uc = new double [2];
+        double ve;
+        ve=0;
+        uc[0] = 0;
+        uc[1] = 0;
+        for (temp = 0; temp < dim; temp++)
+        {
+            uc[0] = uc[0] + o[k][l].uxlast[temp] * o[k][l].Psi(temp,xit,etat);
+            uc[1] = uc[1] + o[k][l].uylast[temp] * o[k][l].Psi(temp,xit,etat);
+            ve = ve + o[k][l].taulast[temp] * o[k][l].Psi(temp,xit,etat);
+        }
+
+        //********下面计算内能**********//
+        ve = ve - 0.5 * (uc[0] * uc[0] + uc[1] * uc[1]);
         p = EOS (rho, ve);
+
+        //ve = tau_limiter(k,l,ve,0.6);
+        //uc[0] = ux_limiter(k,l,uc[0],0.6);
+        //uc[1] = uy_limiter(k,l,uc[1],0.6);
+//******
+if (ve < 0)
+{
+    cout<<"error "<<ve<<endl;
+    ve = 1e-6;
+}
+        //**************下面计算阻抗*************//
+        mu = (gamma - 1) * ve;
+        mu = sqrt(mu);  //此时mu为声速
+        mu = rho * mu;
+        
+        //*************下面计算激波单位方向*********//
+        double * e;
+        e = u_average(i,j);
+
+        e[0] = e[0] - uc[0];
+        e[1] = e[1] - uc[1];
+
+        double norm;
+        norm = e[0] * e[0] + e[1] * e[1];
+        norm = sqrt(norm);
+        if (norm == 0)
+        {
+            e[0] = 0;
+            e[1] = 0;
+        }
+        else{
+            e[0] = e[0] / norm;
+            e[1] = e[1] / norm;
+        }
+        //*********下面计算分子分母各分量********//
+        
         
         double mid;
         //*********下面计算第一条边的量***********//
@@ -251,8 +574,6 @@ double * nodal_velocity(int i, int j)
         ustar[1] = topy / bottom;
     }
     
-
-
     return ustar;
 }
 
@@ -278,6 +599,13 @@ double ** corner_force(int i, int j, int r)
     {
         f[temp] = new double [2];
     }
+    for (k=0; k<2; k++)
+    {
+        for (l=0; l < 2; l++)
+        {
+            f[k][l] = 0;
+        }
+    }
 
     //***********确定corner所在单元编号*********//
     k = r / m;
@@ -291,6 +619,10 @@ double ** corner_force(int i, int j, int r)
             break;
         }
     }
+if (o[k][l].vertex[temp] != point[i][j].q)
+{
+    cout<<"error"<<endl;
+}
     xit = ref_xi[temp][0];
     etat = ref_xi[temp][1];
 
@@ -342,8 +674,8 @@ double ** corner_force(int i, int j, int r)
 
     //*******下面计算第r个corner中的相应分量********//
     double xt, yt;
-    xt = o[k][l].phi_x(xit,etat);
-    yt = o[k][l].phi_y(xit,etat);
+    xt = point[i][j].x;
+    yt = point[i][j].y;
 
     //********下面计算密度**********//
     rho = ini_rho(xt,yt) * o[k][l].Jacobi_0(xit,etat);
@@ -351,35 +683,40 @@ double ** corner_force(int i, int j, int r)
 
     //********下面计算节点处速度重构值********//
     double * uc = new double [2];
+    double ve;
+    ve = 0;
     uc[0] = 0;
     uc[1] = 0;
     for (temp = 0; temp < dim; temp++)
     {
         uc[0] = uc[0] + o[k][l].uxlast[temp] * o[k][l].Psi(temp,xit,etat);
         uc[1] = uc[1] + o[k][l].uylast[temp] * o[k][l].Psi(temp,xit,etat);
-    }
-
-    //********下面计算内能**********//
-        
-    double ve;
-    ve = 0;
-    for (temp = 0; temp < dim; temp++)
-    {
         ve = ve + o[k][l].taulast[temp] * o[k][l].Psi(temp,xit,etat);
     }
+    //********下面计算内能**********//
     ve = ve - 0.5 * (uc[0] * uc[0] + uc[1] * uc[1]);
-        
+    p = EOS(rho,ve);
+
+    //ve = tau_limiter(k,l,ve,0.6);
+    //uc[0] = ux_limiter(k,l,uc[0],0.6);
+    //uc[1] = uy_limiter(k,l,uc[1],0.6);
+
+//****
+if (ve < 0)
+{
+    //cout<<"error"<<endl;
+    ve = 1e-6;
+}
     //**************下面计算阻抗*************//
     mu = (gamma - 1) * ve;
     mu = sqrt(mu);  //此时mu为声速
     mu = rho * mu;
-        
+
     //*************下面计算激波单位方向*********//
     double * e;
-    e = u_average(i,j);
-    e[0] = e[0] - uc[0];
-    e[1] = e[1] - uc[1];
-        
+    e = new double [2];
+    e[0] = point[i][j].upstarx - uc[0];
+    e[1] = point[i][j].upstary - uc[1];
     double norm;
     norm = e[0] * e[0] + e[1] * e[1];
     norm = sqrt(norm);
@@ -392,10 +729,6 @@ double ** corner_force(int i, int j, int r)
         e[0] = e[0] / norm;
         e[1] = e[1] / norm;
     }
-
-    //*********下面计算压强********//
-    p = EOS (rho, ve);
-
     //***********下面计算两条边上的corner force*********//
     double mid;
     

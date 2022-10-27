@@ -12,6 +12,7 @@
 #include "time_evolution.h"
 #include "config.h"
 #include "nodal_solver.h"
+#include "limiter.h"
 #include <cmath>
 
 #include <iostream>
@@ -99,7 +100,7 @@ double ** velocity_matrix(int i, int j)
     }
 
     //**********下面计算体积分**********//
-    for (temp = 0; temp < 4; temp++)
+    for (temp = 0; temp < gd; temp++)
     {
         xit = Gausspoint_xi[temp];
         etat = Gausspoint_eta[temp];
@@ -118,6 +119,9 @@ double ** velocity_matrix(int i, int j)
             ut[0] = ut[0] + o[i][j].uxlast[r] * o[i][j].Psi(r,xit,etat);
             ut[1] = ut[1] + o[i][j].uylast[r] * o[i][j].Psi(r,xit,etat);
         }
+        et = tau_limiter(i,j,et,0);
+        ut[0] = ux_limiter(i,j,ut[0],0);
+        ut[1] = uy_limiter(i,j,ut[1],0);
         et = et - (ut[0] * ut[0] + ut[1] * ut[1]) * 0.5;
         p = EOS(rhot,et);
 
@@ -129,7 +133,6 @@ double ** velocity_matrix(int i, int j)
         {
             J_inv[r] = new double [2];
         }
-
         J_inv[0][0] = 0;
         J_inv[0][1] = 0;
         J_inv[1][0] = 0;
@@ -146,7 +149,7 @@ double ** velocity_matrix(int i, int j)
         J_inv[1][0] = - J_inv[1][0] / jt;
         J_inv[1][1] = J_inv[1][1] / jt;
 
-        for (r=1; r<dim; r++)
+        for (r=0; r<dim; r++)
         {
             mid = o[i][j].Psi_xi(r,xit,etat) * J_inv[0][0];
             mid = mid + o[i][j].Psi_eta(r,xit,etat) * J_inv[1][0];
@@ -228,14 +231,14 @@ double * energy_matrix(int i, int j)
     }
     
     //**********下面计算体积分**********//
-    for (temp = 0; temp < 4; temp++)
+    for (temp = 0; temp < gd; temp++)
     {
         xit = Gausspoint_xi[temp];
         etat = Gausspoint_eta[temp];
         
         rhot = get_density(xit,etat,o[i][j].q);
         jt = o[i][j].Jacobi(xit,etat);
-        
+
         //*********下面计算压强********//
         double* ut = new double [2];
         et = 0;
@@ -247,6 +250,9 @@ double * energy_matrix(int i, int j)
             ut[0] = ut[0] + o[i][j].uxlast[r] * o[i][j].Psi(r,xit,etat);
             ut[1] = ut[1] + o[i][j].uylast[r] * o[i][j].Psi(r,xit,etat);
         }
+        et = tau_limiter(i,j,et,0);
+        ut[0] = ux_limiter(i,j,ut[0],0);
+        ut[1] = uy_limiter(i,j,ut[1],0);
         et = et - (ut[0] * ut[0] + ut[1] * ut[1]) * 0.5;
         p = EOS(rhot,et);
 
@@ -292,6 +298,7 @@ double * energy_matrix(int i, int j)
         delete[] J_inv;
         delete[] ut;
     }
+
 
     return R;
 }

@@ -1,10 +1,10 @@
 /**
  * @file config.h
  * @author R.Y. Han (hanruoyu21@gscaep.ac.cn)
- * @brief Configuration for 2D shockless Noh.
+ * @brief Configuration for 2D Taylor Green vortex.
  * Define some parameters and functions shared by all parts of the program.
  * @version 1.01
- * @date 2022-09-29
+ * @date 2022-10-12
  * 
  * @copyright Copyright (c) 2022 R.Y. Han. All Rights Reserved.
  * 
@@ -22,8 +22,8 @@ using namespace std;
 
 const int dim = 3;  /**< 基函数个数*/
 
-const int n = 20;    /**< 网格横向剖分大小，0-n*/
-const int m = 20;    /**< 网格纵向剖分大小，0-m*/
+const int n = 10;    /**< 网格横向剖分大小，0-n*/
+const int m = 10;    /**< 网格纵向剖分大小，0-m*/
 
 const double X = 1; /**< 计算区域横坐标*/
 const double Y = 1; /**< 计算区域纵坐标*/
@@ -31,7 +31,7 @@ const double Y = 1; /**< 计算区域纵坐标*/
 const double hx = X / (double) n;   /**< spatial step in x*/
 const double hy = Y / (double) m;   /**< spatial step in y*/
 
-const double T = 0.6;   /**< end time*/
+const double T = 0.1;   /**< end time*/
 
 extern double dt;  /**< time step*/
 
@@ -119,10 +119,12 @@ extern node point[n+1][m+1];   /**< 生成(n+1)*(m+1)个节点*/
 /** @name 数学求解工具
  * @{
  */
+const double pi = 3.1415927;    /**< 圆周率*/
 
-extern double Gausspoint_xi[4];  /**< Gauss求积节点横坐标，[-1,1]x[1,1]*/
-extern double Gausspoint_eta[4];  /**< Gauss求积节点纵坐标*/
-extern double Gaussweight[4];   /**< Gauss求积权重*/
+const int gd = 9;
+extern double Gausspoint_xi[gd];  /**< Gauss求积节点横坐标，[-1,1]x[1,1]*/
+extern double Gausspoint_eta[gd];  /**< Gauss求积节点纵坐标*/
+extern double Gaussweight[gd];   /**< Gauss求积权重*/
 
 /**
  * @brief 形函数，用于求参考空间到物理空间的同胚映射
@@ -254,7 +256,7 @@ double ini_uy_x(double x, double y);
 double ini_uy_y(double x, double y);
 
 /**
- * @brief 初始内能场
+ * @brief 初始压力场
  * 
  * @param x 物理横坐标
  * @param y 物理纵坐标
@@ -263,7 +265,7 @@ double ini_uy_y(double x, double y);
 double ini_e(double x, double y);
 
 /**
- * @brief 初始内能场对x求偏导
+ * @brief 初始压力场对x求偏导
  * 
  * @param x 物理横坐标
  * @param y 物理纵坐标
@@ -272,7 +274,7 @@ double ini_e(double x, double y);
 double ini_e_x(double x, double y);
 
 /**
- * @brief 初始内能场对y求偏导
+ * @brief 初始压力场对y求偏导
  * 
  * @param x 物理横坐标
  * @param y 物理纵坐标
@@ -280,71 +282,13 @@ double ini_e_x(double x, double y);
  */
 double ini_e_y(double x, double y);
 
-/**
- * @brief 初始压力场
- * 
- * @param x 物理横坐标
- * @param y 物理纵坐标
- * @return double 
- */
 double ini_p(double x, double y);
+
 
 /** @} */
 
 
-/**
- * @name 解析解
- * @brief 定义问题的解析解，用于求收敛阶
- *@{ 
- */
 
-/**
- * @brief 网格(i,j)t时刻密度解析解
- * 
- * @param i 网格行编号
- * @param j 网格列编号
- * @param xit 参考节点横坐标
- * @param etat 参考节点纵坐标
- * @param t 时间
- * @return double 
- */
-double ana_rho(int i, int j, double xit, double etat, double t);
-
-/**
- * @brief 速度x方向分量解析解
- * 
- * @param i 网格行编号
- * @param j 网格列编号
- * @param xit 参考节点横坐标
- * @param etat 参考节点纵坐标
- * @param t 时间
- * @return double 
- */
-double ana_ux(int i, int j, double xit, double etat, double t);
-
-/**
- * @brief 速度y方向分量解析解
- * 
- * @param i 网格行编号
- * @param j 网格列编号
- * @param xit 参考节点横坐标
- * @param etat 参考节点纵坐标
- * @param t 时间
- * @return double 
- */
-double ana_uy(int i, int j, double xit, double etat, double t);
-
-/**
- * @brief 内能解析解
- * 
- * @param i 网格行编号
- * @param j 网格列编号
- * @param xit 参考节点横坐标
- * @param etat 参考节点纵坐标
- * @param t 时间
- * @return double 
- */
-double ana_e(int i, int j, double xit, double etat, double t);
 /** @} */
 
 #endif
