@@ -48,14 +48,21 @@ using namespace std;
  */
 void onetimestep();
 
-void onetimestep2();
-
 int main()
 {
     int i, j, k;
     double time = 0;
     initial();
-
+/*
+for (j=0; j<m; j++)
+{
+    cout<<o[1][j].q<<"\t"<<endl;
+    for (k=0; k<4; k++)
+    {
+        cout<<"\t"<<o[1][j].vertex[k]<<endl;
+    }
+    cout<<endl;
+}//*/
     while(time < T)
     {
         dt = choose_dt(dt);
@@ -70,11 +77,13 @@ int main()
     }
 
 
-
     plotmesh();
     plotpressure();
     plotinternalenergy();
     plotux();
+    plote1d();
+    plotrho1d();
+    plotux1d();
     system("pause");
 }
 
@@ -90,6 +99,13 @@ void onetimestep()
         {
             double * utemp;
             utemp = nodal_velocity(i,j);
+            point[i][j].upstarx = utemp[0];
+            point[i][j].upstary = utemp[1];
+            if (j==0 || j ==m)
+            {
+                point[i][j].upstarx = point[i][m/2].upstarx;
+                point[i][j].upstary = point[i][m/2].upstary;
+            }
             delete[] utemp;
         }
     }
@@ -106,7 +122,7 @@ void onetimestep()
             point[i][j].y = point[i][j].ytemp + dt * point[i][j].upstary;
         }
     }
-    //此时temp保存n时刻位置，x,y保存第一次RK的位置
+    //此时temp保存n时刻位置，x,y保存第一次RK的位置(s1)
 
     //**********下面更新节点到相邻点的长度和外法向量****//
     for (i=0; i<=n; i++)
@@ -114,13 +130,29 @@ void onetimestep()
         for (j=0; j<=m; j++)
         {
             double ax, ay, bx, by;
-            ax = point[i][j].x;
-            ay = point[i][j].y;
+            //ax = point[i][j].x;
+            //ay = point[i][j].y;
+
             for (r=0; r<point[i][j].neighbor_node.size(); r++)
             {
                 k = point[i][j].neighbor_node[r] / (m + 1);
                 l = point[i][j].neighbor_node[r] % (m + 1);
-                
+                //ghost node
+                if (j == 0 && l == m-1)
+                {
+                    ax = point[i][m].x;
+                    ay = point[i][m].y;
+                }
+                else if (j == m && l == 1)
+                {
+                    ax = point[i][0].x;
+                    ay = point[i][0].y;
+                }
+                else{
+                    ax = point[i][j].x;
+                    ay = point[i][j].y;
+                }
+            
                 bx = point[k][l].x;
                 by = point[k][l].y;
 
@@ -156,6 +188,10 @@ void onetimestep()
     {
         for (j=0; j<m; j++)
         {
+
+            o[i][j].rholast = o[i][j].rho0 * o[i][j].Jacobi_0(o[i][j].xi_c,o[i][j].eta_c)
+                            / o[i][j].Jacobi(o[i][j].xi_c,o[i][j].eta_c);
+
             double ** Rvs1;
             double * Res1;
             Rvs1 = velocity_matrix(i,j);
@@ -236,6 +272,11 @@ void onetimestep()
             utemp = nodal_velocity(i,j);
             point[i][j].upstarx = utemp[0];
             point[i][j].upstary = utemp[1];
+            if (j==0 || j ==m)
+            {
+                point[i][j].upstarx = point[i][m/2].upstarx;
+                point[i][j].upstary = point[i][m/2].upstary;
+            }
             delete[] utemp;
         }
     }
@@ -256,13 +297,28 @@ void onetimestep()
         for (j=0; j<=m; j++)
         {
             double ax, ay, bx, by;
-            ax = point[i][j].x;
-            ay = point[i][j].y;
+            //ax = point[i][j].x;
+            //ay = point[i][j].y;
             for (r=0; r<point[i][j].neighbor_node.size(); r++)
             {
                 k = point[i][j].neighbor_node[r] / (m + 1);
                 l = point[i][j].neighbor_node[r] % (m + 1);
-                
+                //ghost node
+                if (j == 0 && l == m-1)
+                {
+                    ax = point[i][m].x;
+                    ay = point[i][m].y;
+                }
+                else if (j == m && l == 1)
+                {
+                    ax = point[i][0].x;
+                    ay = point[i][0].y;
+                }
+                else{
+                    ax = point[i][j].x;
+                    ay = point[i][j].y;
+                }
+
                 bx = point[k][l].x;
                 by = point[k][l].y;
 
@@ -300,6 +356,9 @@ void onetimestep()
     {
         for (j=0; j<m; j++)
         {
+            o[i][j].rholast = o[i][j].rho0 * o[i][j].Jacobi_0(o[i][j].xi_c,o[i][j].eta_c)
+                            / o[i][j].Jacobi(o[i][j].xi_c,o[i][j].eta_c);
+
             double ** Rvs2;
             double * Res2;
             Rvs2 = velocity_matrix(i,j);

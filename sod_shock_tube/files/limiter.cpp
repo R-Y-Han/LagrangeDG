@@ -28,9 +28,9 @@ double tau_limiter(int i, int j, double up, double alpha)
     double um;
     int k, l, r;
         
-    if (up > o[i][j].taulast[0])
+    if (up - o[i][j].taulast[0] > 1e-6)
     {
-        um = 0;
+        um = o[i][j].taulast[0];
         for (r=0; r<o[i][j].neighbor_element.size(); r++)
         {
             k = o[i][j].neighbor_element[r] / m;
@@ -41,13 +41,15 @@ double tau_limiter(int i, int j, double up, double alpha)
                 um = o[k][l].taulast[0];
             }
         }
+        alpha = 0.7 * (um - o[i][j].taulast[0]) / (up - o[i][j].taulast[0]);
+        alpha = min((alpha* alpha + 2*alpha)/(alpha*alpha + alpha +2), 1.0);
 
         ul = alpha * (um - o[i][j].taulast[0]) / (up - o[i][j].taulast[0]);
         ul = min(1.0,ul);
     }
-    else if (up < o[i][j].taulast[0])
+    else if (up - o[i][j].taulast[0] < -1e-6)
     {
-        um = 10000;
+        um = o[i][j].taulast[0];
         for (r=0; r<o[i][j].neighbor_element.size(); r++)
         {
             k = o[i][j].neighbor_element[r] / m;
@@ -58,6 +60,9 @@ double tau_limiter(int i, int j, double up, double alpha)
                 um = o[k][l].taulast[0];
             }
         }
+        alpha = 0.7 * (um - o[i][j].taulast[0]) / (up - o[i][j].taulast[0]);
+        alpha = min((alpha* alpha + 2*alpha)/(alpha*alpha + alpha +2), 1.0);
+
         ul = alpha * (um - o[i][j].taulast[0]) / (up - o[i][j].taulast[0]);
         ul = min(1.0,ul);
     }
@@ -75,9 +80,9 @@ double ux_limiter(int i, int j, double up, double alpha)
     double um;
     int k, l, r;
         
-    if (up > o[i][j].uxlast[0])
+    if (up - o[i][j].uxlast[0]> 1e-6)
     {
-        um = 0;
+        um = o[i][j].uxlast[0];
         for (r=0; r<o[i][j].neighbor_element.size(); r++)
         {
             k = o[i][j].neighbor_element[r] / m;
@@ -88,13 +93,15 @@ double ux_limiter(int i, int j, double up, double alpha)
                 um = o[k][l].uxlast[0];
             }
         }
+        alpha = 0.7 * (um - o[i][j].uxlast[0]) / (up - o[i][j].uxlast[0]);
+        alpha = min((alpha* alpha + 2*alpha)/(alpha*alpha + alpha +2), 1.0);
 
         ul = alpha * (um - o[i][j].uxlast[0]) / (up - o[i][j].uxlast[0]);
         ul = min(1.0,ul);
     }
-    else if (up < o[i][j].uxlast[0])
+    else if (up - o[i][j].uxlast[0]<-1e-6)
     {
-        um = 10000;
+        um = o[i][j].uxlast[0];
         for (r=0; r<o[i][j].neighbor_element.size(); r++)
         {
             k = o[i][j].neighbor_element[r] / m;
@@ -105,6 +112,9 @@ double ux_limiter(int i, int j, double up, double alpha)
                 um = o[k][l].uxlast[0];
             }
         }
+        alpha = 0.7 * (um - o[i][j].uxlast[0]) / (up - o[i][j].uxlast[0]);
+        alpha = min((alpha* alpha + 2*alpha)/(alpha*alpha + alpha +2), 1.0);
+
         ul = alpha * (um - o[i][j].uxlast[0]) / (up - o[i][j].uxlast[0]);
         ul = min(1.0,ul);
     }
@@ -122,9 +132,9 @@ double uy_limiter(int i, int j, double up, double alpha)
     double um;
     int k, l, r;
         
-    if (up > o[i][j].uylast[0])
+    if (up - o[i][j].uylast[0] > 1e-6)
     {
-        um = 0;
+        um = o[i][j].uylast[0];
         for (r=0; r<o[i][j].neighbor_element.size(); r++)
         {
             k = o[i][j].neighbor_element[r] / m;
@@ -135,13 +145,15 @@ double uy_limiter(int i, int j, double up, double alpha)
                 um = o[k][l].uylast[0];
             }
         }
+        alpha = 0.7 * (um - o[i][j].uylast[0]) / (up - o[i][j].uylast[0]);
+        alpha = min((alpha* alpha + 2*alpha)/(alpha*alpha + alpha +2), 1.0);
 
         ul = alpha * (um - o[i][j].uylast[0]) / (up - o[i][j].uylast[0]);
         ul = min(1.0,ul);
     }
-    else if (up < o[i][j].uylast[0])
+    else if (up - o[i][j].uylast[0] < -1e-6)
     {
-        um = 10000;
+        um = o[i][j].uylast[0];
         for (r=0; r<o[i][j].neighbor_element.size(); r++)
         {
             k = o[i][j].neighbor_element[r] / m;
@@ -152,6 +164,9 @@ double uy_limiter(int i, int j, double up, double alpha)
                 um = o[k][l].uylast[0];
             }
         }
+        alpha = 0.7 * (um - o[i][j].uylast[0]) / (up - o[i][j].uylast[0]);
+        alpha = min((alpha* alpha + 2*alpha)/(alpha*alpha + alpha +2), 1.0);
+
         ul = alpha * (um - o[i][j].uylast[0]) / (up - o[i][j].uylast[0]);
         ul = min(1.0,ul);
     }

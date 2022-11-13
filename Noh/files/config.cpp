@@ -12,7 +12,7 @@
 #include "config.h"
 
 
-double dt = 1000;  /**< time step*/
+double dt = 1e-4;  /**< time step*/
 
 /**
  * @brief 理想气体状态方程
@@ -28,8 +28,6 @@ double EOS(double rho, double e)
     return p;
 }
 
-double p;   /**< pressure*/
-double rho; /**< density*/
 
 
 /**
@@ -64,6 +62,28 @@ double Omega::phi_y(double xi, double eta)
     for (int i=0; i<4; i++)
     {
         ytemp = ytemp + this->vy[i] * bp(i,xi,eta);
+    }
+    return ytemp;
+}
+
+double Omega::phi_x0(double xi, double eta)
+{
+    double ytemp;
+    ytemp = 0;
+    for (int i=0; i<4; i++)
+    {
+        ytemp = ytemp + this->vx0[i] * bp(i,xi,eta);
+    }
+    return ytemp;
+}
+
+double Omega::phi_y0(double xi, double eta)
+{
+    double ytemp;
+    ytemp = 0;
+    for (int i=0; i<4; i++)
+    {
+        ytemp = ytemp + this->vy0[i] * bp(i,xi,eta);
     }
     return ytemp;
 }
@@ -104,7 +124,7 @@ double Omega::Psi(int i, double xi, double eta)
 /**
  * @brief 基函数对xi求导
  * 
-* @param i 基函数选择
+ * @param i 基函数选择
  * @param xi 变量参考空间横坐标
  * @param eta 变量参考空间纵坐标
  * @return double 返回结果：
@@ -224,7 +244,6 @@ double Omega::Jacobi_0(double xi, double eta)
 Omega o[n][m];  /**< 生成n * m个网格*/
 node point[n+1][m+1];   /**< 生成(n+1)*(m+1)个节点*/
 
-
 double gp = sqrt(3.0/5.0);
 double Gausspoint_xi[gd] = {-gp, gp, gp, -gp, 0, gp, 0, -gp,0};  /**< Gauss求积节点横坐标，[-1,1]x[1,1]*/
 double Gausspoint_eta[gd] = {-gp, -gp, gp, gp, -gp, 0, gp, 0,0};  /**< Gauss求积节点纵坐标*/
@@ -247,7 +266,7 @@ double bp(int i, double xi, double eta)
         double xit, etat;
         xit = ref_xi[i][0];
         etat = ref_xi[i][1];
-        ans = (1 + xit * xi) * ( 1 + etat * eta) / 4;
+        ans = (1 + xit * xi) * ( 1 + etat * eta) / 4.0;
     }
     else{
         ans = 0;
@@ -272,7 +291,7 @@ double bp_xi(int i, double xi, double eta)
         double xit, etat;
         xit = ref_xi[i][0];
         etat = ref_xi[i][1];
-        ans = xit * ( 1 + etat * eta) / 4;
+        ans = xit * ( 1 + etat * eta) / 4.0;
     }
     else{
         ans = 0;
@@ -297,7 +316,7 @@ double bp_eta(int i, double xi, double eta)
         double xit, etat;
         xit = ref_xi[i][0];
         etat = ref_xi[i][1];
-        ans = (1 + xit * xi) * etat / 4;
+        ans = (1 + xit * xi) * etat / 4.0;
     }
     else{
         ans = 0;
@@ -355,7 +374,9 @@ double * normal(double ax, double ay, double bx, double by)
  */
 double ini_rho(double x, double y)
 {
-    return 1;
+    double ans;
+    ans = 1;
+    return ans;
 }
 
 /**
@@ -367,7 +388,9 @@ double ini_rho(double x, double y)
  */
 double ini_ux(double x, double y)
 {
-    return -x;
+    double ans;
+    ans = -x / sqrt(x*x + y*y);
+    return ans;
 }
 
 /**
@@ -379,7 +402,9 @@ double ini_ux(double x, double y)
  */
 double ini_ux_x(double x, double y)
 {
-    return  -1;
+    double ans;
+    ans = - 1.0 / sqrt(x*x + y * y) + x*x / (pow(x*x+y*y,1.5));
+    return  ans;
 }
 
 /**
@@ -391,7 +416,9 @@ double ini_ux_x(double x, double y)
  */
 double ini_ux_y(double x, double y)
 {
-    return 0;
+    double ans;
+    ans = x*y / (pow(x*x + y*y,1.5));
+    return ans;
 }
 
 /**
@@ -403,7 +430,9 @@ double ini_ux_y(double x, double y)
  */
 double ini_uy(double x, double y)
 {
-    return -y;
+    double ans;
+    ans = -y / sqrt(x*x + y*y);
+    return ans;
 }
 
 /**
@@ -415,7 +444,9 @@ double ini_uy(double x, double y)
  */
 double ini_uy_x(double x, double y)
 {
-    return 0;
+    double ans;
+    ans = x*y / (pow(x*x + y*y, 1.5));
+    return ans;
 }
 
 /**
@@ -427,43 +458,9 @@ double ini_uy_x(double x, double y)
  */
 double ini_uy_y(double x, double y)
 {
-    return -1;
-}
-
-/**
- * @brief 初始内能场
- * 
- * @param x 物理横坐标
- * @param y 物理纵坐标
- * @return double 
- */
-double ini_e(double x, double y)
-{
-    return (gamma-1)*1e-6;
-}
-
-/**
- * @brief 初始内能场对x求偏导
- * 
- * @param x 物理横坐标
- * @param y 物理纵坐标
- * @return double 
- */
-double ini_e_x(double x, double y)
-{
-    return 0;
-}
-
-/**
- * @brief 初始内能场对y求偏导
- * 
- * @param x 物理横坐标
- * @param y 物理纵坐标
- * @return double 
- */
-double ini_e_y(double x, double y)
-{
-    return 0;
+    double ans;
+    ans = -1 / sqrt(x*x + y*y) + y*y / (pow(x*x + y*y,1.5));
+    return ans;
 }
 
 /**
@@ -477,5 +474,33 @@ double ini_p(double x, double y)
 {
     double ans;
     ans = 1e-6;
+    return ans;
+}
+
+/**
+ * @brief 初始压力场对x求偏导
+ * 
+ * @param x 物理横坐标
+ * @param y 物理纵坐标
+ * @return double 
+ */
+double ini_p_x(double x, double y)
+{
+    double ans;
+    ans = 0;
+    return ans;
+}
+
+/**
+ * @brief 初始压力场对y求偏导
+ * 
+ * @param x 物理横坐标
+ * @param y 物理纵坐标
+ * @return double 
+ */
+double ini_p_y(double x, double y)
+{
+    double ans;
+    ans = 0;
     return ans;
 }

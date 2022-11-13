@@ -28,7 +28,7 @@ double * u_average(int i, int j)
 {
     double * uavg = new double [2];
     int k, l, r, temp;
-    double xit, etat, norm;
+    double xit, etat;
 
     uavg[0] = 0;
     uavg[1] = 0;
@@ -47,14 +47,26 @@ double * u_average(int i, int j)
                 break;
             }
         }
+        if (o[k][l].vertex[temp] != point[i][j].q)
+        {
+            cout<<"error when arranging nodes"<<endl;
+            return uavg;
+        }
         xit = ref_xi[temp][0];
         etat = ref_xi[temp][1];
         //**********下面计算该单元内节点处速度重构值*******//
+        double uxt, uyt;
+        uxt = 0;
+        uyt = 0;
         for (temp = 0; temp < dim; temp++)
         {
-            uavg[0] = uavg[0] + o[k][l].uxlast[temp] * o[k][l].Psi(temp,xit,etat);
-            uavg[1] = uavg[1] + o[k][l].uylast[temp] * o[k][l].Psi(temp,xit,etat);
+            uxt = uxt + o[k][l].uxlast[temp] * o[k][l].Psi(temp,xit,etat);
+            uyt = uyt + o[k][l].uylast[temp] * o[k][l].Psi(temp,xit,etat);
         }
+        //uxt = ux_limiter(k,l,uxt,0.6);
+        //uyt = uy_limiter(k,l,uyt,0.6);
+        uavg[0] = uavg[0] + uxt;
+        uavg[1] = uavg[1] + uyt;
     }
     //********此时uavg记录了所有单元在该点处速度重构值的总和********//
     uavg[0] = uavg[0] / (double) point[i][j].neighbor_element.size();
@@ -286,39 +298,49 @@ double * nodal_velocity_boundary(int i, int j)
         yt = o[k][l].phi_y(xit,etat);
 
         //********下面计算密度**********//
-        rho = ini_rho(xt,yt) * o[k][l].Jacobi_0(xit,etat);
-        rho = rho / o[k][l].Jacobi(xit,etat);
+        double rho_vertex;
+        rho_vertex = ini_rho(xt,yt) * o[k][l].Jacobi_0(xit,etat);
+        rho_vertex = rho_vertex / o[k][l].Jacobi(xit,etat);
 
         //********下面计算节点处速度和总能重构值********//
         double * uc = new double [2];
-        double ve;
-        ve=0;
+        double ve_vertex, p_vertex;
+        ve_vertex=0;
         uc[0] = 0;
         uc[1] = 0;
         for (temp = 0; temp < dim; temp++)
         {
             uc[0] = uc[0] + o[k][l].uxlast[temp] * o[k][l].Psi(temp,xit,etat);
             uc[1] = uc[1] + o[k][l].uylast[temp] * o[k][l].Psi(temp,xit,etat);
-            ve = ve + o[k][l].taulast[temp] * o[k][l].Psi(temp,xit,etat);
+            ve_vertex = ve_vertex + o[k][l].taulast[temp] * o[k][l].Psi(temp,xit,etat);
         }
-
-        //********下面计算内能**********//
-        ve = ve - 0.5 * (uc[0] * uc[0] + uc[1] * uc[1]);
-        p = EOS (rho, ve);
-        
-        //ve = tau_limiter(k,l,ve,0.6);
         //uc[0] = ux_limiter(k,l,uc[0],0.6);
         //uc[1] = uy_limiter(k,l,uc[1],0.6);
+        //ve_vertex = tau_limiter(k,l,ve_vertex,0.6);
+
+        //********下面计算内能**********//
+        ve_vertex = ve_vertex - 0.5 * (uc[0] * uc[0] + uc[1] * uc[1]);
+        ve_vertex = max(1e-12,ve_vertex);
+        p_vertex = EOS(rho_vertex, ve_vertex);
+        
 //******
-if (ve < 0)
-{
-    //cout<<"error "<<ve<<endl;
-    ve = 1e-6;
-}
+
         //**************下面计算阻抗*************//
-        mu = (gamma - 1) * ve;
+        double rho_center;
+        double xt_c, yt_c;
+        xt_c = o[k][l].phi_x(o[k][l].xi_c,o[k][l].eta_c);
+        yt_c = o[k][l].phi_y(o[k][l].xi_c,o[k][l].eta_c);
+        rho_center = ini_rho(xt,yt) * o[k][l].Jacobi_0(o[k][l].xi_c,o[k][l].eta_c);
+        rho_center = rho_center / o[k][l].Jacobi(o[k][l].xi_c,o[k][l].eta_c);
+
+        double p_center, ve_center;
+        ve_center = o[k][l].uxlast[0]*o[k][l].uxlast[0] + o[k][l].uylast[0] * o[k][l].uylast[0];
+        ve_center = o[k][l].taulast[0] - ve_center * 0.5;
+        p_center = EOS(rho_center,ve_center);
+        p_center = max(1e-12, p_center);
+        mu = gamma * p_center / rho_center;
         mu = sqrt(mu);  //此时mu为声速
-        mu = rho * mu;
+        mu = rho_center * mu;
 
         //*************下面计算激波单位方向*********//
         double * e;
@@ -330,10 +352,10 @@ if (ve < 0)
         double norm;
         norm = e[0] * e[0] + e[1] * e[1];
         norm = sqrt(norm);
-        if (norm == 0)
+        if (norm < 1e-12)
         {
-            e[0] = 0;
-            e[1] = 0;
+            e[0] = 1e-12;
+            e[1] = 1e-12;
         }
         else{
             e[0] = e[0] / norm;
@@ -347,20 +369,16 @@ if (ve < 0)
         mid = nx1 * e[0] + ny1 * e[1];
         mid = mu * abs(mid) * a1;
 
-        b_pre = b_pre - a1 * p * (nx1 * nstarx + ny1 * nstary);
-        b_pre = b_pre - mid * (uc[0] * nstarx + uc[1] * nstary);
-        topx = topx + mid * uc[0] + a1 * nx1 * p;
-        topy = topy + mid * uc[1] + a1 * ny1 * p;
+        topx = topx + mid * uc[0] + a1 * nx1 * p_vertex;
+        topy = topy + mid * uc[1] + a1 * ny1 * p_vertex;
         bottom = bottom + mid;
 
         //************下面计算第二条边的量*******//
         mid = nx2 * e[0] + ny2 * e[1];
         mid = mu * abs(mid) * a2;
 
-        b_pre = b_pre - a2 * p * (nx2 * nstarx + ny2 * nstary);
-        b_pre = b_pre - mid * (uc[0] * nstarx + uc[1] * nstary);
-        topx = topx + mid * uc[0] + a2 * nx2 * p;
-        topy = topy + mid * uc[1] + a2 * ny2 * p;
+        topx = topx + mid * uc[0] + a2 * nx2 * p_vertex;
+        topy = topy + mid * uc[1] + a2 * ny2 * p_vertex;
         bottom = bottom + mid;
 
         delete[] uc;
@@ -374,9 +392,9 @@ if (ve < 0)
         delete[] utemp;
     }
     else{
-        //b_pre = topx * nstarx + topy * nstary;
-        ustar[0] = (topx + b_pre * nstarx) / bottom;
-        ustar[1] = (topy + b_pre * nstary) / bottom;
+        b_pre = topx * nstarx + topy * nstary;
+        ustar[0] = (topx - b_pre * nstarx) / bottom;
+        ustar[1] = (topy - b_pre * nstary) / bottom;
     }
     return ustar;
 }
@@ -397,13 +415,13 @@ double * nodal_velocity(int i, int j)
     if (point[i][j].boundary == 1)
     {
         //******是边界点*******//
-        ustar = nodal_velocity_boundary(i,j);
-        /*
+        //ustar = nodal_velocity_boundary(i,j);
+        //*
         ustar = new double [2];
         double xt = point[i][j].x;
         double yt = point[i][j].y;
         ustar[0] = ini_ux(xt,yt);
-        ustar[1] = ini_uy(xt,yt);*/
+        ustar[1] = ini_uy(xt,yt);//*/
         return ustar;
     }
 
@@ -429,6 +447,10 @@ double * nodal_velocity(int i, int j)
             {
                 break;
             }
+        }
+        if (o[k][l].vertex[temp] != point[i][j].q)
+        {
+            cout<<"error when arranging nodes"<<endl;
         }
         xit = ref_xi[temp][0];
         etat = ref_xi[temp][1];
@@ -485,40 +507,54 @@ double * nodal_velocity(int i, int j)
         yt = o[k][l].phi_y(xit,etat);
 
         //********下面计算密度**********//
-        rho = ini_rho(xt,yt) * o[k][l].Jacobi_0(xit,etat);
-        rho = rho / o[k][l].Jacobi(xit,etat);
+        double rho_vertex;
+        rho_vertex = ini_rho(xt,yt) * o[k][l].Jacobi_0(xit,etat);
+        rho_vertex = rho_vertex / o[k][l].Jacobi(xit,etat);
 
         //********下面计算节点处速度和总能重构值********//
         double * uc = new double [2];
-        double ve;
-        ve=0;
+        double ve_vertex, p_vertex;
+        ve_vertex=0;
         uc[0] = 0;
         uc[1] = 0;
         for (temp = 0; temp < dim; temp++)
         {
             uc[0] = uc[0] + o[k][l].uxlast[temp] * o[k][l].Psi(temp,xit,etat);
             uc[1] = uc[1] + o[k][l].uylast[temp] * o[k][l].Psi(temp,xit,etat);
-            ve = ve + o[k][l].taulast[temp] * o[k][l].Psi(temp,xit,etat);
+            ve_vertex = ve_vertex + o[k][l].taulast[temp] * o[k][l].Psi(temp,xit,etat);
         }
+        //uc[0] = ux_limiter(k,l,uc[0],0.6);
+        //uc[1] = uy_limiter(k,l,uc[1],0.6);
+        //ve_vertex = tau_limiter(k,l,ve_vertex,0.6);
 
         //********下面计算内能**********//
-        ve = ve - 0.5 * (uc[0] * uc[0] + uc[1] * uc[1]);
-        p = EOS (rho, ve);
+        ve_vertex = ve_vertex - 0.5 * (uc[0] * uc[0] + uc[1] * uc[1]);
+        ve_vertex = max(1e-12,ve_vertex);
+        p_vertex = EOS(rho_vertex, ve_vertex);
 
         //ve = tau_limiter(k,l,ve,0.6);
         //uc[0] = ux_limiter(k,l,uc[0],0.6);
         //uc[1] = uy_limiter(k,l,uc[1],0.6);
 //******
-if (ve < 0)
-{
-    cout<<"error "<<ve<<endl;
-    ve = 1e-6;
-}
+
         //**************下面计算阻抗*************//
-        mu = (gamma - 1) * ve;
+        double rho_center;
+        double xt_c, yt_c;
+        xt_c = o[k][l].phi_x(o[k][l].xi_c,o[k][l].eta_c);
+        yt_c = o[k][l].phi_y(o[k][l].xi_c,o[k][l].eta_c);
+        rho_center = ini_rho(xt,yt) * o[k][l].Jacobi_0(o[k][l].xi_c,o[k][l].eta_c);
+        rho_center = rho_center / o[k][l].Jacobi(o[k][l].xi_c,o[k][l].eta_c);
+
+        double p_center, ve_center;
+        ve_center = o[k][l].uxlast[0]*o[k][l].uxlast[0] + o[k][l].uylast[0] * o[k][l].uylast[0];
+        ve_center = o[k][l].taulast[0] - ve_center * 0.5;
+        p_center = EOS(rho_center,ve_center);
+        p_center = max(1e-12, p_center);
+        mu = gamma * p_center / rho_center;
         mu = sqrt(mu);  //此时mu为声速
-        mu = rho * mu;
-        
+        mu = rho_center * mu;
+
+
         //*************下面计算激波单位方向*********//
         double * e;
         e = u_average(i,j);
@@ -529,10 +565,10 @@ if (ve < 0)
         double norm;
         norm = e[0] * e[0] + e[1] * e[1];
         norm = sqrt(norm);
-        if (norm == 0)
+        if (norm < 1e-12)
         {
-            e[0] = 0;
-            e[1] = 0;
+            e[0] = 1e-12;
+            e[1] = 1e-12;
         }
         else{
             e[0] = e[0] / norm;
@@ -546,16 +582,16 @@ if (ve < 0)
         mid = nx1 * e[0] + ny1 * e[1];
         mid = mu * abs(mid) * a1;
 
-        topx = topx + mid * uc[0] + a1 * nx1 * p;
-        topy = topy + mid * uc[1] + a1 * ny1 * p;
+        topx = topx + mid * uc[0] + a1 * nx1 * p_vertex;
+        topy = topy + mid * uc[1] + a1 * ny1 * p_vertex;
         bottom = bottom + mid;
 
         //************下面计算第二条边的量*******//
         mid = nx2 * e[0] + ny2 * e[1];
         mid = mu * abs(mid) * a2;
 
-        topx = topx + mid * uc[0] + a2 * nx2 * p;
-        topy = topy + mid * uc[1] + a2 * ny2 * p;
+        topx = topx + mid * uc[0] + a2 * nx2 * p_vertex;
+        topy = topy + mid * uc[1] + a2 * ny2 * p_vertex;
         bottom = bottom + mid;
 
         delete[] uc;
@@ -620,8 +656,9 @@ double ** corner_force(int i, int j, int r)
     }
 if (o[k][l].vertex[temp] != point[i][j].q)
 {
-    cout<<"error"<<endl;
+    cout<<"error when arranging nodes"<<endl;
 }
+
     xit = ref_xi[temp][0];
     etat = ref_xi[temp][1];
 
@@ -652,7 +689,10 @@ if (o[k][l].vertex[temp] != point[i][j].q)
             break;
         }
     }
-
+if (point[i][j].neighbor_node[p1] != node1)
+{
+    cout<<"error when arranging neighbor nodes"<<endl;
+}
     for (p2 = 0; p2 < point[i][j].neighbor_node.size(); p2++)
     {
         if (point[i][j].neighbor_node[p2] == node2)
@@ -660,6 +700,10 @@ if (o[k][l].vertex[temp] != point[i][j].q)
             break;
         }
     }
+if (point[i][j].neighbor_node[p2] != node2)
+{
+    cout<<"error when arranging neighbor nodes"<<endl;
+}
     //p1, p2为(i,j)指向相邻顶点的指针
 
     //***************下面记录每条边上的外法向量和长度************//
@@ -673,56 +717,67 @@ if (o[k][l].vertex[temp] != point[i][j].q)
 
     //*******下面计算第r个corner中的相应分量********//
     double xt, yt;
-    xt = point[i][j].x;
-    yt = point[i][j].y;
+    xt = o[k][l].phi_x(xit,etat);
+    yt = o[k][l].phi_y(xit,etat);
 
     //********下面计算密度**********//
-    rho = ini_rho(xt,yt) * o[k][l].Jacobi_0(xit,etat);
-    rho = rho / o[k][l].Jacobi(xit,etat);
+    double rho_vertex;
+    rho_vertex = ini_rho(xt,yt) * o[k][l].Jacobi_0(xit,etat);
+    rho_vertex = rho_vertex / o[k][l].Jacobi(xit,etat);
 
     //********下面计算节点处速度重构值********//
     double * uc = new double [2];
-    double ve;
-    ve = 0;
+    double ve_vertex, p_vertex;
+    ve_vertex=0;
     uc[0] = 0;
     uc[1] = 0;
     for (temp = 0; temp < dim; temp++)
     {
         uc[0] = uc[0] + o[k][l].uxlast[temp] * o[k][l].Psi(temp,xit,etat);
         uc[1] = uc[1] + o[k][l].uylast[temp] * o[k][l].Psi(temp,xit,etat);
-        ve = ve + o[k][l].taulast[temp] * o[k][l].Psi(temp,xit,etat);
+        ve_vertex = ve_vertex + o[k][l].taulast[temp] * o[k][l].Psi(temp,xit,etat);
     }
+        //uc[0] = ux_limiter(k,l,uc[0],0.6);
+        //uc[1] = uy_limiter(k,l,uc[1],0.6);
+        //ve_vertex = tau_limiter(k,l,ve_vertex,0.6);
     //********下面计算内能**********//
-    ve = ve - 0.5 * (uc[0] * uc[0] + uc[1] * uc[1]);
-    p = EOS(rho,ve);
+    ve_vertex = ve_vertex - 0.5 * (uc[0] * uc[0] + uc[1] * uc[1]);
+    ve_vertex = max(1e-12,ve_vertex);
+    p_vertex = EOS(rho_vertex, ve_vertex);
 
-    //ve = tau_limiter(k,l,ve,0.6);
-    //uc[0] = ux_limiter(k,l,uc[0],0.6);
-    //uc[1] = uy_limiter(k,l,uc[1],0.6);
 
 //****
-if (ve < 0)
-{
-    //cout<<"error"<<endl;
-    ve = 1e-6;
-}
+
     //**************下面计算阻抗*************//
-    mu = (gamma - 1) * ve;
+    double rho_center;
+    double xt_c, yt_c;
+    xt_c = o[k][l].phi_x(o[k][l].xi_c,o[k][l].eta_c);
+    yt_c = o[k][l].phi_y(o[k][l].xi_c,o[k][l].eta_c);
+    rho_center = ini_rho(xt,yt) * o[k][l].Jacobi_0(o[k][l].xi_c,o[k][l].eta_c);
+    rho_center = rho_center / o[k][l].Jacobi(o[k][l].xi_c,o[k][l].eta_c);
+
+    double p_center, ve_center;
+    ve_center = o[k][l].uxlast[0]*o[k][l].uxlast[0] + o[k][l].uylast[0] * o[k][l].uylast[0];
+    ve_center = o[k][l].taulast[0] - ve_center * 0.5;
+    ve_center = max(1e-12,ve_center);
+    p_center = EOS(rho_center,ve_center);
+    mu = gamma * p_center / rho_center;
     mu = sqrt(mu);  //此时mu为声速
-    mu = rho * mu;
+    mu = rho_center * mu;
 
     //*************下面计算激波单位方向*********//
+    double * uavg = u_average(i,j);
     double * e;
     e = new double [2];
-    e[0] = point[i][j].upstarx - uc[0];
-    e[1] = point[i][j].upstary - uc[1];
+    e[0] = uavg[0] - uc[0];
+    e[1] = uavg[1] - uc[1];
     double norm;
     norm = e[0] * e[0] + e[1] * e[1];
     norm = sqrt(norm);
-    if (norm == 0)
+    if (norm < 1e-12)
     {
-        e[0] = 0;
-        e[1] = 0;
+        e[0] = 1e-12;
+        e[1] = 1e-12;
     }
     else{
         e[0] = e[0] / norm;
@@ -733,16 +788,18 @@ if (ve < 0)
     
     mid = nx1 * e[0] + ny1 * e[1];
     mid = mu * abs(mid) * a1;
-    f[0][0] = - a1 * nx1 * p + mid * ( point[i][j].upstarx - uc[0] );
-    f[0][1] = - a1 * ny1 * p + mid * ( point[i][j].upstary - uc[1] );
+
+    f[0][0] = - a1 * nx1 * p_vertex + mid * ( point[i][j].upstarx - uc[0] );
+    f[0][1] = - a1 * ny1 * p_vertex + mid * ( point[i][j].upstary - uc[1] );
 
     mid = nx2 * e[0] + ny2 * e[1];
     mid = mu * abs(mid) * a2;
 
-    f[1][0] = - a2 * nx2 * p + mid * ( point[i][j].upstarx - uc[0] );
-    f[1][1] = - a2 * ny2 * p + mid * ( point[i][j].upstary - uc[1] );
+    f[1][0] = - a2 * nx2 * p_vertex + mid * ( point[i][j].upstarx - uc[0] );
+    f[1][1] = - a2 * ny2 * p_vertex + mid * ( point[i][j].upstary - uc[1] );
 
     delete[] uc;
+    delete[] uavg;
     delete[] e;
     return f;
 }

@@ -48,8 +48,6 @@ using namespace std;
  */
 void onetimestep();
 
-void onetimestep2();
-
 int main()
 {
     int i, j, k;
@@ -74,6 +72,7 @@ int main()
     plotmesh();
     plotpressure();
     plotinternalenergy();
+    plotrho1d();
     system("pause");
 }
 
@@ -89,6 +88,8 @@ void onetimestep()
         {
             double * utemp;
             utemp = nodal_velocity(i,j);
+            point[i][j].upstarx = utemp[0];
+            point[i][j].upstary = utemp[1];
             delete[] utemp;
         }
     }
@@ -155,6 +156,9 @@ void onetimestep()
     {
         for (j=0; j<m; j++)
         {
+            o[i][j].rholast = o[i][j].rho0 * o[i][j].Jacobi_0(o[i][j].xi_c,o[i][j].eta_c)
+                            / o[i][j].Jacobi(o[i][j].xi_c,o[i][j].eta_c);
+            
             double ** Rvs1;
             double * Res1;
             Rvs1 = velocity_matrix(i,j);
@@ -292,13 +296,14 @@ void onetimestep()
         }
     }
 
-
-
     //********下面进行第二次单元速度和质量总能的计算*********//
     for (i=0; i<n; i++)
     {
         for (j=0; j<m; j++)
         {
+            o[i][j].rholast = o[i][j].rho0 * o[i][j].Jacobi_0(o[i][j].xi_c,o[i][j].eta_c)
+                            / o[i][j].Jacobi(o[i][j].xi_c,o[i][j].eta_c);
+            
             double ** Rvs2;
             double * Res2;
             Rvs2 = velocity_matrix(i,j);

@@ -22,8 +22,8 @@ using namespace std;
 
 const int dim = 3;  /**< »ùº¯Êý¸öÊý*/
 
-const int n = 100;    /**< Íø¸ñºáÏòÆÊ·Ö´óÐ¡£¬0-n*/
-const int m = 8;    /**< Íø¸ñ×ÝÏòÆÊ·Ö´óÐ¡£¬0-m*/
+const int n = 200;    /**< Íø¸ñºáÏòÆÊ·Ö´óÐ¡£¬0-n*/
+const int m = 10;    /**< Íø¸ñ×ÝÏòÆÊ·Ö´óÐ¡£¬0-m*/
 
 const double X = 1; /**< ¼ÆËãÇøÓòºá×ø±ê*/
 const double Y = 0.2; /**< ¼ÆËãÇøÓò×Ý×ø±ê*/
@@ -45,12 +45,9 @@ const double ref_xi[4][2] = {{-1,-1}, {1,-1}, {1,1}, {-1,1}};   /**< ²Î¿¼µ¥ÔªµÄË
  * @{
  */
 
-const double gamma = 7 /(double) 5; /**< specific heat*/
+const double gamma = 5 /(double) 3; /**< specific heat*/
 
 double EOS(double rho, double e);   /**< EOS*/
-
-extern double p;   /**< pressure*/
-extern double rho; /**< density*/
 
 /** @struct Omega
  * @brief Íø¸ñµ¥ÔªÀàµÄ¶¨Òå
@@ -73,6 +70,8 @@ struct Omega{
 
     double phi_x(double xi, double eta);    /**< ´Ó²Î¿¼¿Õ¼äµ½ÎïÀí¿Õ¼äµÄÓ³Éä£¬x·ÖÁ¿*/
     double phi_y(double xi, double eta);    /**< ´Ó²Î¿¼¿Õ¼äµ½ÎïÀí¿Õ¼äµÄÓ³Éä£¬y·ÖÁ¿*/
+    double phi_x0(double xi, double eta);
+    double phi_y0(double xi, double eta);
     double Psi(int i, double xi, double eta);  /**< Íø¸ñµÄ»ùº¯Êý*/
     double Psi_xi(int i, double xi, double eta);    /**< »ùº¯Êý¶ÔxiÇóµ¼*/
     double Psi_eta(int i, double xi, double eta);   /**< »ùº¯Êý¶ÔetaÇóµ¼*/
@@ -88,6 +87,8 @@ struct Omega{
     double * taulast;  /**< specific energy for t_n */
     double * taunext; /**< specific energy for t_{n+1}*/
 
+    double rholast;
+    double rho0;
 };
 
 /** @struct node

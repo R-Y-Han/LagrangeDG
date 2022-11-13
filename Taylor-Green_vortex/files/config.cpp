@@ -224,10 +224,11 @@ double Omega::Jacobi_0(double xi, double eta)
 Omega o[n][m];  /**< 生成n * m个网格*/
 node point[n+1][m+1];   /**< 生成(n+1)*(m+1)个节点*/
 
-double gp = sqrt(3.0/5.0);
-double Gausspoint_xi[gd] = {-gp, gp, gp, -gp, 0, gp, 0, -gp,0};  /**< Gauss求积节点横坐标，[-1,1]x[1,1]*/
+
+double gp = sqrt(0.6);
+double Gausspoint_xi[gd] = {-gp, gp, gp, -gp, 0, gp, 0, -gp,0};  /**< Gauss求积节点横坐标，[-1,1]x[-1,1]*/
 double Gausspoint_eta[gd] = {-gp, -gp, gp, gp, -gp, 0, gp, 0,0};  /**< Gauss求积节点纵坐标*/
-double Gaussweight[gd] = {25/81.0, 25/81.0, 25/81.0, 25/81.0, 40/81.0, 40/81.0, 40/81.0, 40/81.0, 64/81.0};   /**< Gauss求积权重*/
+double Gaussweight[gd] = {25.0/81.0, 25.0/81.0, 25.0/81.0, 25.0/81.0, 40.0/81.0, 40.0/81.0, 40.0/81.0, 40.0/81.0, 64.0/81.0};   /**< Gauss求积权重*/
 
 /**
  * @brief 形函数，用于求参考空间到物理空间的同胚映射
@@ -316,8 +317,8 @@ double bp_eta(int i, double xi, double eta)
 double length(double ax, double ay, double bx, double by)
 {
     double ans;
-    ans = (ax - bx) * (ax - bx);
-    ans = ans + (ay - by ) * ( ay - by);
+    ans = (bx - ax) * (bx - ax);
+    ans = ans + (by - ay ) * ( by - ay);
     ans = sqrt(ans);
     return ans;
 }

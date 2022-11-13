@@ -43,7 +43,7 @@ double get_density(double xi, double eta, int r)
     rt = ini_rho(xt,yt) * jt;
     jt = o[i][j].Jacobi(xi,eta);
     rt = rt / jt;
-
+    
     return rt;
 }
 
@@ -104,7 +104,7 @@ double ** velocity_matrix(int i, int j)
     {
         xit = Gausspoint_xi[temp];
         etat = Gausspoint_eta[temp];
-        
+
         rhot = get_density(xit,etat,o[i][j].q);
         jt = o[i][j].Jacobi(xit,etat);
         
@@ -119,12 +119,14 @@ double ** velocity_matrix(int i, int j)
             ut[0] = ut[0] + o[i][j].uxlast[r] * o[i][j].Psi(r,xit,etat);
             ut[1] = ut[1] + o[i][j].uylast[r] * o[i][j].Psi(r,xit,etat);
         }
-        et = et - (ut[0] * ut[0] + ut[1] * ut[1]) * 0.5;
-        p = EOS(rhot,et);
-
-        //et = tau_limiter(i,j,et,0.6);
         //ut[0] = ux_limiter(i,j,ut[0],0.6);
         //ut[1] = uy_limiter(i,j,ut[1],0.6);
+        //et = tau_limiter(i,j,et,0.6);
+
+        et = et - (ut[0] * ut[0] + ut[1] * ut[1]) * 0.5;
+        et = max(1e-12,et);
+        p = EOS(rhot,et);
+
         delete[] ut;
 
         //***********下面计算J的逆矩阵**********//
@@ -218,8 +220,8 @@ double * energy_matrix(int i, int j)
 
         for ( temp = 0; temp < dim; temp++)
         {
-            mid = f[0][0] * point[k][l].upstarx + f[0][1] * point[k][l].upstary;
-            mid = mid + f[1][0] * point[k][l].upstarx + f[1][1] * point[k][l].upstary;
+            mid = f[0][0] * point[k][l].upstarx + f[0][1] * point[k][l].upstary
+                 + f[1][0] * point[k][l].upstarx + f[1][1] * point[k][l].upstary;
             R[temp] = R[temp] + o[i][j].Psi(temp,xit,etat) * mid;
         }
 
@@ -250,12 +252,14 @@ double * energy_matrix(int i, int j)
             ut[0] = ut[0] + o[i][j].uxlast[r] * o[i][j].Psi(r,xit,etat);
             ut[1] = ut[1] + o[i][j].uylast[r] * o[i][j].Psi(r,xit,etat);
         }
-        et = et - (ut[0] * ut[0] + ut[1] * ut[1]) * 0.5;
-        p = EOS(rhot,et);
         
-        //et = tau_limiter(i,j,et,0.6);
         //ut[0] = ux_limiter(i,j,ut[0],0.6);
         //ut[1] = uy_limiter(i,j,ut[1],0.6);
+        //et = tau_limiter(i,j,et,0.6);
+        et = et - (ut[0] * ut[0] + ut[1] * ut[1]) * 0.5;
+        et = max(1e-12,et);
+        p = EOS(rhot,et);
+        
         //***********下面计算J的逆矩阵**********//
         double** J_inv = new double * [2];
         for (r=0; r<2; r++)
@@ -282,10 +286,10 @@ double * energy_matrix(int i, int j)
         double t1, t2;
         for (r=1; r<dim; r++)
         {
-            t1 = o[i][j].Psi_xi(r,xit,etat) * J_inv[0][0];
-            t1 = t1 + o[i][j].Psi_eta(r,xit,etat) * J_inv[1][0];
-            t2 = o[i][j].Psi_xi(r,xit,etat) * J_inv[0][1];
-            t2 = t2 + o[i][j].Psi_eta(r,xit,etat) * J_inv[1][1];
+            t1 = o[i][j].Psi_xi(r,xit,etat) * J_inv[0][0]
+                + o[i][j].Psi_eta(r,xit,etat) * J_inv[1][0];
+            t2 = o[i][j].Psi_xi(r,xit,etat) * J_inv[0][1]
+                + o[i][j].Psi_eta(r,xit,etat) * J_inv[1][1];
             mid = t1 * ut[0] + t2 * ut[1];
             mid = - mid * jt * p;
             R[r] = R[r] - mid * Gaussweight[temp];

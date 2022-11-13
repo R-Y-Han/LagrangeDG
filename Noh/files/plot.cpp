@@ -15,9 +15,9 @@
 using namespace std;
 
 
-const char* fn_mesh = "F:\\C++Codes\\LagrangeDG\\Noh\\output\\mesh.plt";
-const char* fn_pre = "F:\\C++Codes\\LagrangeDG\\Noh\\output\\pressure.plt";
-const char* fn_interene = "F:\\C++Codes\\LagrangeDG\\Noh\\output\\e.plt";
+const char* fn_mesh = "F:\\C++Code\\LagrangeDG\\Noh\\output\\mesh.plt";
+const char* fn_pre = "F:\\C++Code\\LagrangeDG\\Noh\\output\\pressure.plt";
+const char* fn_interene = "F:\\C++Code\\LagrangeDG\\Noh\\output\\e.plt";
 
 /**
  * @brief »æÖÆÍø¸ñÍ¼Ïñ
@@ -61,7 +61,7 @@ void plotmesh()
 void plotpressure()
 {
     int i, j, k;
-    double xt, yt, temp;
+    double xt0, yt0, temp;
     remove(fn_pre);
     ofstream f(fn_pre);
     f<<"VARIABLES = X, Y, P"<<endl;
@@ -88,12 +88,13 @@ void plotpressure()
         for (j=0; j<m; j++)
         {
             
-            xt = o[i][j].phi_x(o[i][j].xi_c,o[i][j].eta_c);
-            yt = o[i][j].phi_y(o[i][j].xi_c,o[i][j].eta_c);
-            rho = ini_rho(xt,yt) * o[i][j].Jacobi_0(o[i][j].xi_c,o[i][j].eta_c);
-            rho = rho / o[i][j].Jacobi(o[i][j].xi_c,o[i][j].eta_c);
-            temp = o[i][j].uxlast[0] * o[i][j].uxlast[0];
-            temp = temp + o[i][j].uylast[0] * o[i][j].uylast[0];
+            xt0 = o[i][j].phi_x0(o[i][j].xi_c,o[i][j].eta_c);
+            yt0 = o[i][j].phi_y0(o[i][j].xi_c,o[i][j].eta_c);
+            double rho, p;
+            rho = ini_rho(xt0,yt0) * o[i][j].Jacobi_0(o[i][j].xi_c,o[i][j].eta_c)
+                                   / o[i][j].Jacobi(o[i][j].xi_c,o[i][j].eta_c);
+            temp = o[i][j].uxlast[0] * o[i][j].uxlast[0]
+                 + o[i][j].uylast[0] * o[i][j].uylast[0];
             temp = o[i][j].taulast[0] - 0.5 * temp;
             p = EOS(rho,temp);
             f<<p<<endl;
@@ -125,7 +126,7 @@ void plotinternalenergy()
     double temp;
     remove(fn_interene);
     ofstream f(fn_interene);
-    f<<"VARIABLES = X, Y, P"<<endl;
+    f<<"VARIABLES = X, Y, e"<<endl;
     f<<"ZONE N = "<<(n+1)*(m+1)<<", E = "<<n*m<<endl;
     f<<"ZONETYPE = FEQUADRILATERAL"<<endl;
     f<<"DATAPACKING = BLOCK"<<endl;
@@ -164,6 +165,31 @@ void plotinternalenergy()
             }
             f<<endl;
         }
+    }
+
+    f.close();
+    return ;
+}
+
+void plotrho1d()
+{
+    int i, j, k;
+    double xt, yt, temp;
+    const char* fn_e1d = "F:\\C++Code\\LagrangeDG\\Noh\\output\\rho1d.plt";
+    remove(fn_e1d);
+    ofstream f(fn_e1d);
+    f<<"VARIABLES = X, density"<<endl;
+
+    for (i=n/2; i<n; i++)
+    {
+        f<<point[i][0].x<<"\t";
+        double rho;
+        double xc, yc;
+        xc = o[i][m/2].phi_x0(o[i][m/2].xi_c,o[i][m/2].eta_c);
+        yc = o[i][m/2].phi_y0(o[i][m/2].xi_c,o[i][m/2].eta_c);
+        rho = ini_rho(xc,yc) * o[i][m/2].Jacobi_0(o[i][m/2].xi_c,o[i][m/2].eta_c)
+                             / o[i][m/2].Jacobi(o[i][m/2].xi_c,o[i][m/2].eta_c);
+        f<<rho<<endl;
     }
 
     f.close();

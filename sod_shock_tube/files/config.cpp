@@ -12,7 +12,7 @@
 #include "config.h"
 
 
-double dt = 1000;  /**< time step*/
+double dt = 1e-4;  /**< time step*/
 
 /**
  * @brief 理想气体状态方程
@@ -27,9 +27,6 @@ double EOS(double rho, double e)
     p = (gamma - 1) * rho * e;
     return p;
 }
-
-double p;   /**< pressure*/
-double rho; /**< density*/
 
 
 /**
@@ -67,6 +64,29 @@ double Omega::phi_y(double xi, double eta)
     }
     return ytemp;
 }
+
+double Omega::phi_x0(double xi, double eta)
+{
+    double ytemp;
+    ytemp = 0;
+    for (int i=0; i<4; i++)
+    {
+        ytemp = ytemp + this->vx0[i] * bp(i,xi,eta);
+    }
+    return ytemp;
+}
+
+double Omega::phi_y0(double xi, double eta)
+{
+    double ytemp;
+    ytemp = 0;
+    for (int i=0; i<4; i++)
+    {
+        ytemp = ytemp + this->vy0[i] * bp(i,xi,eta);
+    }
+    return ytemp;
+}
+
 
 /**
  * @brief 每个单元的基函数，由在质心的Taylor展开得到
@@ -355,7 +375,7 @@ double * normal(double ax, double ay, double bx, double by)
 double ini_rho(double x, double y)
 {
     double ans;
-    if (x < X / 2.0)
+    if (x < 0.5)
     {
         ans = 1;
     }
@@ -375,7 +395,7 @@ double ini_rho(double x, double y)
 double ini_ux(double x, double y)
 {
     double ans;
-    ans = 1e-9;
+    ans = 0;
     return ans;
 }
 
@@ -459,7 +479,7 @@ double ini_uy_y(double x, double y)
 double ini_p(double x, double y)
 {
     double ans;
-    if (x < X / 2.0)
+    if (x < 0.5)
     {
         ans = 1;
     }

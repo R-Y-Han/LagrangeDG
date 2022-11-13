@@ -22,8 +22,8 @@ using namespace std;
 
 const int dim = 3;  /**< »ùº¯Êý¸öÊý*/
 
-const int n = 40;    /**< Íø¸ñºáÏòÆÊ·Ö´óÐ¡£¬0-n*/
-const int m = 40;    /**< Íø¸ñ×ÝÏòÆÊ·Ö´óÐ¡£¬0-m*/
+const int n = 10;    /**< Íø¸ñºáÏòÆÊ·Ö´óÐ¡£¬0-n*/
+const int m = 10;    /**< Íø¸ñ×ÝÏòÆÊ·Ö´óÐ¡£¬0-m*/
 
 const double X = 1; /**< ¼ÆËãÇøÓòºá×ø±ê*/
 const double Y = 1; /**< ¼ÆËãÇøÓò×Ý×ø±ê*/
@@ -31,7 +31,7 @@ const double Y = 1; /**< ¼ÆËãÇøÓò×Ý×ø±ê*/
 const double hx = X / (double) n;   /**< spatial step in x*/
 const double hy = Y / (double) m;   /**< spatial step in y*/
 
-const double T = 0.001;   /**< end time*/
+const double T = 0.1;   /**< end time*/
 
 extern double dt;  /**< time step*/
 
@@ -45,7 +45,7 @@ const double ref_xi[4][2] = {{-1,-1}, {1,-1}, {1,1}, {-1,1}};   /**< ²Î¿¼µ¥ÔªµÄË
  * @{
  */
 
-const double gamma = 7 /(double) 5; /**< specific heat*/
+const double gamma = 5 /(double) 3; /**< specific heat*/
 
 double EOS(double rho, double e);   /**< EOS*/
 

@@ -12,7 +12,7 @@
 #include "config.h"
 
 
-double dt = 1000;  /**< time step*/
+double dt = 1e-4;  /**< time step*/
 
 /**
  * @brief 理想气体状态方程
@@ -28,8 +28,6 @@ double EOS(double rho, double e)
     return p;
 }
 
-double p;   /**< pressure*/
-double rho; /**< density*/
 
 
 /**
@@ -64,6 +62,28 @@ double Omega::phi_y(double xi, double eta)
     for (int i=0; i<4; i++)
     {
         ytemp = ytemp + this->vy[i] * bp(i,xi,eta);
+    }
+    return ytemp;
+}
+
+double Omega::phi_x0(double xi, double eta)
+{
+    double ytemp;
+    ytemp = 0;
+    for (int i=0; i<4; i++)
+    {
+        ytemp = ytemp + this->vx0[i] * bp(i,xi,eta);
+    }
+    return ytemp;
+}
+
+double Omega::phi_y0(double xi, double eta)
+{
+    double ytemp;
+    ytemp = 0;
+    for (int i=0; i<4; i++)
+    {
+        ytemp = ytemp + this->vy0[i] * bp(i,xi,eta);
     }
     return ytemp;
 }
@@ -370,7 +390,6 @@ double ini_ux(double x, double y)
 {
     double ans;
     ans = 0;
-    ans = -x;
     return ans;
 }
 
@@ -385,7 +404,6 @@ double ini_ux_x(double x, double y)
 {
     double ans;
     ans = 0;
-    ans = -1;
     return  ans;
 }
 
@@ -414,7 +432,6 @@ double ini_uy(double x, double y)
 {
     double ans;
     ans = 0;
-    ans = -y;
     return ans;
 }
 
@@ -443,7 +460,6 @@ double ini_uy_y(double x, double y)
 {
     double ans;
     ans = 0;
-    ans = -1;
     return ans;
 }
 

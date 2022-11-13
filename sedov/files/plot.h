@@ -40,4 +40,6 @@ void plotinternalenergy();
  * 
  */
 void plotux();
+
+void plotrho1d();
 #endif

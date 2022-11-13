@@ -15,9 +15,9 @@
 using namespace std;
 
 
-const char* fn_mesh = "F:\\C++Codes\\LagrangeDG\\Taylor-Green_vortex\\output\\mesh.plt";
-const char* fn_pre = "F:\\C++Codes\\LagrangeDG\\Taylor-Green_vortex\\output\\pressure.plt";
-const char* fn_interene = "F:\\C++Codes\\LagrangeDG\\Taylor-Green_vortex\\output\\e.plt";
+const char* fn_mesh = "F:\\C++Code\\LagrangeDG\\Taylor-Green_vortex\\output\\mesh.plt";
+const char* fn_pre = "F:\\C++Code\\LagrangeDG\\Taylor-Green_vortex\\output\\pressure.plt";
+const char* fn_interene = "F:\\C++Code\\LagrangeDG\\Taylor-Green_vortex\\output\\e.plt";
 
 /**
  * @brief »æÖÆÍø¸ñÍ¼Ïñ

@@ -18,35 +18,6 @@
 #include <iostream>
 using namespace std;
 
-/**
- * @brief Get the density
- * 
- * @param xi 节点的参考坐标横坐标
- * @param eta 节点的参考坐标纵坐标
- * @param r 节点所在单元的编号
- * @return double 
- */
-double get_density(double xi, double eta, int r)
-{
-    double rt;
-    double xt, yt, jt;
-    int i, j;
-
-    i = r / m;
-    j = r % m;
-    //*********下面获得节点的物理坐标*********//
-    xt = o[i][j].phi_x(xi,eta);
-    yt = o[i][j].phi_y(xi,eta);
-
-    //*********下面用强质量守恒计算密度*******//
-    jt = o[i][j].Jacobi_0(xi,eta);
-    rt = ini_rho(xt,yt) * jt;
-    jt = o[i][j].Jacobi(xi,eta);
-    rt = rt / jt;
-
-    return rt;
-}
-
 
 /**
  * @brief 得到单元速度的右端矩阵
@@ -105,7 +76,18 @@ double ** velocity_matrix(int i, int j)
         xit = Gausspoint_xi[temp];
         etat = Gausspoint_eta[temp];
         
-        rhot = get_density(xit,etat,o[i][j].q);
+        //rhot = o[i][j].rholast;
+        double xt0, yt0;
+        xt0 = o[i][j].phi_x0(xit,etat);
+        yt0 = o[i][j].phi_y0(xit,etat);
+        if (xt0 == 0.5)
+        {
+            double xc;
+            xc = o[k][l].phi_x0(o[k][l].xi_c,o[k][l].eta_c);
+            xt0 = xt0 - 1e-9 * (xt0 - xc);
+        }
+        rhot = ini_rho(xt0,yt0) * o[i][j].Jacobi_0(xit,etat)
+                    / o[i][j].Jacobi(xit,etat);
         jt = o[i][j].Jacobi(xit,etat);
         
         //*********下面计算压强********//
@@ -123,7 +105,9 @@ double ** velocity_matrix(int i, int j)
         ut[0] = ux_limiter(i,j,ut[0],0.6);
         ut[1] = uy_limiter(i,j,ut[1],0.6);
         et = et - (ut[0] * ut[0] + ut[1] * ut[1]) * 0.5;
-        p = EOS(rhot,et);
+        et = max(1e-12, et);
+        double p_vertex;
+        p_vertex = EOS(rhot,et);
 
         delete[] ut;
 
@@ -139,26 +123,26 @@ double ** velocity_matrix(int i, int j)
         J_inv[1][1] = 0;
         for (r=0; r<4; r++)
         {
-            J_inv[0][0] = J_inv[0][0] + o[i][j].vy[r] * bp_eta(r,xit,etat);
+            J_inv[0][0] = J_inv[0][0] + o[i][j].vx[r] * bp_xi(r,xit,etat);
             J_inv[0][1] = J_inv[0][1] + o[i][j].vx[r] * bp_eta(r,xit,etat);
             J_inv[1][0] = J_inv[1][0] + o[i][j].vy[r] * bp_xi(r,xit,etat);
-            J_inv[1][1] = J_inv[1][1] + o[i][j].vx[r] * bp_xi(r,xit,etat);
+            J_inv[1][1] = J_inv[1][1] + o[i][j].vy[r] * bp_eta(r,xit,etat);
         }
-        J_inv[0][0] = J_inv[0][0] / jt;
+        J_inv[0][0] = J_inv[1][1] / jt;
         J_inv[0][1] = - J_inv[0][1] / jt;
         J_inv[1][0] = - J_inv[1][0] / jt;
-        J_inv[1][1] = J_inv[1][1] / jt;
+        J_inv[1][1] = J_inv[0][0] / jt;
 
         for (r=0; r<dim; r++)
         {
-            mid = o[i][j].Psi_xi(r,xit,etat) * J_inv[0][0];
-            mid = mid + o[i][j].Psi_eta(r,xit,etat) * J_inv[1][0];
-            mid = - mid * jt * p;
+            mid = o[i][j].Psi_xi(r,xit,etat) * J_inv[0][0]
+                + o[i][j].Psi_eta(r,xit,etat) * J_inv[1][0];
+            mid = - mid * jt * p_vertex;
             R[r][0] = R[r][0] - mid * Gaussweight[temp];
 
-            mid = o[i][j].Psi_xi(r,xit,etat) * J_inv[0][1];
-            mid = mid + o[i][j].Psi_eta(r,xit,etat) * J_inv[1][1];
-            mid = - mid * jt * p;
+            mid = o[i][j].Psi_xi(r,xit,etat) * J_inv[0][1]
+                + o[i][j].Psi_eta(r,xit,etat) * J_inv[1][1];
+            mid = - mid * jt * p_vertex;
             R[r][1] = R[r][1] - mid * Gaussweight[temp];
         }
 
@@ -218,8 +202,8 @@ double * energy_matrix(int i, int j)
 
         for ( temp = 0; temp < dim; temp++)
         {
-            mid = f[0][0] * point[k][l].upstarx + f[0][1] * point[k][l].upstary;
-            mid = mid + f[1][0] * point[k][l].upstarx + f[1][1] * point[k][l].upstary;
+            mid = f[0][0] * point[k][l].upstarx + f[0][1] * point[k][l].upstary
+                + f[1][0] * point[k][l].upstarx + f[1][1] * point[k][l].upstary;
             R[temp] = R[temp] + o[i][j].Psi(temp,xit,etat) * mid;
         }
         
@@ -236,7 +220,18 @@ double * energy_matrix(int i, int j)
         xit = Gausspoint_xi[temp];
         etat = Gausspoint_eta[temp];
         
-        rhot = get_density(xit,etat,o[i][j].q);
+        //rhot = o[i][j].rholast;
+        double xt0, yt0;
+        xt0 = o[i][j].phi_x0(xit,etat);
+        yt0 = o[i][j].phi_y0(xit,etat);
+        if (xt0 == 0.5)
+        {
+            double xc;
+            xc = o[k][l].phi_x0(o[k][l].xi_c,o[k][l].eta_c);
+            xt0 = xt0 - 1e-9 * (xt0 - xc);
+        }
+        rhot = ini_rho(xt0,yt0) * o[i][j].Jacobi_0(xit,etat)
+                    / o[i][j].Jacobi(xit,etat);
         jt = o[i][j].Jacobi(xit,etat);
 
         //*********下面计算压强********//
@@ -254,7 +249,9 @@ double * energy_matrix(int i, int j)
         ut[0] = ux_limiter(i,j,ut[0],0.6);
         ut[1] = uy_limiter(i,j,ut[1],0.6);
         et = et - (ut[0] * ut[0] + ut[1] * ut[1]) * 0.5;
-        p = EOS(rhot,et);
+        et = max(1e-12, et);
+        double p_vertex;
+        p_vertex = EOS(rhot,et);
 
         //***********下面计算J的逆矩阵**********//
         double** J_inv = new double * [2];
@@ -269,25 +266,25 @@ double * energy_matrix(int i, int j)
         J_inv[1][1] = 0;
         for (r=0; r<4; r++)
         {
-            J_inv[0][0] = J_inv[0][0] + o[i][j].vy[r] * bp_eta(r,xit,etat);
+            J_inv[0][0] = J_inv[0][0] + o[i][j].vx[r] * bp_xi(r,xit,etat);
             J_inv[0][1] = J_inv[0][1] + o[i][j].vx[r] * bp_eta(r,xit,etat);
             J_inv[1][0] = J_inv[1][0] + o[i][j].vy[r] * bp_xi(r,xit,etat);
-            J_inv[1][1] = J_inv[1][1] + o[i][j].vx[r] * bp_xi(r,xit,etat);
+            J_inv[1][1] = J_inv[1][1] + o[i][j].vy[r] * bp_eta(r,xit,etat);
         }
-        J_inv[0][0] = J_inv[0][0] / jt;
+        J_inv[0][0] = J_inv[1][1] / jt;
         J_inv[0][1] = - J_inv[0][1] / jt;
         J_inv[1][0] = - J_inv[1][0] / jt;
-        J_inv[1][1] = J_inv[1][1] / jt;
+        J_inv[1][1] = J_inv[0][0] / jt;
 
         double t1, t2;
-        for (r=1; r<dim; r++)
+        for (r=0; r<dim; r++)
         {
-            t1 = o[i][j].Psi_xi(r,xit,etat) * J_inv[0][0];
-            t1 = t1 + o[i][j].Psi_eta(r,xit,etat) * J_inv[1][0];
-            t2 = o[i][j].Psi_xi(r,xit,etat) * J_inv[0][1];
-            t2 = t2 + o[i][j].Psi_eta(r,xit,etat) * J_inv[1][1];
+            t1 = o[i][j].Psi_xi(r,xit,etat) * J_inv[0][0]
+               + o[i][j].Psi_eta(r,xit,etat) * J_inv[0][1];
+            t2 = o[i][j].Psi_xi(r,xit,etat) * J_inv[1][0]
+               + o[i][j].Psi_eta(r,xit,etat) * J_inv[1][1];
             mid = t1 * ut[0] + t2 * ut[1];
-            mid = - mid * jt * p;
+            mid = - mid * jt * p_vertex;
             R[r] = R[r] - mid * Gaussweight[temp];
         }
 
@@ -333,41 +330,25 @@ double * RK_step1(double * un, double ** M, double * Rn, double timeStep, int d)
     {
         for (j=0; j<d; j++)
         {
-            if (j == i)
-            {
-                M_inv[i][j] = 1;
-            }
-            else{
-                M_inv[i][j] = 0;
-            }
+            M_inv[i][j] = 0;
         }
     }
 
-    for (i=0; i<d; i++)
+    if (d == 1)
     {
-        temp =  M[i][i];
-        for (j=0; j<d; j++)
-        {
-            M[i][j] = M[i][j] / temp;
-            M_inv[i][j] = M_inv[i][j] / temp;
-        }
-        for (k=0; k<d; k++)
-        {
-            if ( k == i)
-            {
-                continue;
-            }
-            else{
-                temp =  M[k][i];
-                for (j=0; j<d; j++)
-                {
-                    M[k][j] = M[k][j] - temp * M[i][j];
-                    M_inv[k][j] = M_inv[k][j] - temp * M_inv[i][j];
-                }
-            }
-        }
+        M_inv[0][0] = 1.0 / M[0][0];
     }
-    //********注意此时M已被转化为单位矩阵***********//
+    if (d == 3)
+    {
+        M_inv[0][0] = 1.0 / M[0][0];
+        double det;
+        det = M[1][1] * M[2][2] - M[1][2] * M[2][1];
+        M_inv[1][1] = M[2][2] / det;
+        M_inv[1][2] = - M[1][2] / det;
+        M_inv[2][1] = - M[2][1] / det;
+        M_inv[2][2] = M[1][1] / det;
+    }
+    
 
     for (i=0; i<d; i++)
     {
@@ -379,8 +360,12 @@ double * RK_step1(double * un, double ** M, double * Rn, double timeStep, int d)
         {
             us1[i] = us1[i] + M_inv[i][j] * Rn[j];
         }
+    }
+    for (i=0; i<d; i++)
+    {
         us1[i] = us1[i] * timeStep + un[i];
     }
+
 
     for (i=0; i<d; i++)
     {
@@ -422,41 +407,24 @@ double * RK_step2(double * un, double * us1, double ** M, double * Rs1, double t
     {
         for (j=0; j<d; j++)
         {
-            if (j == i)
-            {
-                M_inv[i][j] = 1;
-            }
-            else{
-                M_inv[i][j] = 0;
-            }
+            M_inv[i][j] = 0;
         }
     }
 
-    for (i=0; i<d; i++)
+    if (d == 1)
     {
-        temp =  M[i][i];
-        for (j=0; j<d; j++)
-        {
-            M[i][j] = M[i][j] / temp;
-            M_inv[i][j] = M_inv[i][j] / temp;
-        }
-        for (k=0; k<d; k++)
-        {
-            if ( k == i)
-            {
-                continue;
-            }
-            else{
-                temp =  M[k][i];
-                for (j=0; j<d; j++)
-                {
-                    M[k][j] = M[k][j] - temp * M[i][j];
-                    M_inv[k][j] = M_inv[k][j] - temp * M_inv[i][j];
-                }
-            }
-        }
+        M_inv[0][0] = 1.0 / M[0][0];
     }
-    //********注意此时M已被转化为单位矩阵***********//
+    if (d == 3)
+    {
+        M_inv[0][0] = 1.0 / M[0][0];
+        double det;
+        det = M[1][1] * M[2][2] - M[1][2] * M[2][1];
+        M_inv[1][1] = M[2][2] / det;
+        M_inv[1][2] = - M[1][2] / det;
+        M_inv[2][1] = - M[2][1] / det;
+        M_inv[2][2] = M[1][1] / det;
+    }
 
     for (i=0; i<d; i++)
     {
@@ -467,7 +435,11 @@ double * RK_step2(double * un, double * us1, double ** M, double * Rs1, double t
         for (j=0; j<d; j++)
         {
             us2[i] = us2[i] + M_inv[i][j] * Rs1[j];
-        }
+        }   
+    }
+
+    for (i=0; i<d; i++)
+    {
         us2[i] = 0.5 * timeStep * us2[i] + 0.5 * un[i] + 0.5 * us1[i];
     }
 

@@ -47,7 +47,8 @@ void generatemesh()
             }
             if (j == 0 || j == m)
             {
-                point[i][j].boundary = 1;
+                //point[i][j].boundary = 1;
+                ;   //periodic B.C.
             }
 
             //记录物理坐标
@@ -133,6 +134,12 @@ void element_findneighbor(int i, int j)
     {
         //不存在
         ;
+
+        //ghost element
+        ti = i;
+        tj = m-1;
+        num = o[ti][tj].q;
+        o[i][j].neighbor_element.push_back(num);
     }
     else{
         //存在
@@ -161,6 +168,11 @@ void element_findneighbor(int i, int j)
     {
         //不存在
         ;
+        //ghost element
+        ti = i;
+        tj = 0;
+        num = o[ti][tj].q;
+        o[i][j].neighbor_element.push_back(num);
     }
     else{
         //存在
@@ -218,6 +230,10 @@ void node_findneighbor(int i, int j)
         {
             //节点为右上角
             ;
+            //ghost element
+            tj = 0;
+            num = o[ti][tj].q;
+            point[i][j].neighbor_element.push_back(num);
         }
         else{
             tj = j;
@@ -238,6 +254,10 @@ void node_findneighbor(int i, int j)
         {
             //不存在
             ;
+            //ghost element
+            tj = 0;
+            num = o[ti][tj].q;
+            point[i][j].neighbor_element.push_back(num);
         }
         else{
             tj = j;
@@ -258,6 +278,10 @@ void node_findneighbor(int i, int j)
         {
             //不存在
             ;
+            //ghost element
+            tj = m-1;
+            num = o[ti][tj].q;
+            point[i][j].neighbor_element.push_back(num);
         }
         else{
             tj = j-1;
@@ -278,6 +302,10 @@ void node_findneighbor(int i, int j)
         {
             //不存在
             ;
+            //ghost element
+            tj = m-1;
+            num = o[ti][tj].q;
+            point[i][j].neighbor_element.push_back(num);
         }
         else{
             tj = j-1;
@@ -295,6 +323,12 @@ void node_findneighbor(int i, int j)
     {
         //不存在
         ;
+
+        //ghost node
+        ti = i;
+        tj = m-1;
+        num = point[ti][tj].q;
+        point[i][j].neighbor_node.push_back(num);
     }
     else{
         //存在
@@ -323,6 +357,11 @@ void node_findneighbor(int i, int j)
     {
         //不存在
         ;
+        //ghost node
+        ti = i;
+        tj = 1;
+        num = point[ti][tj].q;
+        point[i][j].neighbor_node.push_back(num);
     }
     else{
         //存在
@@ -360,8 +399,23 @@ void node_findneighbor(int i, int j)
 
         double ax, ay, bx, by;  //a代表本节点，b代表相邻节点
 
-        ax = point[i][j].x;
-        ay = point[i][j].y;
+        if (j == 0 && jtemp == m-1)
+        {
+            ax = point[i][m].x;
+            ay = point[i][m].y;
+        }
+        else if (j == m && jtemp == 1)
+        {
+            ax = point[i][0].x;
+            ay = point[i][0].y;
+        }
+        else{
+            ax = point[i][j].x;
+            ay = point[i][j].y;
+        }
+
+        //ax = point[i][j].x;
+        //ay = point[i][j].y;
         bx = point[itemp][jtemp].x;
         by = point[itemp][jtemp].y;
 
@@ -549,7 +603,6 @@ void initial()
             }
 
             //********下面初始化速度场************//
-            //o[i][j].uxlast[0] = ini_ux(xt,yt);
             o[i][j].uxlast[0] = ini_ux(xt,yt);
             o[i][j].uylast[0] = ini_uy(xt,yt);  //在质心的值
 
@@ -560,7 +613,10 @@ void initial()
             o[i][j].uylast[2] = ini_uy_x(xt,yt) * x_eta + ini_uy_y(xt,yt) * y_eta;  //质心处uy对eta求偏导
             
             //*********下面初始化总能量场*********//
+            double rho;
             rho = ini_rho(xt,yt);
+            o[i][j].rholast = rho;
+            o[i][j].rho0 = rho;
             o[i][j].taulast[0] = ini_p(xt,yt) / ( rho * (gamma - 1)) + 0.5 * (ini_ux(xt,yt) * ini_ux(xt,yt) + ini_uy(xt,yt) * ini_uy(xt,yt));
             
             taux = ini_p_x(xt,yt) / ( rho * (gamma - 1)) + ini_ux(xt,yt) * ini_ux_x(xt,yt) + ini_uy(xt,yt) * ini_uy_x(xt,yt);

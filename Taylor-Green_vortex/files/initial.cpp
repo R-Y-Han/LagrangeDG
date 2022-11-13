@@ -372,8 +372,8 @@ void node_findneighbor(int i, int j)
         l = l / (double) 2; //除以2是因为计算中每个节点被分配到一半的边长
         point[i][j].a.push_back(l);
 
-        //计算法向??
-        double * ntemp = new double [2];    //法向
+        //计算法向
+        double * ntemp;    //法向
         ntemp = normal(ax,ay,bx,by);
         point[i][j].nx.push_back(ntemp[0]);
         point[i][j].ny.push_back(ntemp[1]);
@@ -413,7 +413,7 @@ double * mass_center(int i, int j)
         yt = o[i][j].phi_y(Gausspoint_xi[k],Gausspoint_eta[k]);
 
         rhot = ini_rho(xt,yt);
-        jt = o[i][j].Jacobi(Gausspoint_xi[k],Gausspoint_eta[k]);
+        jt = o[i][j].Jacobi_0(Gausspoint_xi[k],Gausspoint_eta[k]);
 
         masst = masst + rhot * jt * Gaussweight[k];
         mf_xi = mf_xi + rhot * Gausspoint_xi[k] * jt * Gaussweight[k];
@@ -458,7 +458,7 @@ double ** mass_matrix(int i, int j)
 
                 rhot = ini_rho(xt,yt);
 
-                jt = o[i][j].Jacobi(Gausspoint_xi[r], Gausspoint_eta[r]);
+                jt = o[i][j].Jacobi_0(Gausspoint_xi[r], Gausspoint_eta[r]);
                 
                 temp = o[i][j].Psi(k,Gausspoint_xi[r],Gausspoint_eta[r]);
                 temp = temp * o[i][j].Psi(l,Gausspoint_xi[r],Gausspoint_eta[r]);

@@ -15,6 +15,7 @@
 extern const char* fn_mesh;   /**< 网格的文件名路径*/
 extern const char* fn_pre;  /**< 网格压力的文件名路径*/
 extern const char* fn_interene; /**< 网格内能的文件名路径*/
+extern const char* fn_ux;
 
 /**
  * @brief 绘制网格图像
@@ -33,4 +34,12 @@ void plotpressure();
  * 
  */
 void plotinternalenergy();
+
+/**
+ * @brief 绘制网格速度
+ * 
+ */
+void plotux();
+
+void plotrho1d();
 #endif

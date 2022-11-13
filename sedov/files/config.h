@@ -22,8 +22,8 @@ using namespace std;
 
 const int dim = 3;  /**< 基函数个数*/
 
-const int n = 10;    /**< 网格横向剖分大小，0-n*/
-const int m = 10;    /**< 网格纵向剖分大小，0-m*/
+const int n = 80;    /**< 网格横向剖分大小，0-n*/
+const int m = 80;    /**< 网格纵向剖分大小，0-m*/
 
 const double X = 2.2; /**< 计算区域横坐标*/
 const double Y = 2.2; /**< 计算区域纵坐标*/
@@ -37,6 +37,10 @@ extern double dt;  /**< time step*/
 
 const double c_CFL = 0.1;  /**< CFL条件系数*/
 
+const double ux_alpha = 0.2;
+const double uy_alpha = 0.2;
+const double tau_alpha = 0.;
+
 const double ref_xi[4][2] = {{-1,-1}, {1,-1}, {1,1}, {-1,1}};   /**< 参考单元的四个顶点，从左下角起逆时针*/
 
 /** @}计算区域参数*/
@@ -49,8 +53,6 @@ const double gamma = 7 /(double) 5; /**< specific heat*/
 
 double EOS(double rho, double e);   /**< EOS*/
 
-extern double p;   /**< pressure*/
-extern double rho; /**< density*/
 
 /** @struct Omega
  * @brief 网格单元类的定义
@@ -73,6 +75,8 @@ struct Omega{
 
     double phi_x(double xi, double eta);    /**< 从参考空间到物理空间的映射，x分量*/
     double phi_y(double xi, double eta);    /**< 从参考空间到物理空间的映射，y分量*/
+    double phi_x0(double xi, double eta);
+    double phi_y0(double xi, double eta);
     double Psi(int i, double xi, double eta);  /**< 网格的基函数*/
     double Psi_xi(int i, double xi, double eta);    /**< 基函数对xi求导*/
     double Psi_eta(int i, double xi, double eta);   /**< 基函数对eta求导*/
@@ -87,6 +91,9 @@ struct Omega{
 
     double * taulast;  /**< specific energy for t_n */
     double * taunext; /**< specific energy for t_{n+1}*/
+
+    double rho0;
+    double rholast;
 
 };
 

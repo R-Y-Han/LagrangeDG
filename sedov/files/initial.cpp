@@ -559,14 +559,17 @@ void initial()
             o[i][j].uylast[2] = ini_uy_x(xt,yt) * x_eta + ini_uy_y(xt,yt) * y_eta;  //质心处uy对eta求偏导
             
             //*********下面初始化总能量场*********//
+            double rho;
             rho = ini_rho(xt,yt);
+            o[i][j].rho0 = rho;
+            o[i][j].rholast = rho;
             o[i][j].taulast[0] = ini_p(xt,yt) / ( rho * (gamma - 1)) + 0.5 * (ini_ux(xt,yt) * ini_ux(xt,yt) + ini_uy(xt,yt) * ini_uy(xt,yt));
             
             if (i == n/2 || i == n/2-1)
             {
                 if (j==m/2 || j==m/2 -1)
                 {
-                    //o[i][j].taulast[0] = 0.5 / (4.0 * hx * hy);  //因为初始速度为0所以只写了内能
+                    o[i][j].taulast[0] = 0.5 / (4.0 * hx * hy);  //因为初始速度为0所以只写了内能
                 }
                 
             }
