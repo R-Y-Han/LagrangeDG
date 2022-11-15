@@ -1,4 +1,4 @@
-VARIABLES = X, density
+VARIABLES = X, density200
 0	1
 0.005	1
 0.01	1

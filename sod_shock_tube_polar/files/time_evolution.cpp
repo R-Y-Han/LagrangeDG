@@ -78,18 +78,10 @@ double ** velocity_matrix(int i, int j)
         
         //rhot = o[i][j].rholast;
         double xt0, yt0;
-        xt0 = o[i][j].phi_x0(xit,etat);
-        yt0 = o[i][j].phi_y0(xit,etat);
-        if (sqrt(xt0 * xt0 + yt0*yt0) == 0.5)
-        {
-            double xtc, ytc;
-            xtc = o[i][j].phi_x0(o[i][j].xi_c,o[i][j].eta_c);
-            ytc = o[i][j].phi_y0(o[i][j].xi_c,o[i][j].eta_c);
-            xt0 = xt0 - 1e-9 * (xt0 - xtc);
-            yt0 = yt0 - 1e-9 * (yt0 - ytc);
-        }
-        rhot = ini_rho(xt0,yt0) * o[i][j].Jacobi_0(xit,etat)
-                                / o[i][j].Jacobi(xit,etat);
+        xt0 = o[i][j].phi_x0(o[i][j].xi_c,o[i][j].eta_c);
+        yt0 = o[i][j].phi_y0(o[i][j].xi_c,o[i][j].eta_c);
+        rhot = ini_rho(xt0,yt0) * o[i][j].Jacobi_0(o[i][j].xi_c,o[i][j].eta_c)
+                                / o[i][j].Jacobi(o[i][j].xi_c,o[i][j].eta_c);
         jt = o[i][j].Jacobi(xit,etat);
         //*********下面计算压强********//
         double* ut = new double [2];
@@ -223,18 +215,10 @@ double * energy_matrix(int i, int j)
         
         //rhot = o[i][j].rholast;
         double xt0, yt0;
-        xt0 = o[i][j].phi_x0(xit,etat);
-        yt0 = o[i][j].phi_y0(xit,etat);
-        if (sqrt(xt0 * xt0 + yt0*yt0) == 0.5)
-        {
-            double xtc, ytc;
-            xtc = o[i][j].phi_x0(o[i][j].xi_c,o[i][j].eta_c);
-            ytc = o[i][j].phi_y0(o[i][j].xi_c,o[i][j].eta_c);
-            xt0 = xt0 - 1e-9 * (xt0 - xtc);
-            yt0 = yt0 - 1e-9 * (yt0 - ytc);
-        }
-        rhot = ini_rho(xt0,yt0) * o[i][j].Jacobi_0(xit,etat)
-                                / o[i][j].Jacobi(xit,etat);
+        xt0 = o[i][j].phi_x0(o[i][j].xi_c,o[i][j].eta_c);
+        yt0 = o[i][j].phi_y0(o[i][j].xi_c,o[i][j].eta_c);
+        rhot = ini_rho(xt0,yt0) * o[i][j].Jacobi_0(o[i][j].xi_c,o[i][j].eta_c)
+                                / o[i][j].Jacobi(o[i][j].xi_c,o[i][j].eta_c);
         jt = o[i][j].Jacobi(xit,etat);
         //*********下面计算压强********//
         double* ut = new double [2];

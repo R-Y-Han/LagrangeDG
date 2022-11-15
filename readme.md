@@ -304,14 +304,7 @@ Boundary conditions:
 
 #### numerical result
 
-> 在这个例子中用了Maire的节点解法器：
-> $\textbf{F}^*_{i,maire} = a_i \textbf{n}_i \sigma^*_c = a_i \textbf{n}_i \sigma_c +a_i \mu_c (\textbf{n}_i \otimes \textbf{n}_i) (\textbf{u}_p^* - \textbf{u}_c)$
-> 和Burton的区别在于：
-> $$\textbf{F}^*_{i,burton} = a_i \textbf{n}_i \sigma^*_c = a_i \textbf{n}_i \sigma_c +a_i \mu_c (\textbf{e}_c \otimes \textbf{e}_c) (\textbf{u}_p^* - \textbf{u}_c)\\
-\quad \quad \quad = a_i \textbf{n}_i \sigma_c +a_i \mu_c  \textbf{e}_c |\textbf{u}_p^* - \textbf{u}_c|$$
-> Burton解法器在$\textbf{e}_c$中包含了$\textbf{u}_p^*$，且在速度初值都等于0时为得到速度需要对$\textbf{e}_c$做修改，不同修改的方法结果不一样
-
-当$t=0.2$时结果如下：
+当$t=0.2$，网格为$200\times 10$时结果如下：
 
 ![pressure](sod_shock_tube/output/p,maire,cellcentered_rho.png)
 
@@ -319,7 +312,14 @@ Boundary conditions:
 
 ![density](sod_shock_tube/output/rho,maire,cellcentered_rho.png)
 
-![velocity](sod_shock_tube/output/velocity,maire,cellcentered_rho.png)
+![velocity](sod_shock_tube/output/velocity200.png)
+
+![several_velocity](sod_shock_tube/output/velocity,maire,cellcentered_rho.png)
+
+$200 \times 10$时网格内能图像为
+![mesh](sod_shock_tube/output/mesh.png)
+
+![mesh3D](sod_shock_tube/output/mesh3d.png)
 
 ***
 
@@ -339,12 +339,20 @@ Initial conditions:
 
 #### numerical result
 
-当$t=1.5$时压力的图像为：
+当$t=1.5$，网格为$40\times 40$时压力的图像为：
 
 ![pressuret=1.5](sedov/output/t=1.5.png)
 
+$t=0.5$时压力图像为：
+
+![t=0.52d](sedov/output/t=0.5.png)
+
+![t=0.53d](sedov/output/t=0.53d.png)
+
 径向密度图像为：
-![density]
+![density](sedov/output/densityt=0.5.png)
+
+***
 
 ### Noh
 
@@ -362,6 +370,54 @@ boundary condition:
 
 #### numerical results
 
-$t=0.6$时网格压力如下：
+这个例子对限制器要求有点高，按照文章里的限制器算不出来，限制器里的参数非常接近0，所以变成了一个FV格式。
+
+$t=0.6$时$40\times 40$网格压力如下：
 
 ![pressure](Noh/output/t=0.6.png)
+
+$20 \times 20$时密度分布
+
+![density](Noh/output/density10.png)
+
+***
+
+### saltzman
+
+#### configuration
+
+先计算区域$[0,1]\times [0,0.1]$均匀划分为长方形网格，然后给初始长方形网格划分一个扰动：
+
+$$
+x_{str} = x + (0.1 - y) \sin(\pi x),\\
+y_{str} = y
+$$
+
+其中气体的初值为：
+$$
+(\rho_0, p_0,\textbf{u}_0) = (1,0,0)
+$$
+
+$$\gamma = 5/3$$
+
+边界条件为：
+$x = 0$时外法向速度为-1，其余为固壁边界条件。
+
+会产生一个速度为$4/3$的激波。
+
+#### numerical results
+
+初始网格如下：
+![initialmesh](saltzman_shock_tube/output/initialmesh.png)
+
+当$t = 0.3$时网格速度图像为
+![t=0.3velocity](saltzman_shock_tube/output/t=0.3.png)
+
+当$t=0.6$时
+![t=0.6](saltzman_shock_tube/output/t=0.6.png)
+
+当$t=0.75$时激波到达右端
+![t=0.75](saltzman_shock_tube/output/t=0.75.png)
+
+当$t=0.95$时
+![t=0.95](saltzman_shock_tube/output/t=0.95.png)

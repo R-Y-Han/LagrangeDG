@@ -396,7 +396,7 @@ double ini_rho(double x, double y)
 double ini_ux(double x, double y)
 {
     double ans;
-    ans = 1e-9;
+    ans = 0;
     return ans;
 }
 
@@ -438,7 +438,7 @@ double ini_ux_y(double x, double y)
 double ini_uy(double x, double y)
 {
     double ans;
-    ans = 1e-9;
+    ans = 0;
     return ans;
 }
 

@@ -175,10 +175,10 @@ void plotrho1d()
 {
     int i, j, k;
     double xt, yt, temp;
-    const char* fn_e1d = "F:\\C++Code\\LagrangeDG\\sedov\\output\\rho1d.plt";
+    const char* fn_e1d = "F:\\C++Code\\LagrangeDG\\sedov\\output\\rho1d30.plt";
     remove(fn_e1d);
     ofstream f(fn_e1d);
-    f<<"VARIABLES = X, density"<<endl;
+    f<<"VARIABLES = X, density"<<n<<endl;
 
     for (i=n/2; i<n; i++)
     {

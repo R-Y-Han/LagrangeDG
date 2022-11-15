@@ -175,14 +175,14 @@ void plotrho1d()
 {
     int i, j, k;
     double xt, yt, temp;
-    const char* fn_e1d = "F:\\C++Code\\LagrangeDG\\Noh\\output\\rho1d.plt";
+    const char* fn_e1d = "F:\\C++Code\\LagrangeDG\\Noh\\output\\rho1d40.plt";
     remove(fn_e1d);
     ofstream f(fn_e1d);
-    f<<"VARIABLES = X, density"<<endl;
+    f<<"VARIABLES = X, density"<<n/2<<endl;
 
     for (i=n/2; i<n; i++)
     {
-        f<<point[i][0].x<<"\t";
+        f<<point[i][m/2].x<<"\t";
         double rho;
         double xc, yc;
         xc = o[i][m/2].phi_x0(o[i][m/2].xi_c,o[i][m/2].eta_c);

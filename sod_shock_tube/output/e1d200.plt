@@ -1,4 +1,4 @@
-VARIABLES = X, e
+VARIABLES = X, e200
 0	1.5
 0.005	1.5
 0.01	1.5

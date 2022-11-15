@@ -1,4 +1,4 @@
-VARIABLES = X, numerical_velocity
+VARIABLES = X, numerical_velocity200
 0	2.79119e-011
 0.005	7.4434e-012
 0.01	-1.93502e-012

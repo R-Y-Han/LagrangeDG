@@ -31,15 +31,15 @@ const double Y = 2.0; /**< 计算区域纵坐标*/
 const double hx = X / (double) n;   /**< spatial step in x*/
 const double hy = Y / (double) m;   /**< spatial step in y*/
 
-const double T = 0.1;   /**< end time*/
+const double T = 0.6;   /**< end time*/
 
 extern double dt;  /**< time step*/
 
 const double c_CFL = 0.1;  /**< CFL条件系数*/
 
-const double ux_alpha = 0.1;
-const double uy_alpha = 0.1;
-const double tau_alpha = 0.3;
+const double ux_alpha = 0.0;
+const double uy_alpha = 0.0;
+const double tau_alpha = 0.1;
 
 const double ref_xi[4][2] = {{-1,-1}, {1,-1}, {1,1}, {-1,1}};   /**< 参考单元的四个顶点，从左下角起逆时针*/
 

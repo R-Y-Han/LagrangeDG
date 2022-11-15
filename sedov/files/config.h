@@ -22,8 +22,8 @@ using namespace std;
 
 const int dim = 3;  /**< 基函数个数*/
 
-const int n = 80;    /**< 网格横向剖分大小，0-n*/
-const int m = 80;    /**< 网格纵向剖分大小，0-m*/
+const int n = 60;    /**< 网格横向剖分大小，0-n*/
+const int m = 60;    /**< 网格纵向剖分大小，0-m*/
 
 const double X = 2.2; /**< 计算区域横坐标*/
 const double Y = 2.2; /**< 计算区域纵坐标*/

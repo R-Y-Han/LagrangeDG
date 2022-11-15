@@ -195,10 +195,10 @@ void plote1d()
 {
     int i, j, k;
     double xt, yt, temp;
-    const char* fn_e1d = "F:\\C++Code\\LagrangeDG\\sod_shock_tube\\output\\e1d.plt";
+    const char* fn_e1d = "F:\\C++Code\\LagrangeDG\\sod_shock_tube\\output\\e1d100.plt";
     remove(fn_e1d);
     ofstream f(fn_e1d);
-    f<<"VARIABLES = X, e"<<endl;
+    f<<"VARIABLES = X, e"<<n<<endl;
 
     for (i=0; i<n; i++)
     {
@@ -218,10 +218,10 @@ void plotux1d()
 {
     int i, j, k;
     double xt, yt, temp;
-    const char* fn_ux1d = "F:\\C++Code\\LagrangeDG\\sod_shock_tube\\output\\ux1d.plt";
+    const char* fn_ux1d = "F:\\C++Code\\LagrangeDG\\sod_shock_tube\\output\\ux1d100.plt";
     remove(fn_ux1d);
     ofstream f(fn_ux1d);
-    f<<"VARIABLES = X, numerical_velocity"<<endl;
+    f<<"VARIABLES = X, numerical_velocity"<<n<<endl;
 
     for (i=0; i<n; i++)
     {
@@ -238,10 +238,10 @@ void plotrho1d()
 {
     int i, j, k;
     double xt, yt, temp;
-    const char* fn_rho1d = "F:\\C++Code\\LagrangeDG\\sod_shock_tube\\output\\rho1d.plt";
+    const char* fn_rho1d = "F:\\C++Code\\LagrangeDG\\sod_shock_tube\\output\\rho1d100.plt";
     remove(fn_rho1d);
     ofstream f(fn_rho1d);
-    f<<"VARIABLES = X, density"<<endl;
+    f<<"VARIABLES = X, density"<<n<<endl;
 
     for (i=0; i<n; i++)
     {

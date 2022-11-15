@@ -23,7 +23,7 @@ using namespace std;
 const int dim = 1;  /**< 基函数个数*/
 
 const int n = 80;    /**< 网格横向剖分大小，0-n*/
-const int m = 10;    /**< 网格纵向剖分大小，0-m*/
+const int m = 20;    /**< 网格纵向剖分大小，0-m*/
 
 const double X = 1; /**< 计算区域横坐标*/
 const double Y = 0.5 * 3.1415927; /**< 计算区域纵坐标*/

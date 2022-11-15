@@ -31,7 +31,7 @@ const double Y = 0.1; /**< ¼ÆËãÇøÓò×Ý×ø±ê*/
 const double hx = X / (double) n;   /**< spatial step in x*/
 const double hy = Y / (double) m;   /**< spatial step in y*/
 
-const double T = 0.75;   /**< end time*/
+const double T = 0.;   /**< end time*/
 
 extern double dt;  /**< time step*/
 
